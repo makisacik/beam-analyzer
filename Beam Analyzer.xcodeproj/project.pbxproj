@@ -75,15 +75,47 @@
 		86F35A22298F037A00BDB116 /* Beam Analyzer */ = {
 			isa = PBXGroup;
 			children = (
+				86FAA3342991A36A00A11C74 /* Root */,
 				865782EE298FEFB600380928 /* App Coordinator */,
 				865782EB298FEBFB00380928 /* Splash Screen */,
-				86F35A23298F037A00BDB116 /* AppDelegate.swift */,
-				86F35A25298F037A00BDB116 /* SceneDelegate.swift */,
-				86F35A2F298F037F00BDB116 /* Assets.xcassets */,
-				86F35A34298F037F00BDB116 /* Info.plist */,
-				86F35A2C298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld */,
+				86FAA3352991A39300A11C74 /* Resources */,
+				86FAA3372991A3FE00A11C74 /* Supporting Files */,
+				86FAA3362991A3B000A11C74 /* Core Data */,
 			);
 			path = "Beam Analyzer";
+			sourceTree = "<group>";
+		};
+		86FAA3342991A36A00A11C74 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				86F35A23298F037A00BDB116 /* AppDelegate.swift */,
+				86F35A25298F037A00BDB116 /* SceneDelegate.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		86FAA3352991A39300A11C74 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				86F35A2F298F037F00BDB116 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		86FAA3362991A3B000A11C74 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				86F35A2C298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		86FAA3372991A3FE00A11C74 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				86F35A34298F037F00BDB116 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,7 +322,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FYS62UHY46;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Beam Analyzer/Info.plist";
+				INFOPLIST_FILE = "Beam Analyzer/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -318,7 +350,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FYS62UHY46;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Beam Analyzer/Info.plist";
+				INFOPLIST_FILE = "Beam Analyzer/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
