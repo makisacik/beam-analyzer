@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SplashScreenViewController.swift
 //  Beam Analyzer
 //
 //  Created by Mehmet Ali Kısacık on 5.02.2023.
@@ -7,13 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SplashScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
 
-
 }
-
