@@ -15,7 +15,7 @@ final class AppCoordinator {
         self.window = window
     }
 
-    func start(){
+    func start() {
         let splashScreenVC = SplashScreenViewController(nibName: String(describing: SplashScreenViewController.self), bundle: nil)
         let navigationController = UINavigationController(rootViewController: splashScreenVC)
         navigationController.setNavigationBarHidden(true, animated: false)
