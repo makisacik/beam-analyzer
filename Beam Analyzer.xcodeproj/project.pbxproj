@@ -12,6 +12,7 @@
 		865782ED298FED0C00380928 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865782EC298FED0C00380928 /* AppCoordinator.swift */; };
 		86B9A7092995B3620077D78B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9A7082995B3620077D78B /* LoginViewController.swift */; };
 		86B9A70C29962E8E0077D78B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9A70B29962E8E0077D78B /* LoginViewModel.swift */; };
+		86B9A7132996A1CF0077D78B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9A7122996A1CF0077D78B /* AuthService.swift */; };
 		86CC7D2F29931B3E00F1AC21 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 86CC7D2E29931B3E00F1AC21 /* FirebaseAuth */; };
 		86CC7D3129931B3E00F1AC21 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 86CC7D3029931B3E00F1AC21 /* FirebaseFirestore */; };
 		86CC7D3329931B3E00F1AC21 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 86CC7D3229931B3E00F1AC21 /* FirebaseMessaging */; };
@@ -28,6 +29,7 @@
 		865782EC298FED0C00380928 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		86B9A7082995B3620077D78B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86B9A70B29962E8E0077D78B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		86B9A7122996A1CF0077D78B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		86CC7D3429931EF000F1AC21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		86F35A20298F037A00BDB116 /* Beam Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beam Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F35A23298F037A00BDB116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 			path = "Login View";
 			sourceTree = "<group>";
 		};
+		86B9A7112996A1810077D78B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				86B9A7122996A1CF0077D78B /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		86F35A17298F037A00BDB116 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 				86FAA3352991A39300A11C74 /* Resources */,
 				86FAA3372991A3FE00A11C74 /* Supporting Files */,
 				86FAA3362991A3B000A11C74 /* Core Data */,
+				86B9A7112996A1810077D78B /* Services */,
 			);
 			path = "Beam Analyzer";
 			sourceTree = "<group>";
@@ -249,6 +260,7 @@
 				865782E9298FEBF600380928 /* SplashScreenViewController.swift in Sources */,
 				86F35A26298F037A00BDB116 /* SceneDelegate.swift in Sources */,
 				86B9A70C29962E8E0077D78B /* LoginViewModel.swift in Sources */,
+				86B9A7132996A1CF0077D78B /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
