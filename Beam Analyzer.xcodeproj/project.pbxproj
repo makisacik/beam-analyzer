@@ -13,6 +13,7 @@
 		86B9A7092995B3620077D78B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9A7082995B3620077D78B /* LoginViewController.swift */; };
 		86B9A70C29962E8E0077D78B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9A70B29962E8E0077D78B /* LoginViewModel.swift */; };
 		86B9A7132996A1CF0077D78B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9A7122996A1CF0077D78B /* AuthService.swift */; };
+		86B9A7162996BB8A0077D78B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 86B9A7152996BB8A0077D78B /* SnapKit */; };
 		86CC7D2F29931B3E00F1AC21 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 86CC7D2E29931B3E00F1AC21 /* FirebaseAuth */; };
 		86CC7D3129931B3E00F1AC21 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 86CC7D3029931B3E00F1AC21 /* FirebaseFirestore */; };
 		86CC7D3329931B3E00F1AC21 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 86CC7D3229931B3E00F1AC21 /* FirebaseMessaging */; };
@@ -45,6 +46,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86CC7D3329931B3E00F1AC21 /* FirebaseMessaging in Frameworks */,
+				86B9A7162996BB8A0077D78B /* SnapKit in Frameworks */,
 				86CC7D2F29931B3E00F1AC21 /* FirebaseAuth in Frameworks */,
 				86CC7D3129931B3E00F1AC21 /* FirebaseFirestore in Frameworks */,
 			);
@@ -173,6 +175,7 @@
 				86CC7D2E29931B3E00F1AC21 /* FirebaseAuth */,
 				86CC7D3029931B3E00F1AC21 /* FirebaseFirestore */,
 				86CC7D3229931B3E00F1AC21 /* FirebaseMessaging */,
+				86B9A7152996BB8A0077D78B /* SnapKit */,
 			);
 			productName = "Beam Analyzer";
 			productReference = 86F35A20298F037A00BDB116 /* Beam Analyzer.app */;
@@ -204,6 +207,7 @@
 			mainGroup = 86F35A17298F037A00BDB116;
 			packageReferences = (
 				86CC7D2D29931B3E00F1AC21 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				86B9A7142996BB8A0077D78B /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 86F35A21298F037A00BDB116 /* Products */;
 			projectDirPath = "";
@@ -461,6 +465,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		86B9A7142996BB8A0077D78B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		86CC7D2D29931B3E00F1AC21 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -472,6 +484,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		86B9A7152996BB8A0077D78B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86B9A7142996BB8A0077D78B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		86CC7D2E29931B3E00F1AC21 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 86CC7D2D29931B3E00F1AC21 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
