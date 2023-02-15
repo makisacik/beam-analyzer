@@ -18,6 +18,8 @@ final class AuthService {
     private let auth = Auth.auth()
     private var error: Error?
 
+    private init() {}
+
     func login(withEmail: String, password: String, completionHandler: @escaping (Result<AuthDataResult, Error>) -> Void) {
         auth.signIn(withEmail: withEmail, password: password) { authResult, error in
             if let error {
