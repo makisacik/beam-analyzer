@@ -12,6 +12,7 @@ final class LoginViewController: UIViewController {
 
     private let loginViewModel: LoginViewModel = LoginViewModel()
     private var activityIndicator: UIActivityIndicatorView?
+    weak var coordinator: AppCoordinator?
 
     private let loginTitleLabel: UILabel = {
         let label = UILabel()
@@ -98,6 +99,7 @@ final class LoginViewController: UIViewController {
         label.textColor = .tintColor
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.isUserInteractionEnabled = true
         return label
     }()
 
@@ -118,6 +120,12 @@ final class LoginViewController: UIViewController {
 
         setupViews()
         addTapOutsideKeyboard()
+        addRegisterLabelTapGesture()
+    }
+
+    private func addRegisterLabelTapGesture() {
+        let registerLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRegisterLabel))
+        registerLabel.addGestureRecognizer(registerLabelTapGesture)
     }
 
     private func addTapOutsideKeyboard() {
@@ -142,6 +150,10 @@ final class LoginViewController: UIViewController {
             }
              self?.stopLoadingIndicator(activityIndicator: self?.activityIndicator)
         }
+    }
+
+    @objc private func didTapRegisterLabel () {
+        coordinator?.navigateToRegister()
     }
 
     private func setupViews() {

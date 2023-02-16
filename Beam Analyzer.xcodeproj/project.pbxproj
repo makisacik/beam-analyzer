@@ -13,6 +13,8 @@
 		865782E9298FEBF600380928 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865782E7298FEBF600380928 /* SplashScreenViewController.swift */; };
 		865782EA298FEBF600380928 /* SplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 865782E8298FEBF600380928 /* SplashScreenViewController.xib */; };
 		865782ED298FED0C00380928 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865782EC298FED0C00380928 /* AppCoordinator.swift */; };
+		86B86F28299D744D00A5E3EA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B86F27299D744D00A5E3EA /* RegisterViewController.swift */; };
+		86B86F2B299D791000A5E3EA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B86F2A299D791000A5E3EA /* RegisterViewModel.swift */; };
 		86B9A7092995B3620077D78B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9A7082995B3620077D78B /* LoginViewController.swift */; };
 		86B9A70C29962E8E0077D78B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9A70B29962E8E0077D78B /* LoginViewModel.swift */; };
 		86B9A7132996A1CF0077D78B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B9A7122996A1CF0077D78B /* AuthService.swift */; };
@@ -35,6 +37,8 @@
 		865782E7298FEBF600380928 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		865782E8298FEBF600380928 /* SplashScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashScreenViewController.xib; sourceTree = "<group>"; };
 		865782EC298FED0C00380928 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		86B86F27299D744D00A5E3EA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		86B86F2A299D791000A5E3EA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		86B9A7082995B3620077D78B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86B9A70B29962E8E0077D78B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		86B9A7122996A1CF0077D78B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 				865782EC298FED0C00380928 /* AppCoordinator.swift */,
 			);
 			path = "App Coordinator";
+			sourceTree = "<group>";
+		};
+		86B86F29299D745600A5E3EA /* Register View */ = {
+			isa = PBXGroup;
+			children = (
+				86B86F27299D744D00A5E3EA /* RegisterViewController.swift */,
+				86B86F2A299D791000A5E3EA /* RegisterViewModel.swift */,
+			);
+			path = "Register View";
 			sourceTree = "<group>";
 		};
 		86B9A70A29962E640077D78B /* Login View */ = {
@@ -145,6 +158,7 @@
 				86FAA3342991A36A00A11C74 /* Root */,
 				865782EE298FEFB600380928 /* App Coordinator */,
 				86B9A70A29962E640077D78B /* Login View */,
+				86B86F29299D745600A5E3EA /* Register View */,
 				865782EB298FEBFB00380928 /* Splash Screen */,
 				86B9A7112996A1810077D78B /* Services */,
 				863CFEAD299A29A700EBEE7C /* Extensions */,
@@ -302,7 +316,9 @@
 				86F35A24298F037A00BDB116 /* AppDelegate.swift in Sources */,
 				865782ED298FED0C00380928 /* AppCoordinator.swift in Sources */,
 				865782E9298FEBF600380928 /* SplashScreenViewController.swift in Sources */,
+				86B86F2B299D791000A5E3EA /* RegisterViewModel.swift in Sources */,
 				86F35A26298F037A00BDB116 /* SceneDelegate.swift in Sources */,
+				86B86F28299D744D00A5E3EA /* RegisterViewController.swift in Sources */,
 				86B9A70C29962E8E0077D78B /* LoginViewModel.swift in Sources */,
 				86B9A7132996A1CF0077D78B /* AuthService.swift in Sources */,
 			);

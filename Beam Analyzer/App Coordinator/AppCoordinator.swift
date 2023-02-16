@@ -19,8 +19,15 @@ final class AppCoordinator {
 
     func navigateToLogin() {
         let loginVC = LoginViewController()
+        loginVC.coordinator = self
         navigationController?.setNavigationBarHidden(true, animated: true)
         navigationController?.pushViewController(loginVC, animated: true)
+    }
+
+    func navigateToRegister() {
+        let registerVC = RegisterViewController()
+        registerVC.coordinator = self
+        navigationController?.pushViewController(registerVC, animated: true)
     }
 
 }
