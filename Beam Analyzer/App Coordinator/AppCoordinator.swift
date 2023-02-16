@@ -9,18 +9,25 @@ import UIKit
 
 final class AppCoordinator {
 
-    private let window: UIWindow
+    var navigationController: UINavigationController?
 
-    init(window: UIWindow) {
-        self.window = window
+    func startCoordinator() {
+        let splashScreenVC = SplashScreenViewController(nibName: String(describing: SplashScreenViewController.self), bundle: nil)
+        splashScreenVC.coordinator = self
+        navigationController = UINavigationController(rootViewController: splashScreenVC)
     }
 
-    func start() {
-        let splashScreenVC = SplashScreenViewController(nibName: String(describing: SplashScreenViewController.self), bundle: nil)
-        let navigationController = UINavigationController(rootViewController: splashScreenVC)
-        navigationController.setNavigationBarHidden(true, animated: false)
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
+    func navigateToLogin() {
+        let loginVC = LoginViewController()
+        loginVC.coordinator = self
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.pushViewController(loginVC, animated: true)
+    }
+
+    func navigateToRegister() {
+        let registerVC = RegisterViewController()
+        registerVC.coordinator = self
+        navigationController?.pushViewController(registerVC, animated: true)
     }
 
 }

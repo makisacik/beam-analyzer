@@ -7,11 +7,15 @@
 
 import UIKit
 
-class SplashScreenViewController: UIViewController {
+final class SplashScreenViewController: UIViewController {
+    
+    weak var coordinator: AppCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            self.coordinator?.navigateToLogin()
+        }
     }
 
 }
