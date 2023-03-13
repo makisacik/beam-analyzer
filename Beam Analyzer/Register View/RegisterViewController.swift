@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseDatabase
 
 final class RegisterViewController: UIViewController {
 
@@ -28,7 +29,38 @@ final class RegisterViewController: UIViewController {
         cardView.shadowColor = .label
         return cardView
     }()
+    
+    private let fullNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Full Name: "
+        label.font = UIFont.getAppFont(withSize: 17)
+        return label
+    }()
+    
+    private let fullNameTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.returnKeyType = .default
 
+        return textField
+    }()
+    
+    private let userNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "User Name: "
+        label.font = UIFont.getAppFont(withSize: 17)
+        return label
+    }()
+    
+    private let userNameTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.autocapitalizationType = .none
+        textField.returnKeyType = .default
+        
+        return textField
+    }()
+    
     private let emailLabel: UILabel = {
         let label = UILabel()
         label.text = "Email: "
@@ -133,7 +165,11 @@ final class RegisterViewController: UIViewController {
 
     @objc private func didTapRegisterButton() {
         activityIndicator = showLoadingIndicator()
-        registerViewModel.register(withEmail: emailTextField.text ?? "", password: passwordTextField.text ?? "", passwordAgain: passwordAgainTextField.text ?? "") { [weak self] errorString in
+        registerViewModel.register(withEmail: emailTextField.text ?? "",
+                                   password: passwordTextField.text ?? "",
+                                   passwordAgain: passwordAgainTextField.text ?? "",
+                                   fullName: fullNameTextField.text ?? "",
+                                   userName: userNameTextField.text ?? "") { [weak self] errorString in
             self?.stopLoadingIndicator(activityIndicator: self?.activityIndicator)
             if let errorString {
                 self?.warningLabel.text = errorString
@@ -152,12 +188,7 @@ final class RegisterViewController: UIViewController {
         registerCardView.addSubview(registerStackView)
         registerCardView.addSubview(registerButton)
         registerCardView.addSubview(warningLabel)
-        registerStackView.addArrangedSubview(emailLabel)
-        registerStackView.addArrangedSubview(emailTextField)
-        registerStackView.addArrangedSubview(passwordLabel)
-        registerStackView.addArrangedSubview(passwordTextField)
-        registerStackView.addArrangedSubview(passwordAgainLabel)
-        registerStackView.addArrangedSubview(passwordAgainTextField)
+        registerStackView.addArrangedSubviews([fullNameLabel, fullNameTextField, userNameLabel, userNameTextField, emailLabel, emailTextField, passwordLabel, passwordTextField, passwordAgainLabel, passwordAgainTextField ])
 
         makeConstraints()
     }
