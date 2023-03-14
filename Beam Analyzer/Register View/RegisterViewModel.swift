@@ -39,12 +39,13 @@ final class RegisterViewModel {
                     case .failure(let failure):
                         errorString = failure.localizedDescription
                     }
+                    completionHandler(errorString)
                 }
                 DatabaseService.shared.insertUser(with: DatabaseUser(fullName: fullName, userName: userName, emailAddress: withEmail))
             } else {
                 errorString = "Username is taken."
+                completionHandler(errorString)
             }
-            completionHandler(errorString)
         }
     }
     

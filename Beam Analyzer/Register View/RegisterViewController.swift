@@ -41,7 +41,7 @@ final class RegisterViewController: UIViewController {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.returnKeyType = .default
-
+        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -57,7 +57,8 @@ final class RegisterViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.autocapitalizationType = .none
         textField.returnKeyType = .default
-        
+        textField.autocorrectionType = .no
+
         return textField
     }()
     
@@ -75,6 +76,7 @@ final class RegisterViewController: UIViewController {
         textField.keyboardType = .emailAddress
         textField.autocapitalizationType = .none
         textField.returnKeyType = .default
+        textField.autocorrectionType = .no
 
         return textField
     }()
@@ -100,7 +102,7 @@ final class RegisterViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.autocapitalizationType = .none
         textField.returnKeyType = .default
-
+        textField.passwordRules = .none
         return textField
     }()
 
@@ -111,6 +113,7 @@ final class RegisterViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.autocapitalizationType = .none
         textField.returnKeyType = .default
+        textField.passwordRules = .none
 
         return textField
     }()

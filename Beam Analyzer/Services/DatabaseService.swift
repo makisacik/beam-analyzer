@@ -26,7 +26,7 @@ final class DatabaseService {
         }
     }
 }
-
+ 
 struct DatabaseUser {
     let fullName: String
     let userName: String

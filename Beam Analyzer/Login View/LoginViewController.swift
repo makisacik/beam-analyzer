@@ -43,7 +43,7 @@ final class LoginViewController: UIViewController {
         textField.keyboardType = .emailAddress
         textField.autocapitalizationType = .none
         textField.returnKeyType = .default
-
+        textField.autocorrectionType = .no
         return textField
     }()
 
