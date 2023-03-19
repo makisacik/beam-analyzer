@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MessageTableViewCell: UITableViewCell {
+final class ConversationTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

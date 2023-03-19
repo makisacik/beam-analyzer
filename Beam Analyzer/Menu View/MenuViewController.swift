@@ -37,7 +37,7 @@ final class MenuViewController: UIViewController {
     }
     
     @objc func messageButtonTapped() {
-        coordinator?.navigeToChat()
+        coordinator?.navigeToConversations()
     }
     
     @objc func settingsButtonTapped() {

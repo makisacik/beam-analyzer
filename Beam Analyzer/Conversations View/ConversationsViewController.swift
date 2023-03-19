@@ -1,5 +1,5 @@
 //
-//  ChatViewController.swift
+//  ConversationsViewController.swift
 //  Beam Analyzer
 //
 //  Created by Mehmet Ali Kısacık on 20.03.2023.
@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-final class ChatViewController: UIViewController {
+final class ConversationsViewController: UIViewController {
     
-    private let chatTableView: UITableView = {
+    private let conversationsTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(MessageTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(ConversationTableViewCell.self, forCellReuseIdentifier: "cell")
         
         return tableView
     }()
@@ -26,26 +26,26 @@ final class ChatViewController: UIViewController {
     }
     
     private func setupViews() {
-        self.title = "Chats"
-        view.addSubview(chatTableView)
-        chatTableView.dataSource = self
-        chatTableView.delegate = self
+        self.title = "Conversations"
+        view.addSubview(conversationsTableView)
+        conversationsTableView.dataSource = self
+        conversationsTableView.delegate = self
     }
     
     private func makeConstraints() {
-        chatTableView.snp.makeConstraints { make in
+        conversationsTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
 }
 
-extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
+extension ConversationsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MessageTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ConversationTableViewCell else { return UITableViewCell()}
         cell.textLabel?.text = "Row \(indexPath.row + 1)"
         cell.configure()
         return cell

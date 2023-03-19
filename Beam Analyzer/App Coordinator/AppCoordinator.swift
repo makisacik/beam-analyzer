@@ -35,8 +35,8 @@ final class AppCoordinator {
         navigationController?.pushViewController(menuVC, animated: true)
     }
     
-    func navigeToChat() {
-        let chatVC = ChatViewController()
+    func navigeToConversations() {
+        let chatVC = ConversationsViewController()
         chatVC.coordinator = self
         navigationController?.pushViewController(chatVC, animated: true)
     }
