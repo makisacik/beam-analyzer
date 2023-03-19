@@ -13,7 +13,8 @@ final class DatabaseService {
     private let database = Database.database().reference()
     
     func insertUser(with user: DatabaseUser) {
-        database.child(user.userName).setValue([
+
+        database.child("users").child(user.userName).setValue([
             "full_name": user.fullName,
             "email": user.emailAddress
         ])
@@ -21,7 +22,7 @@ final class DatabaseService {
     }
     
     func isUserExists(userName: String, completionHandler: @escaping (Bool) -> Void) {
-        database.observeSingleEvent(of: .value) { snapshot in
+        database.child("users").observeSingleEvent(of: .value) { snapshot in
             completionHandler(snapshot.hasChild(userName))
         }
     }
