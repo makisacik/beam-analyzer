@@ -117,12 +117,17 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         passwordTextField.delegate = self
         emailTextField.delegate = self
-
+        self.title = "Login"
         setupViews()
         addTapOutsideKeyboard()
         addRegisterLabelTapGesture()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     private func addRegisterLabelTapGesture() {
         let registerLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRegisterLabel))
         registerLabel.addGestureRecognizer(registerLabelTapGesture)
@@ -144,6 +149,7 @@ final class LoginViewController: UIViewController {
             if isSuccessfull {
                 self?.warningLabel.textColor = .systemBlue
                 self?.warningLabel.text = "Successful login"
+                self?.coordinator?.navigateToMenu()
             } else {
                 self?.warningLabel.text = "Your credentials are incorrect."
                 self?.warningLabel.shake()
@@ -154,6 +160,7 @@ final class LoginViewController: UIViewController {
 
     @objc private func didTapRegisterLabel () {
         coordinator?.navigateToRegister()
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     private func setupViews() {
@@ -165,17 +172,14 @@ final class LoginViewController: UIViewController {
         loginCardView.addSubview(loginStackView)
         loginCardView.addSubview(loginButton)
         loginCardView.addSubview(warningLabel)
-        loginStackView.addArrangedSubview(emailLabel)
-        loginStackView.addArrangedSubview(emailTextField)
-        loginStackView.addArrangedSubview(passwordLabel)
-        loginStackView.addArrangedSubview(passwordTextField)
+        loginStackView.addArrangedSubviews([emailLabel, emailTextField, passwordLabel, passwordTextField])
 
         makeConstraints()
     }
 
     private func makeConstraints() {
         loginTitleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(40)
+            make.top.equalToSuperview().inset(120)
             make.centerX.equalToSuperview()
         }
 
@@ -207,7 +211,7 @@ final class LoginViewController: UIViewController {
         }
 
         withoutSignInLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(50)
             make.centerX.equalToSuperview()
         }
     }

@@ -179,6 +179,7 @@ final class RegisterViewController: UIViewController {
             } else {
                 self?.warningLabel.textColor = .systemBlue
                 self?.warningLabel.text = "Registered Succesfully"
+                self?.coordinator?.navigateToMenu()
             }
 
         }
@@ -198,7 +199,7 @@ final class RegisterViewController: UIViewController {
 
     private func makeConstraints() {
         registerTitleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(40)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.centerX.equalToSuperview()
         }
 
