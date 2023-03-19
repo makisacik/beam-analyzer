@@ -20,7 +20,6 @@ final class AppCoordinator {
     func navigateToLogin() {
         let loginVC = LoginViewController()
         loginVC.coordinator = self
-        navigationController?.setNavigationBarHidden(true, animated: true)
         navigationController?.pushViewController(loginVC, animated: true)
     }
 
@@ -28,6 +27,10 @@ final class AppCoordinator {
         let registerVC = RegisterViewController()
         registerVC.coordinator = self
         navigationController?.pushViewController(registerVC, animated: true)
+    }
+    
+    func navigateToMenu() {
+        
     }
 
 }
