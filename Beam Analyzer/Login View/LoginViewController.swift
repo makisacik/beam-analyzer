@@ -121,6 +121,11 @@ final class LoginViewController: UIViewController {
         setupViews()
         addTapOutsideKeyboard()
         addRegisterLabelTapGesture()
+        #if DEBUG
+        emailTextField.text = "test@test.com"
+        passwordTextField.text = "TestTest"
+        coordinator?.navigateToMenu()
+        #endif
     }
     
     override func viewWillAppear(_ animated: Bool) {

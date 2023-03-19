@@ -30,7 +30,15 @@ final class AppCoordinator {
     }
     
     func navigateToMenu() {
-        
+        let menuVC = MenuViewController()
+        menuVC.coordinator = self
+        navigationController?.pushViewController(menuVC, animated: true)
+    }
+    
+    func navigeToChat() {
+        let chatVC = ChatViewController()
+        chatVC.coordinator = self
+        navigationController?.pushViewController(chatVC, animated: true)
     }
 
 }
