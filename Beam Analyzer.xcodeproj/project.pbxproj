@@ -24,6 +24,7 @@
 		86F35A26298F037A00BDB116 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F35A25298F037A00BDB116 /* SceneDelegate.swift */; };
 		86F35A2E298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86F35A2C298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld */; };
 		86F35A30298F037F00BDB116 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86F35A2F298F037F00BDB116 /* Assets.xcassets */; };
+		CB29B64529C8E1F500720B8F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29B64429C8E1F500720B8F /* ChatViewController.swift */; };
 		CB3DD32F29C7BC6D000A7E07 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD32E29C7BC6D000A7E07 /* MenuViewController.swift */; };
 		CB3DD33529C7C78B000A7E07 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33429C7C78B000A7E07 /* ConversationsViewController.swift */; };
 		CB3DD33929C7C86D000A7E07 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33829C7C86D000A7E07 /* ConversationTableViewCell.swift */; };
@@ -57,6 +58,7 @@
 		86F35A2D298F037A00BDB116 /* Beam_Analyzer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beam_Analyzer.xcdatamodel; sourceTree = "<group>"; };
 		86F35A2F298F037F00BDB116 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86F35A34298F037F00BDB116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB29B64429C8E1F500720B8F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CB3DD32E29C7BC6D000A7E07 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CB3DD33429C7C78B000A7E07 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		CB3DD33829C7C86D000A7E07 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				86B86F29299D745600A5E3EA /* Register View */,
 				CB3DD33029C7BC77000A7E07 /* Menu View */,
 				CB3DD33329C7C775000A7E07 /* Conversations View */,
+				CB29B64629C8E20300720B8F /* Chat View */,
 				865782EB298FEBFB00380928 /* Splash Screen */,
 				86B9A7112996A1810077D78B /* Services */,
 				863CFEAD299A29A700EBEE7C /* Extensions */,
@@ -222,6 +225,14 @@
 				86F35A34298F037F00BDB116 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB29B64629C8E20300720B8F /* Chat View */ = {
+			isa = PBXGroup;
+			children = (
+				CB29B64429C8E1F500720B8F /* ChatViewController.swift */,
+			);
+			path = "Chat View";
 			sourceTree = "<group>";
 		};
 		CB3DD33029C7BC77000A7E07 /* Menu View */ = {
@@ -346,7 +357,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint > /dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -357,6 +369,7 @@
 			files = (
 				86B9A7092995B3620077D78B /* LoginViewController.swift in Sources */,
 				CBD0E15D29BFC750004599ED /* UIStackView+Extensions.swift in Sources */,
+				CB29B64529C8E1F500720B8F /* ChatViewController.swift in Sources */,
 				863CFEAC299A29A100EBEE7C /* UIFont+Extensions.swift in Sources */,
 				863CFEAF299A2E3200EBEE7C /* UILabel+Extensions.swift in Sources */,
 				CB3DD33929C7C86D000A7E07 /* ConversationTableViewCell.swift in Sources */,

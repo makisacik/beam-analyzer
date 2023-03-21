@@ -36,7 +36,13 @@ final class AppCoordinator {
     }
     
     func navigeToConversations() {
-        let chatVC = ConversationsViewController()
+        let conversationsVC = ConversationsViewController()
+        conversationsVC.coordinator = self
+        navigationController?.pushViewController(conversationsVC, animated: true)
+    }
+    
+    func navigateToChat() {
+        let chatVC = ChatViewController()
         chatVC.coordinator = self
         navigationController?.pushViewController(chatVC, animated: true)
     }
