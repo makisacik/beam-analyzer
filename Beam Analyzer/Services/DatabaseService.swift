@@ -27,6 +27,8 @@ final class DatabaseService {
     static let shared = DatabaseService()
     private let database = Database.database().reference()
     
+    private init() { }
+    
     func insertUser(with user: User) {
         database.child("users").child(user.userName).setValue([
             "full_name": user.fullName,

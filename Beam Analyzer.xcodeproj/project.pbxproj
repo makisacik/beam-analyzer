@@ -31,6 +31,8 @@
 		CB3DD33E29C7CB2E000A7E07 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33D29C7CB2E000A7E07 /* MenuViewModel.swift */; };
 		CB89339A29D0978A00ACC5F3 /* MessagingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */; };
 		CB89339D29D09D3700ACC5F3 /* SearchUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339C29D09D3700ACC5F3 /* SearchUsersViewController.swift */; };
+		CB8933A029D0BA8200ACC5F3 /* SearchUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339F29D0BA8200ACC5F3 /* SearchUsersViewModel.swift */; };
+		CB8933A229D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8933A129D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift */; };
 		CBB597C629C7D44F00095AF8 /* ConversationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB597C529C7D44F00095AF8 /* ConversationsViewModel.swift */; };
 		CBD0E15129BF8787004599ED /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CBD0E15029BF8787004599ED /* FirebaseAuth */; };
 		CBD0E15329BF8787004599ED /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CBD0E15229BF8787004599ED /* FirebaseDatabase */; };
@@ -67,6 +69,8 @@
 		CB3DD33D29C7CB2E000A7E07 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingTabBarController.swift; sourceTree = "<group>"; };
 		CB89339C29D09D3700ACC5F3 /* SearchUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewController.swift; sourceTree = "<group>"; };
+		CB89339F29D0BA8200ACC5F3 /* SearchUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewModel.swift; sourceTree = "<group>"; };
+		CB8933A129D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersTableViewCell.swift; sourceTree = "<group>"; };
 		CBB597C529C7D44F00095AF8 /* ConversationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewModel.swift; sourceTree = "<group>"; };
 		CBD0E15829BF8D53004599ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBD0E15A29BF9377004599ED /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -280,8 +284,18 @@
 			isa = PBXGroup;
 			children = (
 				CB89339C29D09D3700ACC5F3 /* SearchUsersViewController.swift */,
+				CB89339F29D0BA8200ACC5F3 /* SearchUsersViewModel.swift */,
+				CB8933A329D0C11E00ACC5F3 /* Cell */,
 			);
 			path = "Search Users View";
+			sourceTree = "<group>";
+		};
+		CB8933A329D0C11E00ACC5F3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CB8933A129D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,8 +409,10 @@
 				863CFEAC299A29A100EBEE7C /* UIFont+Extensions.swift in Sources */,
 				863CFEAF299A2E3200EBEE7C /* UILabel+Extensions.swift in Sources */,
 				CB3DD33929C7C86D000A7E07 /* ConversationTableViewCell.swift in Sources */,
+				CB8933A029D0BA8200ACC5F3 /* SearchUsersViewModel.swift in Sources */,
 				86B9A7182996CB470077D78B /* CardView.swift in Sources */,
 				863CFEB1299A2E4400EBEE7C /* UIViewController+Extensions.swift in Sources */,
+				CB8933A229D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift in Sources */,
 				86F35A2E298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld in Sources */,
 				CBD0E15B29BF9377004599ED /* DatabaseService.swift in Sources */,
 				CBB597C629C7D44F00095AF8 /* ConversationsViewModel.swift in Sources */,

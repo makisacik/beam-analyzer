@@ -57,9 +57,3 @@ extension ConversationsViewController: UITableViewDataSource, UITableViewDelegat
         coordinator?.navigateToChat()
     }
 }
-
-extension ConversationsViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
-}

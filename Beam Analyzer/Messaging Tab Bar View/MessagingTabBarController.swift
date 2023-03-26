@@ -26,7 +26,6 @@ class MessagingTabBarController: UITabBarController {
         conversationsViewController.tabBarItem = UITabBarItem(title: "Conversations", image: UIImage(systemName: "message"), tag: 0)
         searchUsersViewController.tabBarItem = UITabBarItem(title: "Search Users", image: UIImage(systemName: "person"), tag: 1)
         viewControllers = [conversationsViewController, searchUsersViewController]
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
