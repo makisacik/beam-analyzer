@@ -41,7 +41,7 @@ final class RegisterViewModel {
                     }
                     completionHandler(errorString)
                 }
-                DatabaseService.shared.insertUser(with: DatabaseUser(fullName: fullName, userName: userName, emailAddress: withEmail))
+                DatabaseService.shared.insertUser(with: User( userName: userName, fullName: fullName, email: withEmail))
             } else {
                 errorString = "Username is taken."
                 completionHandler(errorString)

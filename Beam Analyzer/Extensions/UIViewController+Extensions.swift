@@ -6,21 +6,21 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 extension UIViewController {
-  func showLoadingIndicator() -> UIActivityIndicatorView {
-    let activityIndicator = UIActivityIndicatorView(style: .large)
-    activityIndicator.center = view.center
-    activityIndicator.hidesWhenStopped = true
-    view.addSubview(activityIndicator)
-    activityIndicator.startAnimating()
-    return activityIndicator
-  }
-
-  func stopLoadingIndicator(activityIndicator: UIActivityIndicatorView?) {
-      if let activityIndicator {
-          activityIndicator.stopAnimating()
-          activityIndicator.removeFromSuperview()
-      }
-  }
+    
+    func showLoadingAnimation() {
+        let activityIndicator = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: .label)
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(50)
+        }
+        activityIndicator.startAnimating()
+    }
+    
+    func hideLoadingAnimation() {
+        view.subviews.filter { $0 is NVActivityIndicatorView }.forEach { $0.removeFromSuperview() }
+    }
 }
