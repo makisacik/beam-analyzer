@@ -17,14 +17,7 @@ final class ConversationsViewController: UIViewController {
         return tableView
     }()
     
-    private let usersSearchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.placeholder = "Search Users Here"
-        return searchBar
-    }()
-    
     weak var coordinator: AppCoordinator?
-    private lazy var tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +26,6 @@ final class ConversationsViewController: UIViewController {
     }
     
     private func setupViews() {
-        self.title = "Conversations"
-        view.addSubview(usersSearchBar)
         view.addSubview(conversationsTableView)
         conversationsTableView.dataSource = self
         conversationsTableView.delegate = self
@@ -42,22 +33,11 @@ final class ConversationsViewController: UIViewController {
     }
     
     private func makeConstraints() {
-        usersSearchBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(10)
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(40)
-        }
-        
         conversationsTableView.snp.makeConstraints { make in
-            make.top.equalTo(usersSearchBar.snp.bottom).offset(10)
-            make.leading.trailing.bottom.equalToSuperview()
-
+            make.edges.equalToSuperview()
         }
     }
     
-    @objc private func dismissKeyboard() {
-        
-    }
 }
 
 extension ConversationsViewController: UITableViewDataSource, UITableViewDelegate {

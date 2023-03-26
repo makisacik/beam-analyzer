@@ -29,6 +29,8 @@
 		CB3DD33529C7C78B000A7E07 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33429C7C78B000A7E07 /* ConversationsViewController.swift */; };
 		CB3DD33929C7C86D000A7E07 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33829C7C86D000A7E07 /* ConversationTableViewCell.swift */; };
 		CB3DD33E29C7CB2E000A7E07 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33D29C7CB2E000A7E07 /* MenuViewModel.swift */; };
+		CB89339A29D0978A00ACC5F3 /* MessagingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */; };
+		CB89339D29D09D3700ACC5F3 /* SearchUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339C29D09D3700ACC5F3 /* SearchUsersViewController.swift */; };
 		CBB597C629C7D44F00095AF8 /* ConversationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB597C529C7D44F00095AF8 /* ConversationsViewModel.swift */; };
 		CBD0E15129BF8787004599ED /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CBD0E15029BF8787004599ED /* FirebaseAuth */; };
 		CBD0E15329BF8787004599ED /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CBD0E15229BF8787004599ED /* FirebaseDatabase */; };
@@ -63,6 +65,8 @@
 		CB3DD33429C7C78B000A7E07 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		CB3DD33829C7C86D000A7E07 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		CB3DD33D29C7CB2E000A7E07 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingTabBarController.swift; sourceTree = "<group>"; };
+		CB89339C29D09D3700ACC5F3 /* SearchUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewController.swift; sourceTree = "<group>"; };
 		CBB597C529C7D44F00095AF8 /* ConversationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewModel.swift; sourceTree = "<group>"; };
 		CBD0E15829BF8D53004599ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBD0E15A29BF9377004599ED /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -180,7 +184,9 @@
 				86B9A70A29962E640077D78B /* Login View */,
 				86B86F29299D745600A5E3EA /* Register View */,
 				CB3DD33029C7BC77000A7E07 /* Menu View */,
+				CB89339B29D0979D00ACC5F3 /* Messaging Tab Bar View */,
 				CB3DD33329C7C775000A7E07 /* Conversations View */,
+				CB89339E29D09D3E00ACC5F3 /* Search Users View */,
 				CB29B64629C8E20300720B8F /* Chat View */,
 				865782EB298FEBFB00380928 /* Splash Screen */,
 				86B9A7112996A1810077D78B /* Services */,
@@ -260,6 +266,22 @@
 				CB3DD33829C7C86D000A7E07 /* ConversationTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		CB89339B29D0979D00ACC5F3 /* Messaging Tab Bar View */ = {
+			isa = PBXGroup;
+			children = (
+				CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */,
+			);
+			path = "Messaging Tab Bar View";
+			sourceTree = "<group>";
+		};
+		CB89339E29D09D3E00ACC5F3 /* Search Users View */ = {
+			isa = PBXGroup;
+			children = (
+				CB89339C29D09D3700ACC5F3 /* SearchUsersViewController.swift */,
+			);
+			path = "Search Users View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86B9A7092995B3620077D78B /* LoginViewController.swift in Sources */,
+				CB89339A29D0978A00ACC5F3 /* MessagingTabBarController.swift in Sources */,
 				CBD0E15D29BFC750004599ED /* UIStackView+Extensions.swift in Sources */,
 				CB29B64529C8E1F500720B8F /* ChatViewController.swift in Sources */,
 				863CFEAC299A29A100EBEE7C /* UIFont+Extensions.swift in Sources */,
@@ -382,6 +405,7 @@
 				865782E9298FEBF600380928 /* SplashScreenViewController.swift in Sources */,
 				CB3DD32F29C7BC6D000A7E07 /* MenuViewController.swift in Sources */,
 				86B86F2B299D791000A5E3EA /* RegisterViewModel.swift in Sources */,
+				CB89339D29D09D3700ACC5F3 /* SearchUsersViewController.swift in Sources */,
 				86F35A26298F037A00BDB116 /* SceneDelegate.swift in Sources */,
 				CB3DD33E29C7CB2E000A7E07 /* MenuViewModel.swift in Sources */,
 				86B86F28299D744D00A5E3EA /* RegisterViewController.swift in Sources */,

@@ -35,10 +35,10 @@ final class AppCoordinator {
         navigationController?.pushViewController(menuVC, animated: true)
     }
     
-    func navigeToConversations() {
-        let conversationsVC = ConversationsViewController()
-        conversationsVC.coordinator = self
-        navigationController?.pushViewController(conversationsVC, animated: true)
+    func navigateToMessagingTabBar() {
+        let messagingTabBarVC = MessagingTabBarController()
+        messagingTabBarVC.coordinator = self
+        navigationController?.pushViewController(messagingTabBarVC, animated: true)
     }
     
     func navigateToChat() {
