@@ -12,7 +12,6 @@ import FirebaseDatabase
 final class RegisterViewController: UIViewController {
 
     private let registerViewModel: RegisterViewModel = RegisterViewModel()
-    private var activityIndicator: UIActivityIndicatorView?
     weak var coordinator: AppCoordinator?
 
     private let registerTitleLabel: UILabel = {
@@ -167,13 +166,15 @@ final class RegisterViewController: UIViewController {
     }
 
     @objc private func didTapRegisterButton() {
-        activityIndicator = showLoadingIndicator()
+        showLoadingAnimation()
         registerViewModel.register(withEmail: emailTextField.text ?? "",
                                    password: passwordTextField.text ?? "",
                                    passwordAgain: passwordAgainTextField.text ?? "",
                                    fullName: fullNameTextField.text ?? "",
                                    userName: userNameTextField.text ?? "") { [weak self] errorString in
-            self?.stopLoadingIndicator(activityIndicator: self?.activityIndicator)
+            DispatchQueue.main.async {
+                self?.hideLoadingAnimation()
+            }
             if let errorString {
                 self?.warningLabel.text = errorString
             } else {

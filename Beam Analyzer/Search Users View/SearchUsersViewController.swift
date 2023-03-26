@@ -7,11 +7,10 @@
 
 import UIKit
 import SnapKit
+import NVActivityIndicatorView
 
 final class SearchUsersViewController: UIViewController {
-    
-    private var resultUsers: [User]?
-    
+        
     private let searchUsersTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(SearchUsersTableViewCell.self, forCellReuseIdentifier: "cell")
@@ -24,6 +23,8 @@ final class SearchUsersViewController: UIViewController {
         searchBar.autocapitalizationType = .none
         return searchBar
     }()
+    
+    private var resultUsers: [User]?
     
     private lazy var tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     private let viewModel = SearchUsersViewModel()
@@ -59,7 +60,7 @@ final class SearchUsersViewController: UIViewController {
             make.top.equalTo(searchUsersSearchBar.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
-
+                
     }
     
     private func showError() {
@@ -87,12 +88,17 @@ final class SearchUsersViewController: UIViewController {
 extension SearchUsersViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
+        showLoadingAnimation()
         if let searchText = searchBar.text {
             viewModel.searchUser(with: searchText) { [weak self] users in
+                DispatchQueue.main.async {
+                    self?.hideLoadingAnimation()
+                }
                 guard let users else {
                     self?.showError()
                     return
                 }
+                
                 self?.resultUsers = users
                 DispatchQueue.main.async {
                     self?.searchUsersTableView.reloadData()

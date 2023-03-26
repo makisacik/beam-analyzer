@@ -11,7 +11,6 @@ import SnapKit
 final class LoginViewController: UIViewController {
 
     private let loginViewModel: LoginViewModel = LoginViewModel()
-    private var activityIndicator: UIActivityIndicatorView?
     weak var coordinator: AppCoordinator?
 
     private let loginTitleLabel: UILabel = {
@@ -149,7 +148,7 @@ final class LoginViewController: UIViewController {
     }
 
     @objc private func didTapLoginButton() {
-        activityIndicator = showLoadingIndicator()
+        showLoadingAnimation()
         loginViewModel.login(withEmail: emailTextField.text ?? "", password: passwordTextField.text ?? "") { [weak self] isSuccessfull in
             if isSuccessfull {
                 self?.warningLabel.textColor = .systemBlue
@@ -159,7 +158,9 @@ final class LoginViewController: UIViewController {
                 self?.warningLabel.text = "Your credentials are incorrect."
                 self?.warningLabel.shake()
             }
-             self?.stopLoadingIndicator(activityIndicator: self?.activityIndicator)
+            DispatchQueue.main.async {
+                self?.hideLoadingAnimation()
+            }
         }
     }
 
