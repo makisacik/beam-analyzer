@@ -16,6 +16,13 @@ final class SearchUsersTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let fullNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.getAppFont(withSize: 18)
+        label.textColor = .secondaryLabel
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
@@ -28,18 +35,27 @@ final class SearchUsersTableViewCell: UITableViewCell {
        
     private func setupView() {
         addSubview(userNameLabel)
+        addSubview(fullNameLabel)
+
     }
     
     private func makeConstraints() {
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.snp.makeConstraints { make in
             make.height.equalTo(50).priority(.high)
-            make.leading.trailing.equalToSuperview().inset(15)
+            make.leading.equalToSuperview().inset(15)
+            make.top.bottom.equalToSuperview()
+        }
+        
+        fullNameLabel.snp.makeConstraints { make in
+            make.leading.equalTo(userNameLabel.snp.trailing).inset(10)
+            make.trailing.equalToSuperview().inset(40)
             make.top.bottom.equalToSuperview()
         }
     }
     
     func configure(user: User) {
         userNameLabel.text = user.userName
+        fullNameLabel.text = user.fullName
     }
 }
