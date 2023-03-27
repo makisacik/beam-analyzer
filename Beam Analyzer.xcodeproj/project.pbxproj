@@ -25,6 +25,7 @@
 		86F35A2E298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86F35A2C298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld */; };
 		86F35A30298F037F00BDB116 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86F35A2F298F037F00BDB116 /* Assets.xcassets */; };
 		CB29B64529C8E1F500720B8F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29B64429C8E1F500720B8F /* ChatViewController.swift */; };
+		CB2C6BF729D1F5CD00617083 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2C6BF629D1F5CD00617083 /* SettingsViewController.swift */; };
 		CB3DD32F29C7BC6D000A7E07 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD32E29C7BC6D000A7E07 /* MenuViewController.swift */; };
 		CB3DD33529C7C78B000A7E07 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33429C7C78B000A7E07 /* ConversationsViewController.swift */; };
 		CB3DD33929C7C86D000A7E07 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33829C7C86D000A7E07 /* ConversationTableViewCell.swift */; };
@@ -64,6 +65,7 @@
 		86F35A2F298F037F00BDB116 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86F35A34298F037F00BDB116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB29B64429C8E1F500720B8F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		CB2C6BF629D1F5CD00617083 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CB3DD32E29C7BC6D000A7E07 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CB3DD33429C7C78B000A7E07 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		CB3DD33829C7C86D000A7E07 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				86FAA3352991A39300A11C74 /* Resources */,
 				86FAA3372991A3FE00A11C74 /* Supporting Files */,
 				86FAA3362991A3B000A11C74 /* Core Data */,
+				CB2C6BF629D1F5CD00617083 /* SettingsViewController.swift */,
 			);
 			path = "Beam Analyzer";
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				86B9A70C29962E8E0077D78B /* LoginViewModel.swift in Sources */,
 				CB3DD33529C7C78B000A7E07 /* ConversationsViewController.swift in Sources */,
 				86B9A7132996A1CF0077D78B /* AuthService.swift in Sources */,
+				CB2C6BF729D1F5CD00617083 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,7 +41,7 @@ final class MenuViewController: UIViewController {
     }
     
     @objc func settingsButtonTapped() {
-        
+        coordinator?.navigateToSettings()
     }
 
 }

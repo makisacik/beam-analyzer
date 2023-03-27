@@ -48,8 +48,16 @@ final class AuthService {
         }
     }
     
-    func isUserLoggedIn() -> Bool {
+    func isUserSignedIn() -> Bool {
         return auth.currentUser != nil
     }
-
+    
+    func signOutUser(completionHandler: @escaping (Bool) -> Void) {
+        do {
+            try auth.signOut()
+            completionHandler(true)
+        } catch _ {
+            completionHandler(false)
+        }
+    }
 }

@@ -35,6 +35,12 @@ final class AppCoordinator {
         navigationController?.pushViewController(menuVC, animated: true)
     }
     
+    func navigateToSettings() {
+        let settingsVC = SettingsViewController()
+        settingsVC.coordinator = self
+        navigationController?.pushViewController(settingsVC, animated: true)
+    }
+
     func navigateToMessagingTabBar() {
         let messagingTabBarVC = MessagingTabBarController()
         messagingTabBarVC.coordinator = self

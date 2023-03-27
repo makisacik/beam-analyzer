@@ -14,7 +14,7 @@ final class SplashScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if AuthService.shared.isUserLoggedIn() {
+        if AuthService.shared.isUserSignedIn() {
             coordinator?.navigateToMenu()
         } else {
             self.coordinator?.navigateToLogin()
