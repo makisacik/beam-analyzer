@@ -47,5 +47,9 @@ final class AuthService {
             completionHandler(.success(authResult))
         }
     }
+    
+    func isUserLoggedIn() -> Bool {
+        return auth.currentUser != nil
+    }
 
 }
