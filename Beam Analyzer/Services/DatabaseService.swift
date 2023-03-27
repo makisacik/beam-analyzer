@@ -59,6 +59,26 @@ final class DatabaseService {
         }
     }
     
+    func fetchUser(email: String, completionHandler: @escaping (Result<User, FetchUserError>) -> Void ) {
+        database.child("users").observe(.value) { snapshot in
+            guard let userDictionary = snapshot.value as? [String: [String: String]] else {
+                completionHandler(.failure(FetchUserError.databaseError))
+                return
+            }
+            
+            for user in userDictionary where email == user.value["email"] {
+                guard let fullName = user.value["full_name"], let email = user.value["email"] else {
+                    completionHandler(.failure(FetchUserError.databaseError))
+                    return
+                }
+                let resultUser = User(userName: user.key, fullName: fullName, email: email)
+                completionHandler(.success(resultUser))
+            }
+        } withCancel: { _ in
+            completionHandler(.failure(FetchUserError.databaseError))
+        }
+    }
+    
     func queryUsers(with searchText: String, completionHandler: @escaping (Result<[User], SearchUserError>) -> Void) {
         
         database.child("users").queryOrderedByKey().queryStarting(atValue: searchText).queryEnding(atValue: searchText + "\u{f8ff}").observe(.value) { snapshot in
