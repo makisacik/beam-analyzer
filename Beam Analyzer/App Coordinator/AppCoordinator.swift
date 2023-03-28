@@ -47,8 +47,8 @@ final class AppCoordinator {
         navigationController?.pushViewController(messagingTabBarVC, animated: true)
     }
     
-    func navigateToChat() {
-        let chatVC = ChatViewController()
+    func navigateToChat(with receiverUser: User) {
+        let chatVC = ChatViewController(receiverUser: receiverUser)
         chatVC.coordinator = self
         navigationController?.pushViewController(chatVC, animated: true)
     }

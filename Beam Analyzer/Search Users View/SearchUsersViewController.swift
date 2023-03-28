@@ -26,7 +26,7 @@ final class SearchUsersViewController: UIViewController {
     
     private var resultUsers: [User]?
     
-    private lazy var tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    private lazy var keyboardOutsideTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     private let viewModel = SearchUsersViewModel()
     weak var coordinator: AppCoordinator?
 
@@ -72,11 +72,11 @@ final class SearchUsersViewController: UIViewController {
     }
     
     @objc private func keyboardWillShow() {
-        view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(keyboardOutsideTap)
     }
     
     @objc private func keyboardDidHide() {
-        view.removeGestureRecognizer(tap)
+        view.removeGestureRecognizer(keyboardOutsideTap)
     }
     
     @objc private func dismissKeyboard() {
@@ -123,6 +123,8 @@ extension SearchUsersViewController: UITableViewDataSource, UITableViewDelegate 
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.navigateToChat()
+        if let receiverUser = resultUsers?[indexPath.row] {
+            coordinator?.navigateToChat(with: receiverUser)
+        }
     }
 }

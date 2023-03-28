@@ -53,7 +53,7 @@ extension ConversationsViewController: UITableViewDataSource, UITableViewDelegat
         return cell
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.navigateToChat()
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        coordinator?.navigateToChat()
+//    }
 }
