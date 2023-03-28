@@ -23,4 +23,13 @@ extension UIViewController {
     func hideLoadingAnimation() {
         view.subviews.filter { $0 is NVActivityIndicatorView }.forEach { $0.removeFromSuperview() }
     }
+    
+    func showError(title: String? = "Database Error", message: String? = "An error occurred.") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }

@@ -11,7 +11,7 @@ import SnapKit
 final class ChatViewController: UIViewController {
     
     weak var coordinator: AppCoordinator?
-    private var receiverUser: User
+    private let viewModel: ChatViewModel
     private lazy var keyboardOutsideTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
 
     private let messageTextField: UITextField = {
@@ -23,7 +23,7 @@ final class ChatViewController: UIViewController {
     }()
     
     init(receiverUser: User) {
-        self.receiverUser = receiverUser
+        self.viewModel = ChatViewModel(receiverUser: receiverUser)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -79,6 +79,7 @@ final class ChatViewController: UIViewController {
 
 extension ChatViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        viewModel.sendMessage(message: textField.text ?? "")
         textField.text = ""
         textField.resignFirstResponder()
         return true

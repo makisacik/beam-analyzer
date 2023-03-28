@@ -15,7 +15,7 @@ enum AuthError: Error {
 final class AuthService {
 
     static let shared = AuthService()
-    private let auth = Auth.auth()
+    let auth = Auth.auth()
     private var error: Error?
 
     private init() {}

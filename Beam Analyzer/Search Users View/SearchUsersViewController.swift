@@ -61,15 +61,7 @@ final class SearchUsersViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
                 
-    }
-    
-    private func showError() {
-        let alertController = UIAlertController(title: "Database Error", message: "An error occurred.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(okAction)
-
-        self.present(alertController, animated: true, completion: nil)
-    }
+    }    
     
     @objc private func keyboardWillShow() {
         view.addGestureRecognizer(keyboardOutsideTap)

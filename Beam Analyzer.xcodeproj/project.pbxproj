@@ -43,6 +43,7 @@
 		CBD0E15929BF8D54004599ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBD0E15829BF8D53004599ED /* GoogleService-Info.plist */; };
 		CBD0E15B29BF9377004599ED /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15A29BF9377004599ED /* DatabaseService.swift */; };
 		CBD0E15D29BFC750004599ED /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15C29BFC750004599ED /* UIStackView+Extensions.swift */; };
+		CBF59F7929D2E4C9005D532A /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF59F7829D2E4C9005D532A /* ChatViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		CBD0E15829BF8D53004599ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBD0E15A29BF9377004599ED /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		CBD0E15C29BFC750004599ED /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		CBF59F7829D2E4C9005D532A /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				CB29B64429C8E1F500720B8F /* ChatViewController.swift */,
+				CBF59F7829D2E4C9005D532A /* ChatViewModel.swift */,
 			);
 			path = "Chat View";
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				CB89339D29D09D3700ACC5F3 /* SearchUsersViewController.swift in Sources */,
 				86F35A26298F037A00BDB116 /* SceneDelegate.swift in Sources */,
 				CB3DD33E29C7CB2E000A7E07 /* MenuViewModel.swift in Sources */,
+				CBF59F7929D2E4C9005D532A /* ChatViewModel.swift in Sources */,
 				86B86F28299D744D00A5E3EA /* RegisterViewController.swift in Sources */,
 				86B9A70C29962E8E0077D78B /* LoginViewModel.swift in Sources */,
 				CB3DD33529C7C78B000A7E07 /* ConversationsViewController.swift in Sources */,
