@@ -1,0 +1,51 @@
+//
+//  ChatViewModel.swift
+//  Beam Analyzer
+//
+//  Created by Mehmet Ali Kısacık on 28.03.2023.
+//
+
+import Foundation
+
+final class ChatViewModel {
+    private let receiverUser: User
+    private var currentUser: User!
+    
+    var messages: [Message] = []
+    
+    init(receiverUser: User) {
+        self.receiverUser = receiverUser
+        getCurrentUser()
+    }
+    
+    func sendMessage(message: String) {
+        MessageService.shared.sendMessage(message: message, currentUserName: currentUser.userName, receiverUserName: receiverUser.userName)
+    }
+    
+    func loadMessages() {
+        MessageService.shared.loadMessages(currentUserName: currentUser.userName, receiverUserName: receiverUser.userName) { result in
+            switch result {
+            case .success(let messages):
+                self.messages = messages
+                print(messages)
+            case .failure(let failure):
+                print("error")
+            }
+        }
+    }
+    
+    private func getCurrentUser() {
+        if let email = AuthService.shared.auth.currentUser?.email {
+            DatabaseService.shared.fetchUser(email: email) { result in
+                switch result {
+                case .success(let currentUser):
+                    self.currentUser = currentUser
+                case .failure:
+                    break
+                }
+                self.loadMessages()
+            }
+        }
+    }
+    
+}
