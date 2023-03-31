@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import RxSwift
 
 final class ChatViewModel {
     private let receiverUser: User
     private var currentUser: User!
     
-    var messages: [Message] = []
-    
+    var messages = BehaviorSubject<[Message]>(value: [])
+
     init(receiverUser: User) {
         self.receiverUser = receiverUser
         getCurrentUser()
@@ -26,10 +27,9 @@ final class ChatViewModel {
         MessageService.shared.loadMessages(currentUserName: currentUser.userName, receiverUserName: receiverUser.userName) { result in
             switch result {
             case .success(let messages):
-                self.messages = messages
-                print(messages)
+                self.messages.onNext(messages)
             case .failure(let failure):
-                print("error")
+                debugPrint(failure.localizedDescription)
             }
         }
     }

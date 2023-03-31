@@ -7,13 +7,16 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
-final class ChatViewController: UIViewController {
+final class ChatViewController: UIViewController, UITableViewDelegate {
     
     weak var coordinator: AppCoordinator?
     private let viewModel: ChatViewModel
     private lazy var keyboardOutsideTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-
+    private var disposeBag = DisposeBag()
+    
     private let messageTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
@@ -22,9 +25,17 @@ final class ChatViewController: UIViewController {
         return textField
     }()
     
+    private let messageTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        return tableView
+    }()
+    
     init(receiverUser: User) {
         self.viewModel = ChatViewModel(receiverUser: receiverUser)
         super.init(nibName: nil, bundle: nil)
+        self.title = "Chat with " + receiverUser.userName
     }
     
     required init?(coder: NSCoder) {
@@ -34,13 +45,16 @@ final class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGroupedBackground
-        
+        navigationController?.navigationBar.backgroundColor = .systemGroupedBackground
         setupViews()
         makeConstraints()
+        
     }
     
     private func setupViews() {
+        bindTableView()
         view.addSubview(messageTextField)
+        view.addSubview(messageTableView)
         messageTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -50,6 +64,23 @@ final class ChatViewController: UIViewController {
         messageTextField.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        messageTableView.snp.makeConstraints { make in
+            make.bottom.equalTo(messageTextField.snp.top)
+            make.leading.trailing.top.equalToSuperview()
+        }
+    }
+    
+    private func bindTableView() {
+        
+        messageTableView.rx.setDelegate(self).disposed(by: disposeBag)
+        viewModel.messages.bind(to: messageTableView.rx.items(cellIdentifier: "cell", cellType: ChatTableViewCell.self)) { (_, item, cell) in
+            cell.configure(messageBody: item.body)
+        }.disposed(by: disposeBag)
+        
+        messageTableView.rx.modelSelected(Message.self).subscribe(onNext: { item in
+            print("SelectedItem: \(item.body)")
+        }).disposed(by: disposeBag)
+        
     }
     
     @objc private func keyboardWillShow(_ notification: Notification) {

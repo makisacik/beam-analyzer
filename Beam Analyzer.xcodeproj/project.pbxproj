@@ -27,6 +27,9 @@
 		CB0AE3AE29D35218000258AE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AE3AD29D35218000258AE /* Message.swift */; };
 		CB0AE3B329D42905000258AE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AE3B229D42905000258AE /* DateUtil.swift */; };
 		CB0AE3B529D42A0C000258AE /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AE3B429D42A0C000258AE /* MessageService.swift */; };
+		CB1F166E29D6169E0016CBC2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CB1F166D29D6169E0016CBC2 /* RxCocoa */; };
+		CB1F167029D6169E0016CBC2 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = CB1F166F29D6169E0016CBC2 /* RxRelay */; };
+		CB1F167229D6169E0016CBC2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB1F167129D6169E0016CBC2 /* RxSwift */; };
 		CB29B64529C8E1F500720B8F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB29B64429C8E1F500720B8F /* ChatViewController.swift */; };
 		CB2C6BF729D1F5CD00617083 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2C6BF629D1F5CD00617083 /* SettingsViewController.swift */; };
 		CB3DD32F29C7BC6D000A7E07 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD32E29C7BC6D000A7E07 /* MenuViewController.swift */; };
@@ -42,6 +45,7 @@
 		CBD0E15929BF8D54004599ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBD0E15829BF8D53004599ED /* GoogleService-Info.plist */; };
 		CBD0E15B29BF9377004599ED /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15A29BF9377004599ED /* DatabaseService.swift */; };
 		CBD0E15D29BFC750004599ED /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15C29BFC750004599ED /* UIStackView+Extensions.swift */; };
+		CBE7302329D607D30066597B /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7302229D607D30066597B /* ChatTableViewCell.swift */; };
 		CBF59F7929D2E4C9005D532A /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF59F7829D2E4C9005D532A /* ChatViewModel.swift */; };
 		CBF59F8929D30E0A005D532A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CBF59F8829D30E0A005D532A /* FirebaseAuth */; };
 		CBF59F8B29D30E0A005D532A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CBF59F8A29D30E0A005D532A /* FirebaseDatabase */; };
@@ -86,6 +90,7 @@
 		CBD0E15829BF8D53004599ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBD0E15A29BF9377004599ED /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		CBD0E15C29BFC750004599ED /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		CBE7302229D607D30066597B /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		CBF59F7829D2E4C9005D532A /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,12 +99,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB1F167029D6169E0016CBC2 /* RxRelay in Frameworks */,
 				CBF59F8F29D30E0A005D532A /* FirebaseMessaging in Frameworks */,
+				CB1F167229D6169E0016CBC2 /* RxSwift in Frameworks */,
 				CB8933A629D0DDFD00ACC5F3 /* NVActivityIndicatorView in Frameworks */,
 				CBF59F8929D30E0A005D532A /* FirebaseAuth in Frameworks */,
 				CBF59F8B29D30E0A005D532A /* FirebaseDatabase in Frameworks */,
 				CBF59F9129D30E0A005D532A /* FirebaseStorage in Frameworks */,
 				CBF59F8D29D30E0A005D532A /* FirebaseFirestore in Frameworks */,
+				CB1F166E29D6169E0016CBC2 /* RxCocoa in Frameworks */,
 				86B9A7162996BB8A0077D78B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +276,7 @@
 			children = (
 				CB29B64429C8E1F500720B8F /* ChatViewController.swift */,
 				CBF59F7829D2E4C9005D532A /* ChatViewModel.swift */,
+				CBE7302229D607D30066597B /* ChatTableViewCell.swift */,
 			);
 			path = "Chat View";
 			sourceTree = "<group>";
@@ -350,6 +359,9 @@
 				CBF59F8C29D30E0A005D532A /* FirebaseFirestore */,
 				CBF59F8E29D30E0A005D532A /* FirebaseMessaging */,
 				CBF59F9029D30E0A005D532A /* FirebaseStorage */,
+				CB1F166D29D6169E0016CBC2 /* RxCocoa */,
+				CB1F166F29D6169E0016CBC2 /* RxRelay */,
+				CB1F167129D6169E0016CBC2 /* RxSwift */,
 			);
 			productName = "Beam Analyzer";
 			productReference = 86F35A20298F037A00BDB116 /* Beam Analyzer.app */;
@@ -383,6 +395,7 @@
 				86B9A7142996BB8A0077D78B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CB8933A429D0DDFD00ACC5F3 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				CBF59F8729D30E0A005D532A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CB1F166C29D6169E0016CBC2 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 86F35A21298F037A00BDB116 /* Products */;
 			projectDirPath = "";
@@ -453,6 +466,7 @@
 				CB3DD32F29C7BC6D000A7E07 /* MenuViewController.swift in Sources */,
 				86B86F2B299D791000A5E3EA /* RegisterViewModel.swift in Sources */,
 				CB89339D29D09D3700ACC5F3 /* SearchUsersViewController.swift in Sources */,
+				CBE7302329D607D30066597B /* ChatTableViewCell.swift in Sources */,
 				86F35A26298F037A00BDB116 /* SceneDelegate.swift in Sources */,
 				CB0AE3B329D42905000258AE /* DateUtil.swift in Sources */,
 				CB3DD33E29C7CB2E000A7E07 /* MenuViewModel.swift in Sources */,
@@ -671,6 +685,14 @@
 				kind = branch;
 			};
 		};
+		CB1F166C29D6169E0016CBC2 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		CB8933A429D0DDFD00ACC5F3 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
@@ -694,6 +716,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 86B9A7142996BB8A0077D78B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		CB1F166D29D6169E0016CBC2 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB1F166C29D6169E0016CBC2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		CB1F166F29D6169E0016CBC2 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB1F166C29D6169E0016CBC2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		CB1F167129D6169E0016CBC2 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB1F166C29D6169E0016CBC2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 		CB8933A529D0DDFD00ACC5F3 /* NVActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;

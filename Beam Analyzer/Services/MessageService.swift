@@ -21,13 +21,13 @@ final class MessageService {
 
     func sendMessage(message: String, currentUserName: String, receiverUserName: String) {
         let conversationTitle = getConversationTitle(currentUserName: currentUserName, receiverUserName: receiverUserName)
-        firestore.collection(conversationTitle).addDocument(data: [bodyField: message, senderField: currentUserName, dateField: DateUtil.getString(from: Date())])
+        firestore.collection(conversationTitle).addDocument(data: [bodyField: message, senderField: currentUserName, dateField: Date().timeIntervalSince1970])
     }
     
     func loadMessages(currentUserName: String, receiverUserName: String, completionHandler: @escaping (Result<[Message], Error>) -> Void) {
         let conversationTitle = getConversationTitle(currentUserName: currentUserName, receiverUserName: receiverUserName)
         var messages: [Message] = []
-        firestore.collection(conversationTitle).order(by: dateField)            .addSnapshotListener { (querySnapshot, error) in
+        firestore.collection(conversationTitle).order(by: dateField).addSnapshotListener { (querySnapshot, error) in
             if let error {
                 completionHandler(.failure(error))
                 return
@@ -35,15 +35,18 @@ final class MessageService {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for doc in snapshotDocuments {
                         let data = doc.data()
-                        if let dateString = data[self.dateField] as? String, let body = data[self.bodyField] as? String, let sender = data[self.senderField] as? String {
+                        if let dateInterval = data[self.dateField] as? Double, let body = data[self.bodyField] as? String, let sender = data[self.senderField] as? String {
+                            let dateString = DateUtil.getString(from: Date(timeIntervalSince1970: dateInterval))
                             let message = Message(sender: sender, body: body, date: dateString)
                             messages.append(message)
                         }
                     }
                 }
                 completionHandler(.success(messages))
+                messages = []
             }
         }
+        
     }
     
     private func getConversationTitle(currentUserName: String, receiverUserName: String) -> String {

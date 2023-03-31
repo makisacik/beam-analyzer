@@ -7,19 +7,14 @@
 
 import Foundation
 
-class DateUtil {
+final class DateUtil {
+    
     static func getString(from date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss"
-        let dateString = dateFormatter.string(from: Date())
+        dateFormatter.dateFormat = "dd MMM yyyy HH:mm"
+        let dateString = dateFormatter.string(from: date)
         print(dateString)
         return dateString
     }
     
-    static func getDate(from string: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss"
-        return dateFormatter.date(from: string) ?? Date()
-    }
-
 }
