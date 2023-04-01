@@ -10,7 +10,7 @@ import RxSwift
 
 final class ChatViewModel {
     private let receiverUser: User
-    private var currentUser: User!
+    var currentUser: User!
     
     var messages = BehaviorSubject<[Message]>(value: [])
 

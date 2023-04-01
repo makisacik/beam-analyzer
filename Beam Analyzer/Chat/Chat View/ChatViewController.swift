@@ -28,7 +28,7 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
     private let messageTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: "cell")
-        
+        tableView.separatorStyle = .none
         return tableView
     }()
     
@@ -48,7 +48,6 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         navigationController?.navigationBar.backgroundColor = .systemGroupedBackground
         setupViews()
         makeConstraints()
-        
     }
     
     private func setupViews() {
@@ -73,8 +72,9 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
     private func bindTableView() {
         
         messageTableView.rx.setDelegate(self).disposed(by: disposeBag)
-        viewModel.messages.bind(to: messageTableView.rx.items(cellIdentifier: "cell", cellType: ChatTableViewCell.self)) { (_, item, cell) in
-            cell.configure(messageBody: item.body)
+        viewModel.messages.bind(to: messageTableView.rx.items(cellIdentifier: "cell", cellType: ChatTableViewCell.self)) { (_, message, cell) in
+            let isIconOnRight = message.sender == self.viewModel.currentUser.userName
+            cell.configure(messageBody: message.body, isIconOnRight: isIconOnRight)
         }.disposed(by: disposeBag)
         
         messageTableView.rx.modelSelected(Message.self).subscribe(onNext: { item in
