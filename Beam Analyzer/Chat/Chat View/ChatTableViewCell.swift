@@ -13,11 +13,11 @@ final class ChatTableViewCell: UITableViewCell {
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.alignment = .center
+        stackView.alignment = .top
         stackView.spacing = 5
         return stackView
     }()
-
+    
     private let messageBodyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.getAppFont(withSize: 18)
@@ -38,6 +38,13 @@ final class ChatTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    private let bubleView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 10
+        view.backgroundColor = .systemGroupedBackground
+        return(view)
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
@@ -50,8 +57,9 @@ final class ChatTableViewCell: UITableViewCell {
     
     private func setupView() {
         addSubview(mainStackView)
+        bubleView.addSubview(messageBodyLabel)
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        mainStackView.addArrangedSubviews([leftUserIcon, messageBodyLabel, rightUserIcon])
+        mainStackView.addArrangedSubviews([leftUserIcon, bubleView, rightUserIcon])
     }
     
     private func makeConstraints() {
@@ -67,13 +75,19 @@ final class ChatTableViewCell: UITableViewCell {
             make.width.height.equalTo(35)
         }
         
+        messageBodyLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(10)
+        }
+        
     }
     
     func configure(messageBody: String, isIconOnRight: Bool) {
         if isIconOnRight {
-            leftUserIcon.removeFromSuperview()
+            leftUserIcon.isHidden = true
+            rightUserIcon.isHidden = false
         } else {
-            rightUserIcon.removeFromSuperview()
+            leftUserIcon.isHidden = false
+            rightUserIcon.isHidden = true
         }
         messageBodyLabel.text = messageBody
     }

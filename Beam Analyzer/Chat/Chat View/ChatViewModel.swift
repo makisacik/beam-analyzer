@@ -16,7 +16,8 @@ final class ChatViewModel {
 
     init(receiverUser: User) {
         self.receiverUser = receiverUser
-        getCurrentUser()
+        currentUser = UserManager.shared.currentUser
+        loadMessages()
     }
     
     func sendMessage(message: String) {
@@ -24,26 +25,12 @@ final class ChatViewModel {
     }
     
     func loadMessages() {
-        MessageService.shared.loadMessages(currentUserName: currentUser.userName, receiverUserName: receiverUser.userName) { result in
+        MessageService.shared.loadMessages(currentUserName: currentUser.userName, receiverUserName: receiverUser.userName) { [weak self] result in
             switch result {
             case .success(let messages):
-                self.messages.onNext(messages)
+                self?.messages.onNext(messages)
             case .failure(let failure):
                 debugPrint(failure.localizedDescription)
-            }
-        }
-    }
-    
-    private func getCurrentUser() {
-        if let email = AuthService.shared.auth.currentUser?.email {
-            DatabaseService.shared.fetchUser(email: email) { result in
-                switch result {
-                case .success(let currentUser):
-                    self.currentUser = currentUser
-                case .failure:
-                    break
-                }
-                self.loadMessages()
             }
         }
     }

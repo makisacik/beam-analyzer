@@ -27,6 +27,7 @@
 		CB0AE3AE29D35218000258AE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AE3AD29D35218000258AE /* Message.swift */; };
 		CB0AE3B329D42905000258AE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AE3B229D42905000258AE /* DateUtil.swift */; };
 		CB0AE3B529D42A0C000258AE /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AE3B429D42A0C000258AE /* MessageService.swift */; };
+		CB16880829DB69A000C6A56C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB16880729DB69A000C6A56C /* UserManager.swift */; };
 		CB1F166E29D6169E0016CBC2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CB1F166D29D6169E0016CBC2 /* RxCocoa */; };
 		CB1F167029D6169E0016CBC2 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = CB1F166F29D6169E0016CBC2 /* RxRelay */; };
 		CB1F167229D6169E0016CBC2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB1F167129D6169E0016CBC2 /* RxSwift */; };
@@ -76,6 +77,7 @@
 		CB0AE3AD29D35218000258AE /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CB0AE3B229D42905000258AE /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		CB0AE3B429D42A0C000258AE /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		CB16880729DB69A000C6A56C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		CB29B64429C8E1F500720B8F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CB2C6BF629D1F5CD00617083 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CB3DD32E29C7BC6D000A7E07 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				86B9A7122996A1CF0077D78B /* AuthService.swift */,
 				CBD0E15A29BF9377004599ED /* DatabaseService.swift */,
 				CB0AE3B429D42A0C000258AE /* MessageService.swift */,
+				CB16880729DB69A000C6A56C /* UserManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				CB3DD33929C7C86D000A7E07 /* ConversationTableViewCell.swift in Sources */,
 				CB8933A029D0BA8200ACC5F3 /* SearchUsersViewModel.swift in Sources */,
 				86B9A7182996CB470077D78B /* CardView.swift in Sources */,
+				CB16880829DB69A000C6A56C /* UserManager.swift in Sources */,
 				863CFEB1299A2E4400EBEE7C /* UIViewController+Extensions.swift in Sources */,
 				CB8933A229D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift in Sources */,
 				86F35A2E298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld in Sources */,

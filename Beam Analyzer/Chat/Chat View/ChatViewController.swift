@@ -45,7 +45,7 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGroupedBackground
-        navigationController?.navigationBar.backgroundColor = .systemGroupedBackground
+        navigationController?.navigationBar.backgroundColor = .systemBackground
         setupViews()
         makeConstraints()
     }
@@ -63,9 +63,10 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         messageTextField.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
         messageTableView.snp.makeConstraints { make in
             make.bottom.equalTo(messageTextField.snp.top)
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -75,12 +76,16 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         viewModel.messages.bind(to: messageTableView.rx.items(cellIdentifier: "cell", cellType: ChatTableViewCell.self)) { (_, message, cell) in
             let isIconOnRight = message.sender == self.viewModel.currentUser.userName
             cell.configure(messageBody: message.body, isIconOnRight: isIconOnRight)
+            cell.selectionStyle = .none
         }.disposed(by: disposeBag)
         
         messageTableView.rx.modelSelected(Message.self).subscribe(onNext: { item in
             print("SelectedItem: \(item.body)")
         }).disposed(by: disposeBag)
         
+        viewModel.messages.bind { _ in
+            self.scrollToBottom()
+        }.disposed(by: disposeBag)
     }
     
     @objc private func keyboardWillShow(_ notification: Notification) {
@@ -105,6 +110,14 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
     
     @objc private func dismissKeyboard() {
         messageTextField.resignFirstResponder()
+    }
+    
+    private func scrollToBottom() {
+        if messageTableView.numberOfRows(inSection: 0) > 0 {
+            let lastRowIndex = messageTableView.numberOfRows(inSection: 0) - 1
+            let lastRowIndexPath = IndexPath(row: lastRowIndex, section: 0)
+            messageTableView.scrollToRow(at: lastRowIndexPath, at: .bottom, animated: true)
+        }
     }
 }
 

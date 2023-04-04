@@ -13,6 +13,11 @@ final class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserManager.shared.fetchCurrentUser { error in
+            if error != nil {
+                self.showError(title: "Error", message: "User cannot be fetched")
+            }
+        }
         setupViews()
     }
     
