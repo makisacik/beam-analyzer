@@ -23,12 +23,21 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
     private let viewModel = ConversationsViewModel()
     private var disposeBag = DisposeBag()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchConversations()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
         showLoadingAnimation()
-        viewModel.fetchConversations()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.removeListeners()
     }
     
     private func setupViews() {

@@ -20,6 +20,8 @@ final class MessageService {
     private let conversationUsernamesField = "conversation_usernames"
     private init() { }
 
+    var conversationsListener: ListenerRegistration?
+    
     func sendMessage(message: String, currentUserName: String, receiverUserName: String) {
         let conversationTitle = getConversationTitle(currentUserName: currentUserName, receiverUserName: receiverUserName)
         firestore.collection(conversationTitle).addDocument(data: [bodyField: message, senderField: currentUserName, dateField: Date().timeIntervalSince1970])
@@ -55,8 +57,12 @@ final class MessageService {
         addConversation(documentUserName: receiverUserName, otherUserName: currentUserName)
     }
     
+    func removeConversationsListener() {
+        conversationsListener?.remove()
+    }
+    
     func fetchConversations(userName: String, completionHandler: @escaping (Result<[String], Error>) -> Void) {
-        firestore.collection(conversationsField).document(userName).addSnapshotListener { document, error in
+        conversationsListener = firestore.collection(conversationsField).document(userName).addSnapshotListener { document, error in
             if let document = document, document.exists {
                 let data = document.data()
                 let conversationUserNames = data?[self.conversationUsernamesField] as? [String] ?? []

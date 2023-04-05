@@ -22,9 +22,13 @@ final class ConversationsViewModel {
             switch result {
             case .success(let usernames):
                 self.userNames.onNext(usernames)
-            case .failure(let _):
+            case .failure:
                 break
             }
         }
+    }
+    
+    func removeListeners() {
+        MessageService.shared.removeConversationsListener()
     }
 }
