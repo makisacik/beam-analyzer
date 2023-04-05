@@ -6,7 +6,25 @@
 //
 
 import Foundation
+import RxSwift
 
 final class ConversationsViewModel {
+    let currentUser: User!
     
+    var userNames = PublishSubject<[String]>()
+
+    init() {
+        currentUser = UserManager.shared.currentUser
+    }
+    
+    func fetchConversations() {
+        MessageService.shared.fetchConversations(userName: currentUser.userName) { result in
+            switch result {
+            case .success(let usernames):
+                self.userNames.onNext(usernames)
+            case .failure(let _):
+                break
+            }
+        }
+    }
 }

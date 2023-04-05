@@ -13,9 +13,14 @@ final class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoadingAnimation()
+        
         UserManager.shared.fetchCurrentUser { error in
             if error != nil {
                 self.showError(title: "Error", message: "User cannot be fetched")
+            }
+            DispatchQueue.main.async {
+                self.hideLoadingAnimation()
             }
         }
         setupViews()

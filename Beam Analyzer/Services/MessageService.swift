@@ -16,7 +16,8 @@ final class MessageService {
     private let bodyField = "body"
     private let senderField = "sender"
     private let dateField = "date"
-    
+    private let conversationsField = "conversations"
+    private let conversationUsernamesField = "conversation_usernames"
     private init() { }
 
     func sendMessage(message: String, currentUserName: String, receiverUserName: String) {
@@ -54,18 +55,30 @@ final class MessageService {
         addConversation(documentUserName: receiverUserName, otherUserName: currentUserName)
     }
     
-    private func addConversation(documentUserName: String, otherUserName: String) {
-        let conversationsField = "conversations"
-        let conversationUsernamesField = "conversation_usernames"
-        
-        firestore.collection(conversationsField).document(documentUserName).getDocument { document, _ in
+    func fetchConversations(userName: String, completionHandler: @escaping (Result<[String], Error>) -> Void) {
+        firestore.collection(conversationsField).document(userName).addSnapshotListener { document, error in
             if let document = document, document.exists {
                 let data = document.data()
-                var conversationArray = data?[conversationUsernamesField] as? [String] ?? []
+                let conversationUserNames = data?[self.conversationUsernamesField] as? [String] ?? []
+                completionHandler(.success(conversationUserNames))
+            } else if let error {
+                completionHandler(.failure(error))
+            } else {
+                completionHandler(.success([]))
+            }
+        }
+    }
+    
+    private func addConversation(documentUserName: String, otherUserName: String) {
+        
+        firestore.collection(conversationsField).document(documentUserName).getDocument { [self] document, _ in
+            if let document = document, document.exists {
+                let data = document.data()
+                var conversationUserNames = data?[self.conversationUsernamesField] as? [String] ?? []
                 
-                if !conversationArray.contains(otherUserName) {
-                    conversationArray.append(otherUserName)
-                    self.firestore.collection(conversationsField).document(documentUserName).updateData([conversationUsernamesField: conversationArray])
+                if !conversationUserNames.contains(otherUserName) {
+                    conversationUserNames.append(otherUserName)
+                    self.firestore.collection(conversationsField).document(documentUserName).updateData([conversationUsernamesField: conversationUserNames])
                 }
             } else {
                 self.firestore.collection(conversationsField).document(documentUserName).setData([conversationUsernamesField: [otherUserName]])
