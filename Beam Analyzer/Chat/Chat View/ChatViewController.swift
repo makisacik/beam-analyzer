@@ -126,6 +126,9 @@ extension ChatViewController: UITextFieldDelegate {
         viewModel.sendMessage(message: textField.text ?? "")
         textField.text = ""
         textField.resignFirstResponder()
+        if messageTableView.numberOfRows(inSection: 0) == 0 {
+            viewModel.createConversations()
+        }
         return true
     }
 }

@@ -49,6 +49,30 @@ final class MessageService {
         
     }
     
+    func createConversations(currentUserName: String, receiverUserName: String) {
+        addConversation(documentUserName: currentUserName, otherUserName: receiverUserName)
+        addConversation(documentUserName: receiverUserName, otherUserName: currentUserName)
+    }
+    
+    private func addConversation(documentUserName: String, otherUserName: String) {
+        let conversationsField = "conversations"
+        let conversationUsernamesField = "conversation_usernames"
+        
+        firestore.collection(conversationsField).document(documentUserName).getDocument { document, _ in
+            if let document = document, document.exists {
+                let data = document.data()
+                var conversationArray = data?[conversationUsernamesField] as? [String] ?? []
+                
+                if !conversationArray.contains(otherUserName) {
+                    conversationArray.append(otherUserName)
+                    self.firestore.collection(conversationsField).document(documentUserName).updateData([conversationUsernamesField: conversationArray])
+                }
+            } else {
+                self.firestore.collection(conversationsField).document(documentUserName).setData([conversationUsernamesField: [otherUserName]])
+            }
+        }
+    }
+    
     private func getConversationTitle(currentUserName: String, receiverUserName: String) -> String {
         let conversationTitle = [currentUserName, receiverUserName].sorted().joined(separator: "*")
         return conversationTitle

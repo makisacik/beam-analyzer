@@ -35,4 +35,8 @@ final class ChatViewModel {
         }
     }
     
+    func createConversations() {
+        MessageService.shared.createConversations(currentUserName: currentUser.userName, receiverUserName: receiverUser.userName)
+    }
+    
 }

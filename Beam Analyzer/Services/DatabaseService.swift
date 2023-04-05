@@ -97,6 +97,7 @@ final class DatabaseService {
         } withCancel: { _ in
             completionHandler(.failure(SearchUserError.unknownError))
         }
+        
     }
     
 }
