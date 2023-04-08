@@ -36,12 +36,16 @@ final class DatabaseService {
         ])
     }
     
-    func isUserExists(userName: String, completionHandler: @escaping (Bool) -> Void) {
-        database.child("users").observeSingleEvent(of: .value) { snapshot in
-            completionHandler(snapshot.hasChild(userName))
+    func isUserExist(userName: String, completionHandler: @escaping (Bool) -> Void) {
+        database.child("users").getData { _, snapshot in
+            if let snapshot {
+                completionHandler(snapshot.hasChild(userName))
+            } else {
+                completionHandler(false)
+            }
         }
     }
-    
+
     func fetchUser(with userName: String, completionHandler: @escaping (Result<User, FetchUserError>) -> Void ) {
         database.child("users").child(userName).observe(.value) { snapshot in
             guard let userDictionary = snapshot.value as? [String: String],
