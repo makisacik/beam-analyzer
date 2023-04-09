@@ -46,8 +46,8 @@ final class DatabaseService {
         }
     }
 
-    func fetchUser(with userName: String, completionHandler: @escaping (Result<User, FetchUserError>) -> Void ) {
-        database.child("users").child(userName).observe(.value) { snapshot in
+    func fetchUser(userName: String, completionHandler: @escaping (Result<User, FetchUserError>) -> Void ) {
+        database.child("users").child(userName).observeSingleEvent(of: .value) { snapshot in
             guard let userDictionary = snapshot.value as? [String: String],
                   let fullName = userDictionary["full_name"],
                   let email = userDictionary["email"] else {
@@ -57,14 +57,11 @@ final class DatabaseService {
             
             let user = User(userName: userName, fullName: fullName, email: email)
             completionHandler(.success(user))
-            
-        } withCancel: { _ in
-            completionHandler(.failure(FetchUserError.databaseError))
         }
     }
     
     func fetchUser(email: String, completionHandler: @escaping (Result<User, FetchUserError>) -> Void ) {
-        database.child("users").observe(.value) { snapshot in
+        database.child("users").observeSingleEvent(of: .value) { snapshot in
             guard let userDictionary = snapshot.value as? [String: [String: String]] else {
                 completionHandler(.failure(FetchUserError.databaseError))
                 return
@@ -78,8 +75,6 @@ final class DatabaseService {
                 let resultUser = User(userName: user.key, fullName: fullName, email: email)
                 completionHandler(.success(resultUser))
             }
-        } withCancel: { _ in
-            completionHandler(.failure(FetchUserError.databaseError))
         }
     }
     

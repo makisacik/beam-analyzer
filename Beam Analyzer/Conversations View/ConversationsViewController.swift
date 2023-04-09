@@ -22,7 +22,7 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
     weak var coordinator: AppCoordinator?
     private let viewModel = ConversationsViewModel()
     private var disposeBag = DisposeBag()
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchConversations()
@@ -59,22 +59,27 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
             cell.accessoryType = .disclosureIndicator
         }.disposed(by: disposeBag)
         
-        conversationsTableView.rx.modelSelected(String.self).subscribe(onNext: { item in
+        conversationsTableView.rx.modelSelected(String.self).subscribe(onNext: { [weak self] userName in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 self.showLoadingAnimation()
             }
-            DatabaseService.shared.fetchUser(with: item) { result in
+            
+            self.viewModel.fetchUser(userName: userName) { [weak self] user in
+                guard let self = self else { return }
                 DispatchQueue.main.async {
                     self.hideLoadingAnimation()
                 }
-                switch result {
-                case .success(let user):
+                
+                if let user {
                     self.coordinator?.navigateToChat(with: user)
-                case .failure:
-                    break
+                } else {
+                    self.showError()
                 }
+                
             }
-            print("SelectedItem: \(item)")
+            
+            print("SelectedItem: \(userName)")
         }).disposed(by: disposeBag)
         
         viewModel.userNames.bind { _ in
@@ -83,5 +88,5 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
             }
         }.disposed(by: disposeBag)
     }
-
+    
 }

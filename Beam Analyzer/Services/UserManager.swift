@@ -25,4 +25,5 @@ final class UserManager {
             }
         }
     }
+    
 }
