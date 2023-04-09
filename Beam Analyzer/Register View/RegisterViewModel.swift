@@ -29,8 +29,8 @@ final class RegisterViewModel {
             completionHandler(errorString)
             return
         }
-
-        DatabaseService.shared.isUserExists(userName: userName) { isExists in
+        
+        DatabaseService.shared.isUserExist(userName: userName) { isExists in
             if !isExists {
                 AuthService.shared.register(withEmail: withEmail, password: password) { authDataResult in
                     switch authDataResult {

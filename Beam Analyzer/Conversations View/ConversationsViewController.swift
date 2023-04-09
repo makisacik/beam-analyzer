@@ -7,8 +7,10 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
-final class ConversationsViewController: UIViewController {
+final class ConversationsViewController: UIViewController, UITableViewDelegate {
     
     private let conversationsTableView: UITableView = {
         let tableView = UITableView()
@@ -18,18 +20,30 @@ final class ConversationsViewController: UIViewController {
     }()
     
     weak var coordinator: AppCoordinator?
+    private let viewModel = ConversationsViewModel()
+    private var disposeBag = DisposeBag()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchConversations()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
+        showLoadingAnimation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.removeListeners()
     }
     
     private func setupViews() {
         view.addSubview(conversationsTableView)
-        conversationsTableView.dataSource = self
-        conversationsTableView.delegate = self
         view.backgroundColor = .systemBackground
+        bindTableView()
     }
     
     private func makeConstraints() {
@@ -38,22 +52,41 @@ final class ConversationsViewController: UIViewController {
         }
     }
     
-}
-
-extension ConversationsViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    private func bindTableView() {
+        conversationsTableView.rx.setDelegate(self).disposed(by: disposeBag)
+        viewModel.userNames.bind(to: conversationsTableView.rx.items(cellIdentifier: "cell", cellType: ConversationTableViewCell.self)) { (_, userName, cell) in
+            cell.textLabel?.text = userName
+            cell.accessoryType = .disclosureIndicator
+        }.disposed(by: disposeBag)
+        
+        conversationsTableView.rx.modelSelected(String.self).subscribe(onNext: { [weak self] userName in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.showLoadingAnimation()
+            }
+            
+            self.viewModel.fetchUser(userName: userName) { [weak self] user in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    self.hideLoadingAnimation()
+                }
+                
+                if let user {
+                    self.coordinator?.navigateToChat(with: user)
+                } else {
+                    self.showError()
+                }
+                
+            }
+            
+            print("SelectedItem: \(userName)")
+        }).disposed(by: disposeBag)
+        
+        viewModel.userNames.bind { _ in
+            DispatchQueue.main.async {
+                self.hideLoadingAnimation()
+            }
+        }.disposed(by: disposeBag)
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ConversationTableViewCell else { return UITableViewCell()}
-        cell.textLabel?.text = "Row \(indexPath.row + 1)"
-        cell.accessoryType = .disclosureIndicator
-        cell.configure()
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.navigateToChat()
-    }
+    
 }
