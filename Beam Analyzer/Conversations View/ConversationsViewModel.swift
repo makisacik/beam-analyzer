@@ -41,5 +41,6 @@ final class ConversationsViewModel {
     
     func removeListeners() {
         MessageService.shared.removeConversationsListener()
+        DatabaseService.shared.removeAllListeners()
     }
 }

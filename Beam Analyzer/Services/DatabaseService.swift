@@ -99,4 +99,8 @@ final class DatabaseService {
         
     }
     
+    func removeAllListeners() {
+        database.removeAllObservers()
+    }
+    
 }

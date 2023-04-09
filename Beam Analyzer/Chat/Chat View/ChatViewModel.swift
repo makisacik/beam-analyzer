@@ -39,4 +39,8 @@ final class ChatViewModel {
         MessageService.shared.createConversations(currentUserName: currentUser.userName, receiverUserName: receiverUser.userName)
     }
     
+    func removeListeners() {
+        MessageService.shared.removeMessagesListener()
+    }
+    
 }

@@ -50,6 +50,11 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         makeConstraints()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.removeListeners()
+    }
+    
     private func setupViews() {
         bindTableView()
         view.addSubview(messageTextField)
@@ -105,7 +110,6 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
                 self.view.frame.origin.y = 0
             }
         }
-
     }
     
     @objc private func dismissKeyboard() {

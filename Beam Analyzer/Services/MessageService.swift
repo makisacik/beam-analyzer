@@ -20,8 +20,9 @@ final class MessageService {
     private let conversationUsernamesField = "conversation_usernames"
     private init() { }
 
-    var conversationsListener: ListenerRegistration?
-    
+    private var conversationsListener: ListenerRegistration?
+    private var messagesListener: ListenerRegistration?
+
     func sendMessage(message: String, currentUserName: String, receiverUserName: String) {
         let conversationTitle = getConversationTitle(currentUserName: currentUserName, receiverUserName: receiverUserName)
         firestore.collection(conversationTitle).addDocument(data: [bodyField: message, senderField: currentUserName, dateField: Date().timeIntervalSince1970])
@@ -30,7 +31,7 @@ final class MessageService {
     func loadMessages(currentUserName: String, receiverUserName: String, completionHandler: @escaping (Result<[Message], Error>) -> Void) {
         let conversationTitle = getConversationTitle(currentUserName: currentUserName, receiverUserName: receiverUserName)
         var messages: [Message] = []
-        firestore.collection(conversationTitle).order(by: dateField).addSnapshotListener { (querySnapshot, error) in
+        messagesListener = firestore.collection(conversationTitle).order(by: dateField).addSnapshotListener { (querySnapshot, error) in
             if let error {
                 completionHandler(.failure(error))
                 return
@@ -59,6 +60,10 @@ final class MessageService {
     
     func removeConversationsListener() {
         conversationsListener?.remove()
+    }
+    
+    func removeMessagesListener() {
+        messagesListener?.remove()
     }
     
     func fetchConversations(userName: String, completionHandler: @escaping (Result<[String], Error>) -> Void) {
