@@ -26,7 +26,7 @@ final class SearchUsersViewController: UIViewController {
     
     private var resultUsers: [User]?
     
-    private lazy var keyboardOutsideTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    private lazy var tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     private let viewModel = SearchUsersViewModel()
     weak var coordinator: AppCoordinator?
 
@@ -61,14 +61,22 @@ final class SearchUsersViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
                 
-    }    
+    }
+    
+    private func showError() {
+        let alertController = UIAlertController(title: "Database Error", message: "An error occurred.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     @objc private func keyboardWillShow() {
-        view.addGestureRecognizer(keyboardOutsideTap)
+        view.addGestureRecognizer(tap)
     }
     
     @objc private func keyboardDidHide() {
-        view.removeGestureRecognizer(keyboardOutsideTap)
+        view.removeGestureRecognizer(tap)
     }
     
     @objc private func dismissKeyboard() {
@@ -115,8 +123,6 @@ extension SearchUsersViewController: UITableViewDataSource, UITableViewDelegate 
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let receiverUser = resultUsers?[indexPath.row] {
-            coordinator?.navigateToChat(with: receiverUser)
-        }
+        coordinator?.navigateToChat()
     }
 }

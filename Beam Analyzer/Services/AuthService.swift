@@ -15,10 +15,10 @@ enum AuthError: Error {
 final class AuthService {
 
     static let shared = AuthService()
-    let auth = Auth.auth()
+    private let auth = Auth.auth()
     private var error: Error?
 
-    private init() { }
+    private init() {}
 
     func login(withEmail: String, password: String, completionHandler: @escaping (Result<AuthDataResult, Error>) -> Void) {
         auth.signIn(withEmail: withEmail, password: password) { authResult, error in
