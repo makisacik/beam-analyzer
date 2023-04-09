@@ -38,6 +38,7 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewModel.removeListeners()
+        disposeBag = DisposeBag()
     }
     
     private func setupViews() {

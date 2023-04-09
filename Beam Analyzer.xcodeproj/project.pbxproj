@@ -279,7 +279,7 @@
 			children = (
 				CB29B64429C8E1F500720B8F /* ChatViewController.swift */,
 				CBF59F7829D2E4C9005D532A /* ChatViewModel.swift */,
-				CBE7302229D607D30066597B /* ChatTableViewCell.swift */,
+				CBB34E8129E3499D00737D6B /* Cell */,
 			);
 			path = "Chat View";
 			sourceTree = "<group>";
@@ -333,6 +333,14 @@
 			isa = PBXGroup;
 			children = (
 				CB8933A129D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CBB34E8129E3499D00737D6B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CBE7302229D607D30066597B /* ChatTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
