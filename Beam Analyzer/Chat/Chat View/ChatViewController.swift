@@ -62,7 +62,7 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         view.addSubview(messageTableView)
         messageTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func makeConstraints() {
@@ -97,19 +97,18 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
     @objc private func keyboardWillShow(_ notification: Notification) {
         view.addGestureRecognizer(keyboardOutsideTap)
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+            
+            messageTextField.snp.updateConstraints { make in
+                make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-keyboardSize.height)
             }
+
         }
     }
     
-    @objc private func keyboardWillHide() {
+    @objc private func keyboardWillHide(_ notification: Notification) {
         view.removeGestureRecognizer(keyboardOutsideTap)
-        
-        DispatchQueue.main.async {
-            if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y = 0
-            }
+        messageTextField.snp.updateConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
