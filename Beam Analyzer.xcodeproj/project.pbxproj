@@ -30,6 +30,9 @@
 		CB3DD33529C7C78B000A7E07 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33429C7C78B000A7E07 /* ConversationsViewController.swift */; };
 		CB3DD33929C7C86D000A7E07 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33829C7C86D000A7E07 /* ConversationTableViewCell.swift */; };
 		CB3DD33E29C7CB2E000A7E07 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DD33D29C7CB2E000A7E07 /* MenuViewModel.swift */; };
+		CB49AA7E29E86CCA0053EC8B /* MockCalculationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49AA7D29E86CCA0053EC8B /* MockCalculationResultsViewController.swift */; };
+		CB49AA8329E86EA80053EC8B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CB49AA8229E86EA80053EC8B /* Charts */; };
+		CB49AA8729E87BD50053EC8B /* ResultsGraphMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49AA8629E87BD50053EC8B /* ResultsGraphMarker.swift */; };
 		CB89339A29D0978A00ACC5F3 /* MessagingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */; };
 		CB89339D29D09D3700ACC5F3 /* SearchUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339C29D09D3700ACC5F3 /* SearchUsersViewController.swift */; };
 		CB8933A029D0BA8200ACC5F3 /* SearchUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339F29D0BA8200ACC5F3 /* SearchUsersViewModel.swift */; };
@@ -81,6 +84,8 @@
 		CB3DD33429C7C78B000A7E07 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		CB3DD33829C7C86D000A7E07 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		CB3DD33D29C7CB2E000A7E07 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		CB49AA7D29E86CCA0053EC8B /* MockCalculationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCalculationResultsViewController.swift; sourceTree = "<group>"; };
+		CB49AA8629E87BD50053EC8B /* ResultsGraphMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsGraphMarker.swift; sourceTree = "<group>"; };
 		CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingTabBarController.swift; sourceTree = "<group>"; };
 		CB89339C29D09D3700ACC5F3 /* SearchUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewController.swift; sourceTree = "<group>"; };
 		CB89339F29D0BA8200ACC5F3 /* SearchUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewModel.swift; sourceTree = "<group>"; };
@@ -108,6 +113,7 @@
 				CB8933A629D0DDFD00ACC5F3 /* NVActivityIndicatorView in Frameworks */,
 				CBE7593629E364E100AFB56A /* FirebaseStorage in Frameworks */,
 				CBE7592C29E364E100AFB56A /* FirebaseAuth in Frameworks */,
+				CB49AA8329E86EA80053EC8B /* Charts in Frameworks */,
 				CBE7592629E3624200AFB56A /* RxCocoa in Frameworks */,
 				CBE7593229E364E100AFB56A /* FirebaseFirestore in Frameworks */,
 				86B9A7162996BB8A0077D78B /* SnapKit in Frameworks */,
@@ -222,7 +228,7 @@
 				CB3DD33329C7C775000A7E07 /* Conversations View */,
 				CB89339E29D09D3E00ACC5F3 /* Search Users View */,
 				CBE7591829E3601100AFB56A /* Chat */,
-				CBBF521A29E747960011883D /* Calculation */,
+				CBBF521A29E747960011883D /* Calculations */,
 				865782EB298FEBFB00380928 /* Splash Screen */,
 				86B9A7112996A1810077D78B /* Services */,
 				863CFEAD299A29A700EBEE7C /* Extensions */,
@@ -305,6 +311,23 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		CB49AA7F29E86DB70053EC8B /* Calculation */ = {
+			isa = PBXGroup;
+			children = (
+				CBBF521729E747890011883D /* MockCalculationViewController.swift */,
+			);
+			path = Calculation;
+			sourceTree = "<group>";
+		};
+		CB49AA8029E86DC20053EC8B /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				CB49AA7D29E86CCA0053EC8B /* MockCalculationResultsViewController.swift */,
+				CB49AA8629E87BD50053EC8B /* ResultsGraphMarker.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
 		CB89339B29D0979D00ACC5F3 /* Messaging Tab Bar View */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,12 +362,13 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		CBBF521A29E747960011883D /* Calculation */ = {
+		CBBF521A29E747960011883D /* Calculations */ = {
 			isa = PBXGroup;
 			children = (
-				CBBF521729E747890011883D /* MockCalculationViewController.swift */,
+				CB49AA7F29E86DB70053EC8B /* Calculation */,
+				CB49AA8029E86DC20053EC8B /* Results */,
 			);
-			path = Calculation;
+			path = Calculations;
 			sourceTree = "<group>";
 		};
 		CBE7591829E3601100AFB56A /* Chat */ = {
@@ -392,6 +416,7 @@
 				CBE7593129E364E100AFB56A /* FirebaseFirestore */,
 				CBE7593329E364E100AFB56A /* FirebaseFirestoreSwift */,
 				CBE7593529E364E100AFB56A /* FirebaseStorage */,
+				CB49AA8229E86EA80053EC8B /* Charts */,
 			);
 			productName = "Beam Analyzer";
 			productReference = 86F35A20298F037A00BDB116 /* Beam Analyzer.app */;
@@ -426,6 +451,7 @@
 				CB8933A429D0DDFD00ACC5F3 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				CBE7592429E3624200AFB56A /* XCRemoteSwiftPackageReference "RxSwift" */,
 				CBE7592A29E364E100AFB56A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CB49AA8129E86EA80053EC8B /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 86F35A21298F037A00BDB116 /* Products */;
 			projectDirPath = "";
@@ -490,6 +516,7 @@
 				CBE7593829E3667B00AFB56A /* DateUtil.swift in Sources */,
 				86F35A2E298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld in Sources */,
 				CBD0E15B29BF9377004599ED /* DatabaseService.swift in Sources */,
+				CB49AA7E29E86CCA0053EC8B /* MockCalculationResultsViewController.swift in Sources */,
 				CBB597C629C7D44F00095AF8 /* ConversationsViewModel.swift in Sources */,
 				CBE7591C29E3603C00AFB56A /* ChatTableViewCell.swift in Sources */,
 				86F35A24298F037A00BDB116 /* AppDelegate.swift in Sources */,
@@ -506,6 +533,7 @@
 				86B86F28299D744D00A5E3EA /* RegisterViewController.swift in Sources */,
 				86B9A70C29962E8E0077D78B /* LoginViewModel.swift in Sources */,
 				CB3DD33529C7C78B000A7E07 /* ConversationsViewController.swift in Sources */,
+				CB49AA8729E87BD50053EC8B /* ResultsGraphMarker.swift in Sources */,
 				CBE7591F29E3606300AFB56A /* Message.swift in Sources */,
 				86B9A7132996A1CF0077D78B /* AuthService.swift in Sources */,
 				CB2C6BF729D1F5CD00617083 /* SettingsViewController.swift in Sources */,
@@ -717,6 +745,14 @@
 				kind = branch;
 			};
 		};
+		CB49AA8129E86EA80053EC8B /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		CB8933A429D0DDFD00ACC5F3 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
@@ -748,6 +784,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 86B9A7142996BB8A0077D78B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		CB49AA8229E86EA80053EC8B /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB49AA8129E86EA80053EC8B /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
 		};
 		CB8933A529D0DDFD00ACC5F3 /* NVActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;

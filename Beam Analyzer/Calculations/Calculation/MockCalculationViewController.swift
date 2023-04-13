@@ -39,6 +39,16 @@ class MockCalculationViewController: UIViewController {
         return textField
     }()
     
+    private lazy var buttonCalculate: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 5
+        button.setTitle("Calculate", for: .normal)
+        button.setTitleColor(.label, for: .normal)
+        button.backgroundColor = .tertiaryLabel
+        button.addTarget(self, action: #selector(didTapCalculateButton), for: .touchUpInside)
+        return button
+    }()
+    
     weak var coordinator: AppCoordinator?
 
     override func viewDidLoad() {
@@ -52,15 +62,27 @@ class MockCalculationViewController: UIViewController {
         stackViewLenghtOfBeam.addArrangedSubviews([labelLenghtOfBeam, textFieldLenghtOfBeam])
         stackViewCalculationInputs.addArrangedSubview(stackViewLenghtOfBeam)
         view.addSubview(stackViewCalculationInputs)
+        view.addSubview(buttonCalculate)
     }
     
     private func makeConstraints() {
         stackViewCalculationInputs.snp.makeConstraints { make in
             make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide).inset(60)
         }
+        
         textFieldLenghtOfBeam.snp.makeConstraints { make in
             make.width.equalTo(60)
         }
+        
+        buttonCalculate.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(stackViewCalculationInputs.snp.bottom).offset(80)
+        }
+        
+    }
+    
+    @objc private func didTapCalculateButton() {
+        coordinator?.navigateToMockCalculationResults()
     }
     
 }

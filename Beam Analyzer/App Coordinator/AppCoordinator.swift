@@ -58,4 +58,10 @@ final class AppCoordinator {
         calculationVC.coordinator = self
         navigationController?.pushViewController(calculationVC, animated: true)
     }
+    
+    func navigateToMockCalculationResults() {
+        let calculationResultsVC = MockCalculationResultsViewController()
+        calculationResultsVC.coordinator = self
+        navigationController?.pushViewController(calculationResultsVC, animated: true)
+    }
 }
