@@ -32,6 +32,7 @@ final class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        makeConstraints()
         showLoadingAnimation()
         viewModel.fetchCurrentUser { error in
             DispatchQueue.main.async {
@@ -54,8 +55,9 @@ final class MenuViewController: UIViewController {
         
         view.addSubview(cardViewMockCalculation)
         cardViewMockCalculation.addSubview(labelMockCalculation)
-        makeConstraints()
         
+        let mockCardViewTap = UITapGestureRecognizer(target: self, action: #selector(mockCardViewTapped))
+        cardViewMockCalculation.addGestureRecognizer(mockCardViewTap)
     }
     
     private func makeConstraints() {
@@ -87,6 +89,10 @@ final class MenuViewController: UIViewController {
         navigationItem.leftBarButtonItem = settingsButton
     }
     
+    @objc func mockCardViewTapped() {
+        coordinator?.navigateToMockCalculation()
+    }
+
     @objc func messageButtonTapped() {
         coordinator?.navigateToMessagingTabBar()
     }

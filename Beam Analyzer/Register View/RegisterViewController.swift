@@ -11,9 +11,6 @@ import FirebaseDatabase
 
 final class RegisterViewController: UIViewController {
 
-    private let registerViewModel: RegisterViewModel = RegisterViewModel()
-    weak var coordinator: AppCoordinator?
-
     private let registerTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Register"
@@ -145,6 +142,9 @@ final class RegisterViewController: UIViewController {
         return label
     }()
 
+    private let registerViewModel: RegisterViewModel = RegisterViewModel()
+    weak var coordinator: AppCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
