@@ -34,8 +34,9 @@ final class MockCalculationResultsViewController: UIViewController {
         let button = UIButton(type: .custom)
         let image = UIImage(systemName: "square.and.arrow.up")?.withTintColor(.secondaryLabel, renderingMode: .alwaysOriginal)
         button.setBackgroundImage(image, for: .normal)
-        button.clipsToBounds = true
         button.imageView?.contentMode = .scaleAspectFill
+        button.addTarget(self, action: #selector(didTapShareButton), for: .touchUpInside)
+
         return button
     }()
     
@@ -60,7 +61,7 @@ final class MockCalculationResultsViewController: UIViewController {
     
     private func makeConstraints() {
         resultsGraph.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(10)
             make.top.bottom.equalToSuperview().inset(200)
         }
         
@@ -98,11 +99,30 @@ final class MockCalculationResultsViewController: UIViewController {
         resultsGraph.data = chartData
     }
     
+    @objc private func didTapShareButton() {
+        guard let pdfData = createPDFfromView(view: resultsGraph) else { return }
+        sharePDF(pdfData: pdfData, viewController: self)
+    }
+    
+    private func createPDFfromView(view: UIView) -> Data? {
+        let pdfRenderer = UIGraphicsPDFRenderer(bounds: view.bounds)
+        let pdfData = pdfRenderer.pdfData { pdfContext in
+            pdfContext.beginPage()
+            view.layer.render(in: pdfContext.cgContext)
+        }
+        return pdfData
+    }
+    
+    private func sharePDF(pdfData: Data, viewController: UIViewController) {
+        let activityViewController = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = viewController.view
+        viewController.present(activityViewController, animated: true, completion: nil)
+    }
+    
 }
 
 extension MockCalculationResultsViewController: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        
         resultsGraphMarker.setValues(xValue: entry.x, yValue: entry.y)
     }
 }
