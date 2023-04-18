@@ -8,5 +8,9 @@
 import Foundation
 
 final class MenuViewModel {
-    
+    func fetchCurrentUser(completionHandler: @escaping (Error?) -> Void) {
+        UserManager.shared.fetchCurrentUser { error in
+            completionHandler(error)
+        }
+    }
 }

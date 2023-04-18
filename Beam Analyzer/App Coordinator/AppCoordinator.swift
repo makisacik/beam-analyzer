@@ -52,5 +52,16 @@ final class AppCoordinator {
         chatVC.coordinator = self
         navigationController?.pushViewController(chatVC, animated: true)
     }
-
+    
+    func navigateToMockCalculation() {
+        let calculationVC = MockCalculationViewController()
+        calculationVC.coordinator = self
+        navigationController?.pushViewController(calculationVC, animated: true)
+    }
+    
+    func navigateToMockCalculationResults() {
+        let calculationResultsVC = MockCalculationResultsViewController()
+        calculationResultsVC.coordinator = self
+        navigationController?.pushViewController(calculationResultsVC, animated: true)
+    }
 }

@@ -11,4 +11,8 @@ extension UIFont {
     static func getAppFont(withSize: Int) -> UIFont {
         return UIFont(name: "PingFang SC Regular", size: CGFloat(withSize)) ?? UIFont()
     }
+    
+    static func getBoldAppFont(withSize: Int) -> UIFont {
+        return UIFont(name: "PingFang SC Semibold", size: CGFloat(withSize)) ?? UIFont()
+    }
 }

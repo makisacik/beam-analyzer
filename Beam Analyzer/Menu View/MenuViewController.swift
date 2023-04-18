@@ -6,46 +6,93 @@
 //
 
 import UIKit
+import SnapKit
 
 final class MenuViewController: UIViewController {
     
     weak var coordinator: AppCoordinator?
-
+    private let viewModel = MenuViewModel()
+    
+    private let cardViewMockCalculation: CardView = {
+        let cardView = CardView()
+        cardView.cornerRadius = 10
+        cardView.backgroundColor = .systemGroupedBackground
+        cardView.shadowColor = .label
+        return cardView
+    }()
+    
+    private let labelMockCalculation: UILabel = {
+        let label = UILabel()
+        label.text = "Mock Calculation"
+        label.font = UIFont.getBoldAppFont(withSize: 20)
+        
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+        makeConstraints()
         showLoadingAnimation()
-        
-        UserManager.shared.fetchCurrentUser { error in
-            if error != nil {
-                self.showError(title: "Error", message: "User cannot be fetched")
-            }
+        viewModel.fetchCurrentUser { error in
             DispatchQueue.main.async {
                 self.hideLoadingAnimation()
             }
+            if error != nil {
+                self.showError(title: "Error", message: "User cannot be fetched")
+            }
         }
-        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Menu"
-        navigationItem.hidesBackButton = true
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.prefersLargeTitles = true
+        setupNavBar()
     }
     
     private func setupViews() {
+        view.backgroundColor = .systemBackground
+        self.title = "Menu"
+        
+        view.addSubview(cardViewMockCalculation)
+        cardViewMockCalculation.addSubview(labelMockCalculation)
+        
+        let mockCardViewTap = UITapGestureRecognizer(target: self, action: #selector(mockCardViewTapped))
+        cardViewMockCalculation.addGestureRecognizer(mockCardViewTap)
+    }
+    
+    private func makeConstraints() {
+        cardViewMockCalculation.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-130)
+            make.width.equalTo(200)
+            make.height.equalTo(120)
+        }
+        
+        labelMockCalculation.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+    
+    private func setupNavBar() {
+        navigationItem.hidesBackButton = true
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        addNavBarButtons()
+    }
+    
+    private func addNavBarButtons() {
         let messageButton = UIBarButtonItem(image: UIImage(systemName: "message"), style: .plain, target: self, action: #selector(messageButtonTapped))
         let settingsButton = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsButtonTapped))
         messageButton.tintColor = .label
         settingsButton.tintColor = .label
-        
         navigationItem.rightBarButtonItem = messageButton
         navigationItem.leftBarButtonItem = settingsButton
-        
-        view.backgroundColor = .systemBackground
     }
     
+    @objc func mockCardViewTapped() {
+        coordinator?.navigateToMockCalculation()
+    }
+
     @objc func messageButtonTapped() {
         coordinator?.navigateToMessagingTabBar()
     }
@@ -53,5 +100,5 @@ final class MenuViewController: UIViewController {
     @objc func settingsButtonTapped() {
         coordinator?.navigateToSettings()
     }
-
+    
 }
