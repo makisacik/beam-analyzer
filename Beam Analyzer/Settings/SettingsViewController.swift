@@ -18,6 +18,7 @@ final class SettingsViewController: UIViewController {
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .tertiaryLabel
         button.addTarget(self, action: #selector(didTapSignOutButton), for: .touchUpInside)
+        button.layer.cornerRadius = 10
         return button
     }()
     
@@ -36,6 +37,8 @@ final class SettingsViewController: UIViewController {
     private func makeConstraints() {
         signOutButton.snp.makeConstraints { make in
             make.center.equalToSuperview()
+            make.width.equalTo(100)
+            make.height.equalTo(40)
         }
     }
     
