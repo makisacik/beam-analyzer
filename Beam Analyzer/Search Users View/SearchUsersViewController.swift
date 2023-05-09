@@ -91,7 +91,7 @@ extension SearchUsersViewController: UISearchBarDelegate {
                     return
                 }
                 
-                self?.resultUsers = users
+                self?.resultUsers = users.sorted(by: { $0.userName < $1.userName })
                 DispatchQueue.main.async {
                     self?.searchUsersTableView.reloadData()
                 }

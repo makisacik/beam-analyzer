@@ -23,7 +23,8 @@ final class MenuViewController: UIViewController {
     
     private let labelMockCalculation: UILabel = {
         let label = UILabel()
-        label.text = "Mock Calculation"
+        label.text = "Calculate Maximum Deflection"
+        label.numberOfLines = 0
         label.font = UIFont.getBoldAppFont(withSize: 20)
         
         return label
@@ -64,12 +65,13 @@ final class MenuViewController: UIViewController {
         cardViewMockCalculation.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-130)
-            make.width.equalTo(200)
+            make.width.equalTo(240)
             make.height.equalTo(120)
         }
         
         labelMockCalculation.snp.makeConstraints { make in
             make.center.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(10)
         }
     }
     
