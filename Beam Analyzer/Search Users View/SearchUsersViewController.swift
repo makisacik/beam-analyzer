@@ -100,6 +100,7 @@ extension SearchUsersViewController: UISearchBarDelegate {
         
     }
 }
+
 extension SearchUsersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultUsers?.count ?? 0

@@ -8,13 +8,15 @@
 import Foundation
 
 final class DeflectionCalculationUseCase {
-    func calculate(lenght: Double, width: Double, height: Double, pointLoad: Double, youngModulus: Double) -> Double {
-        let momentInertia = (width * pow(height, 3)) / 12
+    func calculate(inputs: CalculationInputs) -> DeflectionCalculation {
+        let momentInertia = (inputs.width * pow(inputs.height, 3)) / 12
         
-        let youngModulus = youngModulus * 1_000_000_000
+        let youngModulus = inputs.youngModulus * 1_000_000_000
         
-        let maximumDeflection = (pointLoad * pow(lenght, 3)) / (3 * youngModulus * momentInertia)
+        let maximumDeflectionInMeters = (inputs.pointLoad * pow(inputs.lenght, 3)) / (3 * youngModulus * momentInertia) * 1000
         
-        return maximumDeflection
+        let deflectionCalculation = DeflectionCalculation(inputs: inputs, result: maximumDeflectionInMeters)
+        
+        return deflectionCalculation
     }
 }

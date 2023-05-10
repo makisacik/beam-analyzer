@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class CalculationViewController: UIViewController {
+final class CalculationInputsViewController: UIViewController {
     
     private let stackViewCalculationInputs: UIStackView = {
         let stackView = UIStackView()
@@ -202,8 +202,12 @@ final class CalculationViewController: UIViewController {
            let height = Double(textFieldHeightOfBeam.text?.replacingOccurrences(of: ",", with: ".") ?? ""),
            let pointLoad = Double(textFieldPointLoad.text?.replacingOccurrences(of: ",", with: ".") ?? ""),
            let youngModulus = Double(textFieldYoungModulus.text?.replacingOccurrences(of: ",", with: ".") ?? "") {
-            let calculationResult = deflectionCalculationUseCase.calculate(lenght: lenght, width: width, height: height, pointLoad: pointLoad, youngModulus: youngModulus)
-            coordinator?.navigateToCalculationResult(calculationResult: calculationResult)
+            
+            let calculationInputs = CalculationInputs(lenght: lenght, width: width, height: height, pointLoad: pointLoad, youngModulus: youngModulus)
+            
+            let deflectionCalculation = deflectionCalculationUseCase.calculate(inputs: calculationInputs)
+            
+            coordinator?.navigateToCalculationResult(deflectionCalculation: deflectionCalculation)
         } else {
             showError(title: "Warning", message: "Invalid Inputs")
         }

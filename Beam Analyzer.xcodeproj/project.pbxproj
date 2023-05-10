@@ -33,6 +33,8 @@
 		CB49AA7E29E86CCA0053EC8B /* MockCalculationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49AA7D29E86CCA0053EC8B /* MockCalculationResultsViewController.swift */; };
 		CB49AA8329E86EA80053EC8B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CB49AA8229E86EA80053EC8B /* Charts */; };
 		CB49AA8729E87BD50053EC8B /* ResultsGraphMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49AA8629E87BD50053EC8B /* ResultsGraphMarker.swift */; };
+		CB62C6352A0BC9C3004308DF /* DeflectionCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62C6342A0BC9C3004308DF /* DeflectionCalculation.swift */; };
+		CB62C6372A0BF1F4004308DF /* CalculationInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62C6362A0BF1F4004308DF /* CalculationInputs.swift */; };
 		CB82494D2A0449840012B566 /* DeflectionCalculationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82494C2A0449840012B566 /* DeflectionCalculationUseCase.swift */; };
 		CB8249502A046B920012B566 /* CalculationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82494F2A046B920012B566 /* CalculationResultViewController.swift */; };
 		CB89339A29D0978A00ACC5F3 /* MessagingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */; };
@@ -41,7 +43,7 @@
 		CB8933A229D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8933A129D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift */; };
 		CB8933A629D0DDFD00ACC5F3 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CB8933A529D0DDFD00ACC5F3 /* NVActivityIndicatorView */; };
 		CBB597C629C7D44F00095AF8 /* ConversationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB597C529C7D44F00095AF8 /* ConversationsViewModel.swift */; };
-		CBBF521829E747890011883D /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF521729E747890011883D /* CalculationViewController.swift */; };
+		CBBF521829E747890011883D /* CalculationInputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF521729E747890011883D /* CalculationInputsViewController.swift */; };
 		CBD0E15B29BF9377004599ED /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15A29BF9377004599ED /* DatabaseService.swift */; };
 		CBD0E15D29BFC750004599ED /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15C29BFC750004599ED /* UIStackView+Extensions.swift */; };
 		CBE7591729E35F9F00AFB56A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBE7591629E35F9F00AFB56A /* GoogleService-Info.plist */; };
@@ -59,6 +61,7 @@
 		CBE7593429E364E100AFB56A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CBE7593329E364E100AFB56A /* FirebaseFirestoreSwift */; };
 		CBE7593629E364E100AFB56A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CBE7593529E364E100AFB56A /* FirebaseStorage */; };
 		CBE7593829E3667B00AFB56A /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7593729E3667B00AFB56A /* DateUtil.swift */; };
+		CBF4B7222A0AC6EC008E1C4C /* ShareCalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4B7212A0AC6EC008E1C4C /* ShareCalculationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +91,8 @@
 		CB3DD33D29C7CB2E000A7E07 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		CB49AA7D29E86CCA0053EC8B /* MockCalculationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCalculationResultsViewController.swift; sourceTree = "<group>"; };
 		CB49AA8629E87BD50053EC8B /* ResultsGraphMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsGraphMarker.swift; sourceTree = "<group>"; };
+		CB62C6342A0BC9C3004308DF /* DeflectionCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeflectionCalculation.swift; sourceTree = "<group>"; };
+		CB62C6362A0BF1F4004308DF /* CalculationInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationInputs.swift; sourceTree = "<group>"; };
 		CB82494C2A0449840012B566 /* DeflectionCalculationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeflectionCalculationUseCase.swift; sourceTree = "<group>"; };
 		CB82494F2A046B920012B566 /* CalculationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResultViewController.swift; sourceTree = "<group>"; };
 		CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingTabBarController.swift; sourceTree = "<group>"; };
@@ -95,7 +100,7 @@
 		CB89339F29D0BA8200ACC5F3 /* SearchUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewModel.swift; sourceTree = "<group>"; };
 		CB8933A129D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersTableViewCell.swift; sourceTree = "<group>"; };
 		CBB597C529C7D44F00095AF8 /* ConversationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewModel.swift; sourceTree = "<group>"; };
-		CBBF521729E747890011883D /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
+		CBBF521729E747890011883D /* CalculationInputsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationInputsViewController.swift; sourceTree = "<group>"; };
 		CBD0E15A29BF9377004599ED /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		CBD0E15C29BFC750004599ED /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		CBE7591629E35F9F00AFB56A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Dosyalarım/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 		CBE7592029E3613B00AFB56A /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		CBE7592229E3614A00AFB56A /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		CBE7593729E3667B00AFB56A /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		CBF4B7212A0AC6EC008E1C4C /* ShareCalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCalculationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,22 +322,32 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		CB49AA7F29E86DB70053EC8B /* Calculation */ = {
+		CB49AA7F29E86DB70053EC8B /* Calculation View */ = {
 			isa = PBXGroup;
 			children = (
-				CBBF521729E747890011883D /* CalculationViewController.swift */,
+				CBBF521729E747890011883D /* CalculationInputsViewController.swift */,
 			);
-			path = Calculation;
+			path = "Calculation View";
 			sourceTree = "<group>";
 		};
-		CB49AA8029E86DC20053EC8B /* Results */ = {
+		CB49AA8029E86DC20053EC8B /* Result View */ = {
 			isa = PBXGroup;
 			children = (
 				CB49AA7D29E86CCA0053EC8B /* MockCalculationResultsViewController.swift */,
 				CB49AA8629E87BD50053EC8B /* ResultsGraphMarker.swift */,
 				CB82494F2A046B920012B566 /* CalculationResultViewController.swift */,
+				CBF4B7212A0AC6EC008E1C4C /* ShareCalculationViewController.swift */,
 			);
-			path = Results;
+			path = "Result View";
+			sourceTree = "<group>";
+		};
+		CB62C6382A0BF207004308DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CB62C6342A0BC9C3004308DF /* DeflectionCalculation.swift */,
+				CB62C6362A0BF1F4004308DF /* CalculationInputs.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CB82494E2A04498C0012B566 /* Use Cases */ = {
@@ -379,8 +395,9 @@
 		CBBF521A29E747960011883D /* Calculations */ = {
 			isa = PBXGroup;
 			children = (
-				CB49AA7F29E86DB70053EC8B /* Calculation */,
-				CB49AA8029E86DC20053EC8B /* Results */,
+				CB62C6382A0BF207004308DF /* Models */,
+				CB49AA7F29E86DB70053EC8B /* Calculation View */,
+				CB49AA8029E86DC20053EC8B /* Result View */,
 			);
 			path = Calculations;
 			sourceTree = "<group>";
@@ -533,11 +550,13 @@
 				CB49AA7E29E86CCA0053EC8B /* MockCalculationResultsViewController.swift in Sources */,
 				CBB597C629C7D44F00095AF8 /* ConversationsViewModel.swift in Sources */,
 				CBE7591C29E3603C00AFB56A /* ChatTableViewCell.swift in Sources */,
+				CB62C6352A0BC9C3004308DF /* DeflectionCalculation.swift in Sources */,
 				86F35A24298F037A00BDB116 /* AppDelegate.swift in Sources */,
+				CBF4B7222A0AC6EC008E1C4C /* ShareCalculationViewController.swift in Sources */,
 				CBE7592129E3613B00AFB56A /* MessageService.swift in Sources */,
 				865782ED298FED0C00380928 /* AppCoordinator.swift in Sources */,
 				CB8249502A046B920012B566 /* CalculationResultViewController.swift in Sources */,
-				CBBF521829E747890011883D /* CalculationViewController.swift in Sources */,
+				CBBF521829E747890011883D /* CalculationInputsViewController.swift in Sources */,
 				865782E9298FEBF600380928 /* SplashScreenViewController.swift in Sources */,
 				CB3DD32F29C7BC6D000A7E07 /* MenuViewController.swift in Sources */,
 				86B86F2B299D791000A5E3EA /* RegisterViewModel.swift in Sources */,
@@ -547,6 +566,7 @@
 				CBE7591A29E3602200AFB56A /* ChatViewModel.swift in Sources */,
 				86B86F28299D744D00A5E3EA /* RegisterViewController.swift in Sources */,
 				86B9A70C29962E8E0077D78B /* LoginViewModel.swift in Sources */,
+				CB62C6372A0BF1F4004308DF /* CalculationInputs.swift in Sources */,
 				CB3DD33529C7C78B000A7E07 /* ConversationsViewController.swift in Sources */,
 				CB49AA8729E87BD50053EC8B /* ResultsGraphMarker.swift in Sources */,
 				CBE7591F29E3606300AFB56A /* Message.swift in Sources */,

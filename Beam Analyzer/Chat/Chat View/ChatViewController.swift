@@ -13,7 +13,7 @@ import RxCocoa
 final class ChatViewController: UIViewController, UITableViewDelegate {
     
     weak var coordinator: AppCoordinator?
-    private let viewModel: ChatViewModel
+    let viewModel: ChatViewModel
     private lazy var keyboardOutsideTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     private var disposeBag = DisposeBag()
     

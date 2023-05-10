@@ -23,6 +23,21 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
     private let viewModel = ConversationsViewModel()
     private var disposeBag = DisposeBag()
     
+    var deflectionCalculation: DeflectionCalculation?
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(deflectionCalculation: DeflectionCalculation) {
+        self.deflectionCalculation = deflectionCalculation
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchConversations()
@@ -73,7 +88,14 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
                 }
                 
                 if let user {
-                    self.coordinator?.navigateToChat(with: user)
+                    if let result = deflectionCalculation?.result {
+                        let chatVC = ChatViewController(receiverUser: user)
+                        chatVC.coordinator = self.coordinator
+                        chatVC.viewModel.sendMessage(message: String(result))
+                        self.present(chatVC, animated: true)
+                    } else {
+                        self.coordinator?.navigateToChat(with: user)
+                    }
                 } else {
                     self.showError()
                 }
