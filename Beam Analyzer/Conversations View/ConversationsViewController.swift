@@ -91,6 +91,7 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
                     if let result = deflectionCalculation?.result {
                         let chatVC = ChatViewController(receiverUser: user)
                         chatVC.coordinator = self.coordinator
+                        
                         chatVC.viewModel.sendMessage(message: String(result))
                         self.present(chatVC, animated: true)
                     } else {

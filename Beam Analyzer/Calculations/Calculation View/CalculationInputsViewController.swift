@@ -163,6 +163,15 @@ final class CalculationInputsViewController: UIViewController {
         
         view.addSubview(stackViewCalculationInputs)
         view.addSubview(buttonCalculate)
+        
+        #if DEBUG
+        textFieldLenghtOfBeam.text = "3"
+        textFieldWidthOfBeam.text = "0.1"
+        textFieldHeightOfBeam.text = "0.2"
+        textFieldPointLoad.text = "500"
+        textFieldYoungModulus.text = "200"
+        #endif
+
     }
     
     private func makeConstraints() {

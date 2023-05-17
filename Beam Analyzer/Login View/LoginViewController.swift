@@ -123,7 +123,6 @@ final class LoginViewController: UIViewController {
         #if DEBUG
         emailTextField.text = "test@test.com"
         passwordTextField.text = "TestTest"
-//        coordinator?.navigateToMenu()
         #endif
     }
     
