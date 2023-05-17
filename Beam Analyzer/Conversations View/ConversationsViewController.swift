@@ -88,11 +88,11 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
                 }
                 
                 if let user {
-                    if let result = deflectionCalculation?.result {
+                    if let calculation = deflectionCalculation {
                         let chatVC = ChatViewController(receiverUser: user)
                         chatVC.coordinator = self.coordinator
                         
-                        chatVC.viewModel.sendMessage(message: String(result))
+                        chatVC.viewModel.sendMessage(message: String(calculation.getMessageText()))
                         self.present(chatVC, animated: true)
                     } else {
                         self.coordinator?.navigateToChat(with: user)
