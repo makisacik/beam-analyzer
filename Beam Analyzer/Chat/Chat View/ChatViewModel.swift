@@ -22,6 +22,7 @@ final class ChatViewModel {
     
     func sendMessage(message: String) {
         MessageService.shared.sendMessage(message: message, currentUserName: currentUser.userName, receiverUserName: receiverUser.userName)
+        
     }
     
     func loadMessages() {

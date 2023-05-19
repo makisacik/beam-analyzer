@@ -28,8 +28,23 @@ final class SearchUsersViewController: UIViewController {
     
     private lazy var keyboardOutsideTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     private let viewModel = SearchUsersViewModel()
-    weak var coordinator: AppCoordinator?
+    private var deflectionCalculation: DeflectionCalculation?
 
+    weak var coordinator: AppCoordinator?
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    init(calculation: DeflectionCalculation) {
+        deflectionCalculation = calculation
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -117,7 +132,17 @@ extension SearchUsersViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let receiverUser = resultUsers?[indexPath.row] {
-            coordinator?.navigateToChat(with: receiverUser)
+            if let calculation = deflectionCalculation {
+                let chatVC = ChatViewController(receiverUser: receiverUser)
+                chatVC.coordinator = self.coordinator
+                
+                chatVC.viewModel.sendMessage(message: String(calculation.getMessageText()))
+                self.present(chatVC, animated: true)
+            } else {
+                let chatVC = ChatViewController(receiverUser: receiverUser)
+                navigationController?.pushViewController(chatVC, animated: true)
+                // self.navigationController?.pushViewController(cVC, animated: true)
+            }
         }
     }
 }

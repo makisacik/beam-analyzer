@@ -161,8 +161,8 @@ final class CalculationResultViewController: UIViewController {
     }
     
     @objc private func didTapShareButton() {
-        let conversationsVC = ConversationsViewController(deflectionCalculation: deflectionCalculation)
-        self.present(conversationsVC, animated: true)
+        let messagingTabBar = MessagingTabBarController(calculation: deflectionCalculation)
+        self.present(messagingTabBar, animated: true)
     }
     
 }
