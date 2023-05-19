@@ -12,11 +12,6 @@ import RxCocoa
 
 final class ChatViewController: UIViewController, UITableViewDelegate {
     
-    weak var coordinator: AppCoordinator?
-    let viewModel: ChatViewModel
-    private lazy var keyboardOutsideTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-    private var disposeBag = DisposeBag()
-    
     private let messageTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
@@ -31,6 +26,11 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         tableView.separatorStyle = .none
         return tableView
     }()
+    
+    weak var coordinator: AppCoordinator?
+    let viewModel: ChatViewModel
+    private lazy var keyboardOutsideTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    private var disposeBag = DisposeBag()
     
     init(receiverUser: User) {
         self.viewModel = ChatViewModel(receiverUser: receiverUser)
@@ -53,7 +53,8 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewModel.removeListeners()
-        // disposeBag = DisposeBag()
+        disposeBag = DisposeBag()
+        viewModel.messages.dispose()
     }
     
     private func setupViews() {

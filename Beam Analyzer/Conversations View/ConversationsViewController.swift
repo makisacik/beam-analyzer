@@ -23,7 +23,7 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
     private let viewModel = ConversationsViewModel()
     private var disposeBag = DisposeBag()
     
-    var deflectionCalculation: DeflectionCalculation?
+    private var deflectionCalculation: DeflectionCalculation?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -52,8 +52,10 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        viewModel.removeListeners()
-        // disposeBag = DisposeBag()
+        if self.isMovingFromParent {
+            viewModel.removeListeners()
+            disposeBag = DisposeBag()
+        }
     }
     
     private func setupViews() {
@@ -70,35 +72,33 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
     
     private func bindTableView() {
         conversationsTableView.rx.setDelegate(self).disposed(by: disposeBag)
-        viewModel.userNames.bind(to: conversationsTableView.rx.items(cellIdentifier: "cell", cellType: ConversationTableViewCell.self)) { (_, userName, cell) in
+        viewModel.userNames.bind(to: conversationsTableView.rx.items(cellIdentifier: "cell", cellType: ConversationTableViewCell.self)) { (_, userName, cell)  in
             cell.textLabel?.text = userName
             cell.accessoryType = .disclosureIndicator
         }.disposed(by: disposeBag)
         
         conversationsTableView.rx.modelSelected(String.self).subscribe(onNext: { [weak self] userName in
-            guard let self = self else { return }
             DispatchQueue.main.async {
-                self.showLoadingAnimation()
+                self?.showLoadingAnimation()
             }
             
-            self.viewModel.fetchUser(userName: userName) { [weak self] user in
-                guard let self = self else { return }
+            self?.viewModel.fetchUser(userName: userName) { [weak self] user in
                 DispatchQueue.main.async {
-                    self.hideLoadingAnimation()
+                    self?.hideLoadingAnimation()
                 }
                 
                 if let user {
-                    if let result = deflectionCalculation?.result {
+                    if let calculation = self?.deflectionCalculation {
                         let chatVC = ChatViewController(receiverUser: user)
-                        chatVC.coordinator = self.coordinator
+                        chatVC.coordinator = self?.coordinator
                         
-                        chatVC.viewModel.sendMessage(message: String(result))
-                        self.present(chatVC, animated: true)
+                        chatVC.viewModel.sendMessage(message: String(calculation.getMessageText()))
+                        self?.present(chatVC, animated: true)
                     } else {
-                        self.coordinator?.navigateToChat(with: user)
+                        self?.coordinator?.navigateToChat(with: user)
                     }
                 } else {
-                    self.showError()
+                    self?.showError()
                 }
                 
             }
@@ -106,9 +106,9 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
             print("SelectedItem: \(userName)")
         }).disposed(by: disposeBag)
         
-        viewModel.userNames.bind { _ in
+        viewModel.userNames.bind { [weak self] _ in
             DispatchQueue.main.async {
-                self.hideLoadingAnimation()
+                self?.hideLoadingAnimation()
             }
         }.disposed(by: disposeBag)
     }

@@ -132,7 +132,8 @@ final class CalculationInputsViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.setTitle("Calculate", for: .normal)
         button.setTitleColor(.label, for: .normal)
-        button.backgroundColor = .tertiaryLabel
+        button.titleLabel?.font = UIFont.getBoldAppFont(withSize: 17)
+        button.backgroundColor = .systemGroupedBackground
         button.addTarget(self, action: #selector(didTapCalculateButton), for: .touchUpInside)
         return button
     }()

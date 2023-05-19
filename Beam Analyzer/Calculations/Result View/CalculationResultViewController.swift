@@ -83,9 +83,44 @@ final class CalculationResultViewController: UIViewController {
         let image = UIImage(systemName: "square.and.arrow.up")?.withTintColor(.secondaryLabel, renderingMode: .alwaysOriginal)
         button.setBackgroundImage(image, for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
-        button.addTarget(self, action: #selector(didTapShareButton), for: .touchUpInside)
+        // button.addTarget(self, action: #selector(didTapShareButton), for: .touchUpInside)
 
         return button
+    }()
+    
+    private let cardViewShareWithUsers: CardView = {
+        let cardView = CardView()
+        cardView.cornerRadius = 10
+        cardView.backgroundColor = .systemGroupedBackground
+        cardView.shadowColor = .label
+        cardView.isUserInteractionEnabled = true
+        return cardView
+    }()
+    
+    private let labelShareWithUsers: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.getBoldAppFont(withSize: 17)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.text = "Share with users"
+        return label
+    }()
+    
+    private let cardViewShareAsPDF: CardView = {
+        let cardView = CardView()
+        cardView.cornerRadius = 10
+        cardView.backgroundColor = .systemGroupedBackground
+        cardView.shadowColor = .label
+        return cardView
+    }()
+    
+    private let labelShareAsPDF: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.getBoldAppFont(withSize: 17)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.text = "Share as PDF"
+        return label
     }()
     
     weak var coordinator: AppCoordinator?
@@ -110,12 +145,19 @@ final class CalculationResultViewController: UIViewController {
     private func setupViews() {
         self.title = "Calculation Result"
         view.addSubview(resultView)
+        view.addSubview(cardViewShareAsPDF)
+        view.addSubview(cardViewShareWithUsers)
+        cardViewShareWithUsers.addSubview(labelShareWithUsers)
+        cardViewShareAsPDF.addSubview(labelShareAsPDF)
         resultView.addSubview(labelCalcTitle)
         resultView.addSubview(stackViewCalcInputs)
         resultView.addSubview(labelCalcResult)
-        view.addSubview(shareButton)
+        // view.addSubview(shareButton)
         stackViewCalcInputs.addArrangedSubviews([labelLenghtOfBeam, labelWidthOfBeam, labelHeightOfBeam, labelPointLoad, labelYoungModulus])
+        
         setResultViewTexts()
+        addTapShareWithUsersTap()
+        addTapShareAsPDFTap()
     }
     
     private func makeConstraints() {
@@ -141,15 +183,38 @@ final class CalculationResultViewController: UIViewController {
             make.height.equalTo(300)
         }
         
-        shareButton.snp.makeConstraints { make in
+        cardViewShareAsPDF.snp.makeConstraints { make in
             make.top.equalTo(resultView.snp.bottom).offset(30)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(40)
-            make.width.equalTo(35)
+            make.leading.equalToSuperview().offset(20)
+            make.width.equalTo(150)
+        }
+        
+        cardViewShareWithUsers.snp.makeConstraints { make in
+            make.top.equalTo(resultView.snp.bottom).offset(30)
+            make.trailing.equalToSuperview().offset(-20)
+            make.width.equalTo(150)
+        }
+        
+        labelShareWithUsers.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(5)
+        }
+        
+        labelShareAsPDF.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(5)
         }
         
     }
     
+    private func addTapShareWithUsersTap() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapShareWithUsers))
+        cardViewShareWithUsers.addGestureRecognizer(tapGesture)
+    }
+    
+    private func addTapShareAsPDFTap() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapShareAsPDF))
+        cardViewShareAsPDF.addGestureRecognizer(tapGesture)
+    }
+
     private func setResultViewTexts() {
         labelLenghtOfBeam.text = "Lenght of beam (m): \(deflectionCalculation.inputs.lenght)"
         labelWidthOfBeam.text = "Cross-section width (m): \(deflectionCalculation.inputs.width)"
@@ -160,9 +225,29 @@ final class CalculationResultViewController: UIViewController {
         labelCalcResult.text = "Value: \(deflectionCalculation.result)"
     }
     
-    @objc private func didTapShareButton() {
-        let conversationsVC = ConversationsViewController(deflectionCalculation: deflectionCalculation)
-        self.present(conversationsVC, animated: true)
+    @objc private func didTapShareWithUsers() {
+        let messagingTabBar = MessagingTabBarController(calculation: deflectionCalculation)
+        self.present(messagingTabBar, animated: true)
+    }
+    
+    @objc private func didTapShareAsPDF() {
+        guard let pdfData = createPDFfromView(view: resultView) else { return }
+        sharePDF(pdfData: pdfData, viewController: self)
+    }
+
+    private func sharePDF(pdfData: Data, viewController: UIViewController) {
+        let activityViewController = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = viewController.view
+        viewController.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    private func createPDFfromView(view: UIView) -> Data? {
+        let pdfRenderer = UIGraphicsPDFRenderer(bounds: view.bounds)
+        let pdfData = pdfRenderer.pdfData { pdfContext in
+            pdfContext.beginPage()
+            view.layer.render(in: pdfContext.cgContext)
+        }
+        return pdfData
     }
     
 }
