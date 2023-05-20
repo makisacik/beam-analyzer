@@ -43,6 +43,9 @@
 		CB8933A029D0BA8200ACC5F3 /* SearchUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339F29D0BA8200ACC5F3 /* SearchUsersViewModel.swift */; };
 		CB8933A229D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8933A129D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift */; };
 		CB8933A629D0DDFD00ACC5F3 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CB8933A529D0DDFD00ACC5F3 /* NVActivityIndicatorView */; };
+		CBA8CA892A190B0B0010936E /* SavedCalculationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8CA882A190B0B0010936E /* SavedCalculationsViewController.swift */; };
+		CBA8CA8C2A190B700010936E /* SavedCalculationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8CA8B2A190B700010936E /* SavedCalculationTableViewCell.swift */; };
+		CBA8CA8F2A190D5D0010936E /* SavedCalculationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8CA8E2A190D5D0010936E /* SavedCalculationsViewModel.swift */; };
 		CBB597C629C7D44F00095AF8 /* ConversationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB597C529C7D44F00095AF8 /* ConversationsViewModel.swift */; };
 		CBBF521829E747890011883D /* CalculationInputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF521729E747890011883D /* CalculationInputsViewController.swift */; };
 		CBD0E15B29BF9377004599ED /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15A29BF9377004599ED /* DatabaseService.swift */; };
@@ -101,6 +104,9 @@
 		CB89339C29D09D3700ACC5F3 /* SearchUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewController.swift; sourceTree = "<group>"; };
 		CB89339F29D0BA8200ACC5F3 /* SearchUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewModel.swift; sourceTree = "<group>"; };
 		CB8933A129D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersTableViewCell.swift; sourceTree = "<group>"; };
+		CBA8CA882A190B0B0010936E /* SavedCalculationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationsViewController.swift; sourceTree = "<group>"; };
+		CBA8CA8B2A190B700010936E /* SavedCalculationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationTableViewCell.swift; sourceTree = "<group>"; };
+		CBA8CA8E2A190D5D0010936E /* SavedCalculationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCalculationsViewModel.swift; sourceTree = "<group>"; };
 		CBB597C529C7D44F00095AF8 /* ConversationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewModel.swift; sourceTree = "<group>"; };
 		CBBF521729E747890011883D /* CalculationInputsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationInputsViewController.swift; sourceTree = "<group>"; };
 		CBD0E15A29BF9377004599ED /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -387,6 +393,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		CBA8CA8A2A190B150010936E /* SavedCalculations */ = {
+			isa = PBXGroup;
+			children = (
+				CBA8CA882A190B0B0010936E /* SavedCalculationsViewController.swift */,
+				CBA8CA8E2A190D5D0010936E /* SavedCalculationsViewModel.swift */,
+				CBA8CA8D2A190BC00010936E /* Cell */,
+			);
+			path = SavedCalculations;
+			sourceTree = "<group>";
+		};
+		CBA8CA8D2A190BC00010936E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CBA8CA8B2A190B700010936E /* SavedCalculationTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		CBBF521929E7478D0011883D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +425,7 @@
 				CB62C6382A0BF207004308DF /* Models */,
 				CB49AA7F29E86DB70053EC8B /* Calculation View */,
 				CB49AA8029E86DC20053EC8B /* Result View */,
+				CBA8CA8A2A190B150010936E /* SavedCalculations */,
 			);
 			path = Calculations;
 			sourceTree = "<group>";
@@ -545,9 +570,11 @@
 				CB3DD33929C7C86D000A7E07 /* ConversationTableViewCell.swift in Sources */,
 				CB8933A029D0BA8200ACC5F3 /* SearchUsersViewModel.swift in Sources */,
 				86B9A7182996CB470077D78B /* CardView.swift in Sources */,
+				CBA8CA8F2A190D5D0010936E /* SavedCalculationsViewModel.swift in Sources */,
 				863CFEB1299A2E4400EBEE7C /* UIViewController+Extensions.swift in Sources */,
 				CB8933A229D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift in Sources */,
 				CB6730922A181E040033A998 /* CoreDataManager.swift in Sources */,
+				CBA8CA892A190B0B0010936E /* SavedCalculationsViewController.swift in Sources */,
 				CBE7593829E3667B00AFB56A /* DateUtil.swift in Sources */,
 				86F35A2E298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld in Sources */,
 				CBD0E15B29BF9377004599ED /* DatabaseService.swift in Sources */,
@@ -565,6 +592,7 @@
 				CB3DD32F29C7BC6D000A7E07 /* MenuViewController.swift in Sources */,
 				86B86F2B299D791000A5E3EA /* RegisterViewModel.swift in Sources */,
 				CB89339D29D09D3700ACC5F3 /* SearchUsersViewController.swift in Sources */,
+				CBA8CA8C2A190B700010936E /* SavedCalculationTableViewCell.swift in Sources */,
 				86F35A26298F037A00BDB116 /* SceneDelegate.swift in Sources */,
 				CB3DD33E29C7CB2E000A7E07 /* MenuViewModel.swift in Sources */,
 				CBE7591A29E3602200AFB56A /* ChatViewModel.swift in Sources */,

@@ -70,4 +70,10 @@ final class AppCoordinator {
         calculationResultVC.coordinator = self
         navigationController?.pushViewController(calculationResultVC, animated: true)
     }
+    
+    func navigateToSavedCalculations() {
+        let savedCalculationsVC = SavedCalculationsViewController()
+        savedCalculationsVC.coordinator = self
+        navigationController?.pushViewController(savedCalculationsVC, animated: true)
+    }
 }

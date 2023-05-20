@@ -31,7 +31,7 @@ final class CoreDataManager {
         entity.pointLoad = calculation.inputs.youngModulus
         entity.youngModulus = calculation.inputs.youngModulus
         entity.result = calculation.result
-        
+        entity.date = Date()
         saveContext()
     }
     
@@ -44,5 +44,10 @@ final class CoreDataManager {
             print("Error fetching data  \(error)")
             return [CalculationEntity]()
         }
+    }
+    
+    func deleteCalculation(_ calculation: CalculationEntity) {
+        context.delete(calculation)
+        saveContext()
     }
 }

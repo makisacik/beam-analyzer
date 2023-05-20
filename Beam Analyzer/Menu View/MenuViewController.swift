@@ -10,10 +10,7 @@ import SnapKit
 
 final class MenuViewController: UIViewController {
     
-    weak var coordinator: AppCoordinator?
-    private let viewModel = MenuViewModel()
-    
-    private let cardViewMockCalculation: CardView = {
+    private let cardViewMaximumDeflection: CardView = {
         let cardView = CardView()
         cardView.cornerRadius = 10
         cardView.backgroundColor = .systemGroupedBackground
@@ -21,7 +18,7 @@ final class MenuViewController: UIViewController {
         return cardView
     }()
     
-    private let labelMockCalculation: UILabel = {
+    private let labelMaximumDeflection: UILabel = {
         let label = UILabel()
         label.text = "Calculate Maximum Deflection"
         label.numberOfLines = 0
@@ -29,6 +26,26 @@ final class MenuViewController: UIViewController {
         
         return label
     }()
+    
+    private let cardViewSavedCalculations: CardView = {
+        let cardView = CardView()
+        cardView.cornerRadius = 10
+        cardView.backgroundColor = .systemGroupedBackground
+        cardView.shadowColor = .label
+        return cardView
+    }()
+    
+    private let labelSavedCalculations: UILabel = {
+        let label = UILabel()
+        label.text = "Saved Calculations"
+        label.numberOfLines = 0
+        label.font = UIFont.getBoldAppFont(withSize: 20)
+        
+        return label
+    }()
+    
+    weak var coordinator: AppCoordinator?
+    private let viewModel = MenuViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,22 +71,35 @@ final class MenuViewController: UIViewController {
         view.backgroundColor = .systemBackground
         self.title = "Menu"
         
-        view.addSubview(cardViewMockCalculation)
-        cardViewMockCalculation.addSubview(labelMockCalculation)
-        
-        let mockCardViewTap = UITapGestureRecognizer(target: self, action: #selector(mockCardViewTapped))
-        cardViewMockCalculation.addGestureRecognizer(mockCardViewTap)
+        view.addSubview(cardViewMaximumDeflection)
+        view.addSubview(cardViewSavedCalculations)
+        cardViewMaximumDeflection.addSubview(labelMaximumDeflection)
+        cardViewSavedCalculations.addSubview(labelSavedCalculations)
+        addMaximumDeflectionTap()
+        addSavedCalculationsTap()
     }
     
     private func makeConstraints() {
-        cardViewMockCalculation.snp.makeConstraints { make in
+        cardViewMaximumDeflection.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-130)
             make.width.equalTo(240)
-            make.height.equalTo(120)
+            make.height.equalTo(100)
         }
         
-        labelMockCalculation.snp.makeConstraints { make in
+        labelMaximumDeflection.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(10)
+        }
+        
+        cardViewSavedCalculations.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(cardViewMaximumDeflection.snp.bottom).offset(30)
+            make.width.equalTo(240)
+            make.height.equalTo(80)
+        }
+        
+        labelSavedCalculations.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(10)
         }
@@ -82,6 +112,16 @@ final class MenuViewController: UIViewController {
         addNavBarButtons()
     }
     
+    private func addMaximumDeflectionTap() {
+        let maximumDeflectionTap = UITapGestureRecognizer(target: self, action: #selector(maximumDeflectionTapped))
+        cardViewMaximumDeflection.addGestureRecognizer(maximumDeflectionTap)
+    }
+    
+    private func addSavedCalculationsTap() {
+        let savedCalculationsTap = UITapGestureRecognizer(target: self, action: #selector(savedCalculationsTapped))
+        cardViewSavedCalculations.addGestureRecognizer(savedCalculationsTap)
+    }
+    
     private func addNavBarButtons() {
         let messageButton = UIBarButtonItem(image: UIImage(systemName: "message"), style: .plain, target: self, action: #selector(messageButtonTapped))
         let settingsButton = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsButtonTapped))
@@ -91,10 +131,14 @@ final class MenuViewController: UIViewController {
         navigationItem.leftBarButtonItem = settingsButton
     }
     
-    @objc func mockCardViewTapped() {
+    @objc func maximumDeflectionTapped() {
         coordinator?.navigateToMockCalculation()
     }
 
+    @objc func savedCalculationsTapped() {
+        coordinator?.navigateToSavedCalculations()
+    }
+    
     @objc func messageButtonTapped() {
         coordinator?.navigateToMessagingTabBar()
     }
