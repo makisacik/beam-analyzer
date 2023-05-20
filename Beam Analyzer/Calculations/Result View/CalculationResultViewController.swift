@@ -77,17 +77,7 @@ final class CalculationResultViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    
-    lazy var shareButton: UIButton = {
-        let button = UIButton(type: .custom)
-        let image = UIImage(systemName: "square.and.arrow.up")?.withTintColor(.secondaryLabel, renderingMode: .alwaysOriginal)
-        button.setBackgroundImage(image, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFill
-        // button.addTarget(self, action: #selector(didTapShareButton), for: .touchUpInside)
-
-        return button
-    }()
-    
+        
     private let cardViewShareWithUsers: CardView = {
         let cardView = CardView()
         cardView.cornerRadius = 10
@@ -123,8 +113,32 @@ final class CalculationResultViewController: UIViewController {
         return label
     }()
     
+    private let cardViewSaveCalculation: CardView = {
+        let cardView = CardView()
+        cardView.cornerRadius = 10
+        cardView.backgroundColor = .systemGroupedBackground
+        cardView.shadowColor = .label
+        return cardView
+    }()
+    
+    private let labelSaveCalculation: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.getBoldAppFont(withSize: 17)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.text = "Save Calculation"
+        return label
+    }()
+    
+//    private let iconSaveCalculation: UIImageView = {
+//        let image = UIImage(systemName: "bookmark")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+//        let imageView = UIImageView(image: image)
+//        return imageView
+//    }()
+    
     weak var coordinator: AppCoordinator?
     private let deflectionCalculation: DeflectionCalculation
+    private var isCalculationSaved = false
     
     init(deflectionCalculation: DeflectionCalculation) {
         self.deflectionCalculation = deflectionCalculation
@@ -147,17 +161,20 @@ final class CalculationResultViewController: UIViewController {
         view.addSubview(resultView)
         view.addSubview(cardViewShareAsPDF)
         view.addSubview(cardViewShareWithUsers)
+        view.addSubview(cardViewSaveCalculation)
         cardViewShareWithUsers.addSubview(labelShareWithUsers)
         cardViewShareAsPDF.addSubview(labelShareAsPDF)
+        cardViewSaveCalculation.addSubview(labelSaveCalculation)
+        // cardViewSaveCalculation.addSubview(iconSaveCalculation)
         resultView.addSubview(labelCalcTitle)
         resultView.addSubview(stackViewCalcInputs)
         resultView.addSubview(labelCalcResult)
-        // view.addSubview(shareButton)
         stackViewCalcInputs.addArrangedSubviews([labelLenghtOfBeam, labelWidthOfBeam, labelHeightOfBeam, labelPointLoad, labelYoungModulus])
         
         setResultViewTexts()
         addTapShareWithUsersTap()
         addTapShareAsPDFTap()
+        addTapSaveCalculation()
     }
     
     private func makeConstraints() {
@@ -203,6 +220,20 @@ final class CalculationResultViewController: UIViewController {
             make.edges.equalToSuperview().inset(5)
         }
         
+        cardViewSaveCalculation.snp.makeConstraints { make in
+            make.top.equalTo(cardViewShareWithUsers.snp.bottom).offset(30)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(170)
+        }
+        
+        labelSaveCalculation.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(5)
+        }
+        
+//        iconSaveCalculation.snp.makeConstraints { make in
+//            make.top.bottom.trailing.equalToSuperview().inset(5)
+//        }
+        
     }
     
     private func addTapShareWithUsersTap() {
@@ -215,6 +246,11 @@ final class CalculationResultViewController: UIViewController {
         cardViewShareAsPDF.addGestureRecognizer(tapGesture)
     }
 
+    private func addTapSaveCalculation() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapSaveCalculation))
+        cardViewSaveCalculation.addGestureRecognizer(tapGesture)
+    }
+    
     private func setResultViewTexts() {
         labelLenghtOfBeam.text = "Lenght of beam (m): \(deflectionCalculation.inputs.lenght)"
         labelWidthOfBeam.text = "Cross-section width (m): \(deflectionCalculation.inputs.width)"
@@ -233,6 +269,22 @@ final class CalculationResultViewController: UIViewController {
     @objc private func didTapShareAsPDF() {
         guard let pdfData = createPDFfromView(view: resultView) else { return }
         sharePDF(pdfData: pdfData, viewController: self)
+    }
+    
+    @objc private func didTapSaveCalculation() {
+        if isCalculationSaved {
+//            iconSaveCalculation.image = UIImage(systemName: "bookmark")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+            let data = CoreDataManager.shared.loadCalculations()
+            print(data[0].height)
+        } else {
+//            iconSaveCalculation.image = UIImage(systemName: "bookmark.fill")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+            CoreDataManager.shared.saveCalculation(deflectionCalculation)
+        }
+        
+        isCalculationSaved = !isCalculationSaved
+        
+        showToast(message: "Calculation Saved", font: .systemFont(ofSize: 12.0))
+
     }
 
     private func sharePDF(pdfData: Data, viewController: UIViewController) {

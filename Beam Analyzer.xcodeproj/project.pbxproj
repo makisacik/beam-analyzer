@@ -35,6 +35,7 @@
 		CB49AA8729E87BD50053EC8B /* ResultsGraphMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49AA8629E87BD50053EC8B /* ResultsGraphMarker.swift */; };
 		CB62C6352A0BC9C3004308DF /* DeflectionCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62C6342A0BC9C3004308DF /* DeflectionCalculation.swift */; };
 		CB62C6372A0BF1F4004308DF /* CalculationInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB62C6362A0BF1F4004308DF /* CalculationInputs.swift */; };
+		CB6730922A181E040033A998 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6730912A181E040033A998 /* CoreDataManager.swift */; };
 		CB82494D2A0449840012B566 /* DeflectionCalculationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82494C2A0449840012B566 /* DeflectionCalculationUseCase.swift */; };
 		CB8249502A046B920012B566 /* CalculationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82494F2A046B920012B566 /* CalculationResultViewController.swift */; };
 		CB89339A29D0978A00ACC5F3 /* MessagingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */; };
@@ -93,6 +94,7 @@
 		CB49AA8629E87BD50053EC8B /* ResultsGraphMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsGraphMarker.swift; sourceTree = "<group>"; };
 		CB62C6342A0BC9C3004308DF /* DeflectionCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeflectionCalculation.swift; sourceTree = "<group>"; };
 		CB62C6362A0BF1F4004308DF /* CalculationInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationInputs.swift; sourceTree = "<group>"; };
+		CB6730912A181E040033A998 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CB82494C2A0449840012B566 /* DeflectionCalculationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeflectionCalculationUseCase.swift; sourceTree = "<group>"; };
 		CB82494F2A046B920012B566 /* CalculationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResultViewController.swift; sourceTree = "<group>"; };
 		CB89339929D0978A00ACC5F3 /* MessagingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingTabBarController.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				86F35A2C298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld */,
+				CB6730912A181E040033A998 /* CoreDataManager.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				86B9A7182996CB470077D78B /* CardView.swift in Sources */,
 				863CFEB1299A2E4400EBEE7C /* UIViewController+Extensions.swift in Sources */,
 				CB8933A229D0C0FF00ACC5F3 /* SearchUsersTableViewCell.swift in Sources */,
+				CB6730922A181E040033A998 /* CoreDataManager.swift in Sources */,
 				CBE7593829E3667B00AFB56A /* DateUtil.swift in Sources */,
 				86F35A2E298F037A00BDB116 /* Beam_Analyzer.xcdatamodeld in Sources */,
 				CBD0E15B29BF9377004599ED /* DatabaseService.swift in Sources */,
