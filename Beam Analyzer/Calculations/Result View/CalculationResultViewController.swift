@@ -130,15 +130,14 @@ final class CalculationResultViewController: UIViewController {
         return label
     }()
     
-//    private let iconSaveCalculation: UIImageView = {
-//        let image = UIImage(systemName: "bookmark")?.withTintColor(.label, renderingMode: .alwaysOriginal)
-//        let imageView = UIImageView(image: image)
-//        return imageView
-//    }()
+    private let iconSaveCalculation: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
     
     weak var coordinator: AppCoordinator?
     private let deflectionCalculation: DeflectionCalculation
-    private var isCalculationSaved = false
+    var savedCalculation: CalculationEntity?
     
     init(deflectionCalculation: DeflectionCalculation) {
         self.deflectionCalculation = deflectionCalculation
@@ -165,7 +164,7 @@ final class CalculationResultViewController: UIViewController {
         cardViewShareWithUsers.addSubview(labelShareWithUsers)
         cardViewShareAsPDF.addSubview(labelShareAsPDF)
         cardViewSaveCalculation.addSubview(labelSaveCalculation)
-        // cardViewSaveCalculation.addSubview(iconSaveCalculation)
+        cardViewSaveCalculation.addSubview(iconSaveCalculation)
         resultView.addSubview(labelCalcTitle)
         resultView.addSubview(stackViewCalcInputs)
         resultView.addSubview(labelCalcResult)
@@ -175,6 +174,12 @@ final class CalculationResultViewController: UIViewController {
         addTapShareWithUsersTap()
         addTapShareAsPDFTap()
         addTapSaveCalculation()
+        
+        if savedCalculation != nil {
+            iconSaveCalculation.image = UIImage(systemName: "bookmark.fill")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+        } else {
+            iconSaveCalculation.image = UIImage(systemName: "bookmark")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+        }
     }
     
     private func makeConstraints() {
@@ -227,12 +232,12 @@ final class CalculationResultViewController: UIViewController {
         }
         
         labelSaveCalculation.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(5)
+            make.leading.top.bottom.equalToSuperview().inset(5)
         }
         
-//        iconSaveCalculation.snp.makeConstraints { make in
-//            make.top.bottom.trailing.equalToSuperview().inset(5)
-//        }
+        iconSaveCalculation.snp.makeConstraints { make in
+            make.top.bottom.trailing.equalToSuperview().inset(5)
+        }
         
     }
     
@@ -272,18 +277,17 @@ final class CalculationResultViewController: UIViewController {
     }
     
     @objc private func didTapSaveCalculation() {
-        if isCalculationSaved {
-//            iconSaveCalculation.image = UIImage(systemName: "bookmark")?.withTintColor(.label, renderingMode: .alwaysOriginal)
-            let data = CoreDataManager.shared.loadCalculations()
-            print(data[0].height)
+        
+        if let savedCalculation {
+            CoreDataManager.shared.deleteCalculation(savedCalculation)
+            self.savedCalculation = nil
+            iconSaveCalculation.image = UIImage(systemName: "bookmark")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+            showToast(message: "Calculation Removed", font: .systemFont(ofSize: 12.0))
         } else {
-//            iconSaveCalculation.image = UIImage(systemName: "bookmark.fill")?.withTintColor(.label, renderingMode: .alwaysOriginal)
-            CoreDataManager.shared.saveCalculation(deflectionCalculation)
+            savedCalculation = CoreDataManager.shared.saveCalculation(deflectionCalculation)
+            iconSaveCalculation.image = UIImage(systemName: "bookmark.fill")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+            showToast(message: "Calculation Saved", font: .systemFont(ofSize: 12.0))
         }
-        
-        isCalculationSaved = !isCalculationSaved
-        
-        showToast(message: "Calculation Saved", font: .systemFont(ofSize: 12.0))
 
     }
 

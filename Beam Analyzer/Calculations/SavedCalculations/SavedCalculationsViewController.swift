@@ -25,8 +25,11 @@ final class SavedCalculationsViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
-        viewModel.fetchCalculations()
-        savedCalculationsTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadCalculations()
     }
     
     private func setupViews() {
@@ -40,6 +43,13 @@ final class SavedCalculationsViewController: UIViewController {
     private func makeConstraints() {
         savedCalculationsTableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    private func reloadCalculations() {
+        viewModel.fetchCalculations()
+        DispatchQueue.main.async {
+            self.savedCalculationsTableView.reloadData()
         }
     }
 }
@@ -62,7 +72,8 @@ extension SavedCalculationsViewController: UITableViewDataSource, UITableViewDel
         let savedCalculation = viewModel.calculations[indexPath.row]
         
         let calculation = DeflectionCalculation(inputs: CalculationInputs(lenght: savedCalculation.lenght, width: savedCalculation.width, height: savedCalculation.height, pointLoad: savedCalculation.pointLoad, youngModulus: savedCalculation.youngModulus), result: savedCalculation.result)
-        coordinator?.navigateToCalculationResult(deflectionCalculation: calculation)
+        
+        coordinator?.navigateToCalculationResult(deflectionCalculation: calculation, savedCalculation: savedCalculation)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

@@ -65,9 +65,14 @@ final class AppCoordinator {
         navigationController?.pushViewController(calculationResultsVC, animated: true)
     }
     
-    func navigateToCalculationResult(deflectionCalculation: DeflectionCalculation) {
+    func navigateToCalculationResult(deflectionCalculation: DeflectionCalculation, savedCalculation: CalculationEntity? = nil) {
         let calculationResultVC = CalculationResultViewController(deflectionCalculation: deflectionCalculation)
         calculationResultVC.coordinator = self
+        
+        if let savedCalculation {
+            calculationResultVC.savedCalculation = savedCalculation
+        }
+        
         navigationController?.pushViewController(calculationResultVC, animated: true)
     }
     

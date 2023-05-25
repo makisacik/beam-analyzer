@@ -23,7 +23,7 @@ final class CoreDataManager {
         }
     }
     
-    func saveCalculation(_ calculation: DeflectionCalculation) {
+    func saveCalculation(_ calculation: DeflectionCalculation) -> CalculationEntity {
         let entity = CalculationEntity(context: context)
         entity.height = calculation.inputs.height
         entity.lenght = calculation.inputs.lenght
@@ -33,6 +33,8 @@ final class CoreDataManager {
         entity.result = calculation.result
         entity.date = Date()
         saveContext()
+        
+        return entity
     }
     
     func loadCalculations() -> [CalculationEntity] {

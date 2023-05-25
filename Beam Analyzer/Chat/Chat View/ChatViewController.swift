@@ -31,11 +31,12 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
     let viewModel: ChatViewModel
     private lazy var keyboardOutsideTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     private var disposeBag = DisposeBag()
+    let receiverUser: User
     
     init(receiverUser: User) {
         self.viewModel = ChatViewModel(receiverUser: receiverUser)
+        self.receiverUser = receiverUser
         super.init(nibName: nil, bundle: nil)
-        self.title = "Chat with " + receiverUser.userName
     }
     
     required init?(coder: NSCoder) {
@@ -48,6 +49,10 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         navigationController?.navigationBar.backgroundColor = .systemBackground
         setupViews()
         makeConstraints()
+        
+        if navigationController == nil {
+            addNavBarWithDismiss()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,6 +69,7 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         messageTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.title = "Chat with " + receiverUser.userName
     }
     
     private func makeConstraints() {
@@ -82,7 +88,7 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         messageTableView.rx.setDelegate(self).disposed(by: disposeBag)
         viewModel.messages.bind(to: messageTableView.rx.items(cellIdentifier: "cell", cellType: ChatTableViewCell.self)) { (_, message, cell) in
             let isIconOnRight = message.sender == self.viewModel.currentUser.userName
-            cell.configure(messageBody: message.body, isIconOnRight: isIconOnRight)
+            cell.configure(message: message, isIconOnRight: isIconOnRight)
             cell.selectionStyle = .none
         }.disposed(by: disposeBag)
         
@@ -123,6 +129,19 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
             let lastRowIndexPath = IndexPath(row: lastRowIndex, section: 0)
             messageTableView.scrollToRow(at: lastRowIndexPath, at: .bottom, animated: true)
         }
+    }
+    
+    private func addNavBarWithDismiss() {
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
+        let navItem = UINavigationItem(title: receiverUser.userName)
+        let leftButton = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissButtonTapped))
+        navItem.leftBarButtonItem = leftButton
+        navBar.items = [navItem]
+        view.addSubview(navBar)
+    }
+    
+    @objc func dismissButtonTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

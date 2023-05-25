@@ -41,8 +41,15 @@ final class ChatTableViewCell: UITableViewCell {
     private let bubleView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
-        view.backgroundColor = .systemGroupedBackground
+        view.backgroundColor = .secondarySystemBackground
         return(view)
+    }()
+    
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.getAppFont(withSize: 14)
+        label.textAlignment = .center
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -58,8 +65,10 @@ final class ChatTableViewCell: UITableViewCell {
     private func setupView() {
         addSubview(mainStackView)
         bubleView.addSubview(messageBodyLabel)
+        bubleView.addSubview(dateLabel)
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         mainStackView.addArrangedSubviews([leftUserIcon, bubleView, rightUserIcon])
+        dateLabel.textColor = .secondaryLabel
     }
     
     private func makeConstraints() {
@@ -76,12 +85,16 @@ final class ChatTableViewCell: UITableViewCell {
         }
         
         messageBodyLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
+            make.leading.top.trailing.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(35)
         }
         
+        dateLabel.snp.makeConstraints { make in
+            make.trailing.bottom.equalToSuperview().inset(10)
+        }
     }
     
-    func configure(messageBody: String, isIconOnRight: Bool) {
+    func configure(message: Message, isIconOnRight: Bool) {
         if isIconOnRight {
             leftUserIcon.isHidden = true
             rightUserIcon.isHidden = false
@@ -89,7 +102,8 @@ final class ChatTableViewCell: UITableViewCell {
             leftUserIcon.isHidden = false
             rightUserIcon.isHidden = true
         }
-        messageBodyLabel.text = messageBody
+        messageBodyLabel.text = message.body
+        dateLabel.text = message.date
     }
     
 }
