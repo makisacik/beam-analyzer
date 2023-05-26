@@ -92,7 +92,10 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
                         let chatVC = ChatViewController(receiverUser: user)
                         chatVC.coordinator = self?.coordinator
                         
-                        chatVC.viewModel.sendMessage(message: String(calculation.getMessageText()))
+                        if let json = JsonUtil.convertToJsonString(object: calculation) {
+                            chatVC.viewModel.sendMessage(message: json)
+                        }
+                        
                         self?.present(chatVC, animated: true)
                     } else {
                         self?.coordinator?.navigateToChat(with: user)

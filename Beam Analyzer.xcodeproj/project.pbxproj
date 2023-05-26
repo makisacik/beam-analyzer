@@ -50,6 +50,7 @@
 		CBBF521829E747890011883D /* CalculationInputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF521729E747890011883D /* CalculationInputsViewController.swift */; };
 		CBD0E15B29BF9377004599ED /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15A29BF9377004599ED /* DatabaseService.swift */; };
 		CBD0E15D29BFC750004599ED /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15C29BFC750004599ED /* UIStackView+Extensions.swift */; };
+		CBE367922A2152E300B74CE0 /* JsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE367912A2152E300B74CE0 /* JsonUtil.swift */; };
 		CBE7591729E35F9F00AFB56A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBE7591629E35F9F00AFB56A /* GoogleService-Info.plist */; };
 		CBE7591A29E3602200AFB56A /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7591929E3602200AFB56A /* ChatViewModel.swift */; };
 		CBE7591C29E3603C00AFB56A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7591B29E3603C00AFB56A /* ChatTableViewCell.swift */; };
@@ -111,6 +112,7 @@
 		CBBF521729E747890011883D /* CalculationInputsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationInputsViewController.swift; sourceTree = "<group>"; };
 		CBD0E15A29BF9377004599ED /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		CBD0E15C29BFC750004599ED /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		CBE367912A2152E300B74CE0 /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
 		CBE7591629E35F9F00AFB56A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Dosyalarım/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBE7591929E3602200AFB56A /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		CBE7591B29E3603C00AFB56A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				86B9A71A2996CEE10077D78B /* UI */,
 				CBE7593729E3667B00AFB56A /* DateUtil.swift */,
+				CBE367912A2152E300B74CE0 /* JsonUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				CBE7592129E3613B00AFB56A /* MessageService.swift in Sources */,
 				865782ED298FED0C00380928 /* AppCoordinator.swift in Sources */,
 				CB8249502A046B920012B566 /* CalculationResultViewController.swift in Sources */,
+				CBE367922A2152E300B74CE0 /* JsonUtil.swift in Sources */,
 				CBBF521829E747890011883D /* CalculationInputsViewController.swift in Sources */,
 				865782E9298FEBF600380928 /* SplashScreenViewController.swift in Sources */,
 				CB3DD32F29C7BC6D000A7E07 /* MenuViewController.swift in Sources */,

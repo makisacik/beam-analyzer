@@ -136,7 +136,10 @@ extension SearchUsersViewController: UITableViewDataSource, UITableViewDelegate 
                 let chatVC = ChatViewController(receiverUser: receiverUser)
                 chatVC.coordinator = self.coordinator
                 
-                chatVC.viewModel.sendMessage(message: String(calculation.getMessageText()))
+                if let json = JsonUtil.convertToJsonString(object: deflectionCalculation) {
+                    chatVC.viewModel.sendMessage(message: json)
+                    
+                }
                 self.present(chatVC, animated: true)
             } else {
                 let chatVC = ChatViewController(receiverUser: receiverUser)

@@ -93,7 +93,10 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         }.disposed(by: disposeBag)
         
         messageTableView.rx.modelSelected(Message.self).subscribe(onNext: { item in
-            print("SelectedItem: \(item.body)")
+            print(item.body)
+            if let deflectionCalculation = JsonUtil.convertToObject(jsonString: item.body, objectType: DeflectionCalculation.self) {
+                print("move to calculation")
+            }
         }).disposed(by: disposeBag)
         
         viewModel.messages.bind { _ in

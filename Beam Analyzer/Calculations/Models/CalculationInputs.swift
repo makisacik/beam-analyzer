@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalculationInputs {
+struct CalculationInputs: Codable {
     let lenght: Double
     let width: Double
     let height: Double
