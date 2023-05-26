@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DeflectionCalculation {
+final class DeflectionCalculation: Codable {
     let inputs: CalculationInputs
     let result: Double
     
