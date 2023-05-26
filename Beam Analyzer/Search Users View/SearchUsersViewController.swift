@@ -138,7 +138,6 @@ extension SearchUsersViewController: UITableViewDataSource, UITableViewDelegate 
                 
                 if let json = JsonUtil.convertToJsonString(object: deflectionCalculation) {
                     chatVC.viewModel.sendMessage(message: json)
-                    
                 }
                 self.present(chatVC, animated: true)
             } else {
