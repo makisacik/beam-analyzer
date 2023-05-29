@@ -140,7 +140,7 @@ final class CalculationInputsViewController: UIViewController {
     
     weak var coordinator: AppCoordinator?
     private let freeEndCalculationUseCase = FreeEndCalculationUseCase()
-    private let fixedSupportCalculationUseCase = FixedSupportCalculationUseCase()
+    private let otherCalculationsUseCase = OtherCalculationsUseCase()
 
     private let calculationType: CalculationType
     
@@ -232,8 +232,12 @@ final class CalculationInputsViewController: UIViewController {
             switch calculationType {
             case .freeEnd:
                 deflectionCalculation = freeEndCalculationUseCase.calculate(inputs: calculationInputs)
-            case .other:
-                deflectionCalculation = fixedSupportCalculationUseCase.calculate(inputs: calculationInputs)
+            case .fixed:
+                deflectionCalculation = otherCalculationsUseCase.calculate(inputs: calculationInputs, type: .fixed)
+            case .roller:
+                deflectionCalculation = otherCalculationsUseCase.calculate(inputs: calculationInputs, type: .roller)
+            case .simply:
+                deflectionCalculation = otherCalculationsUseCase.calculate(inputs: calculationInputs, type: .simply)
             }
             
             coordinator?.navigateToCalculationResult(deflectionCalculation: deflectionCalculation)

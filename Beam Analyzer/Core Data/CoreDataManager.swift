@@ -34,9 +34,13 @@ final class CoreDataManager {
         
         switch calculation.type {
         case .freeEnd:
-            entity.freeEnd = true
-        case .other:
-            entity.freeEnd = false
+            entity.type = "freeEnd"
+        case .fixed:
+            entity.type = "fixed"
+        case .roller:
+            entity.type = "roller"
+        case .simply:
+            entity.type = "simply"
         }
         
         entity.date = Date()

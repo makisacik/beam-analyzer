@@ -73,10 +73,14 @@ extension SavedCalculationsViewController: UITableViewDataSource, UITableViewDel
         
         let type: CalculationType
         
-        if savedCalculation.freeEnd {
+        if savedCalculation.type == "freeEnd" {
             type = .freeEnd
+        } else if savedCalculation.type == "fixed" {
+            type = .fixed
+        } else if savedCalculation.type == "roller" {
+            type = .roller
         } else {
-            type = .other
+            type = .simply
         }
         
         let calculation = DeflectionCalculation(inputs: CalculationInputs(lenght: savedCalculation.lenght, width: savedCalculation.width, height: savedCalculation.height, pointLoad: savedCalculation.pointLoad, youngModulus: savedCalculation.youngModulus), result: savedCalculation.result, type: type)

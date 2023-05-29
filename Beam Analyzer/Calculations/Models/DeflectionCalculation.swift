@@ -6,9 +6,12 @@
 //
 
 import Foundation
-enum CalculationType: Codable {
+
+enum CalculationType: Codable, CaseIterable {
     case freeEnd
-    case other
+    case fixed
+    case roller
+    case simply
 }
 
 final class DeflectionCalculation: Codable {

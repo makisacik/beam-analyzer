@@ -207,9 +207,9 @@ final class CalculationsMenuViewController: UIViewController {
     private func addCardViewTaps() {
         let freeEndTap = UITapGestureRecognizer(target: self, action: #selector(freeEndCardViewTapped))
         
-        let fixedTap = UITapGestureRecognizer(target: self, action: #selector(otherCardViewsTapped))
-        let rollerTap = UITapGestureRecognizer(target: self, action: #selector(otherCardViewsTapped))
-        let simplyPinnedTap = UITapGestureRecognizer(target: self, action: #selector(otherCardViewsTapped))
+        let fixedTap = UITapGestureRecognizer(target: self, action: #selector(fixedCardViewTapped))
+        let rollerTap = UITapGestureRecognizer(target: self, action: #selector(rollerCardViewTapped))
+        let simplyPinnedTap = UITapGestureRecognizer(target: self, action: #selector(simplyCardViewTapped))
 
         cardViewFreeEndCareer.addGestureRecognizer(freeEndTap)
         cardViewFixed.addGestureRecognizer(fixedTap)
@@ -221,7 +221,15 @@ final class CalculationsMenuViewController: UIViewController {
         coordinator?.navigateToInputs(calculationType: .freeEnd)
     }
     
-    @objc func otherCardViewsTapped() {
-        coordinator?.navigateToInputs(calculationType: .other)
+    @objc func fixedCardViewTapped() {
+        coordinator?.navigateToInputs(calculationType: .fixed)
+    }
+    
+    @objc func rollerCardViewTapped() {
+        coordinator?.navigateToInputs(calculationType: .roller)
+    }
+    
+    @objc func simplyCardViewTapped() {
+        coordinator?.navigateToInputs(calculationType: .simply)
     }
 }
