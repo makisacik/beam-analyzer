@@ -132,7 +132,7 @@ final class MenuViewController: UIViewController {
     }
     
     @objc func maximumDeflectionTapped() {
-        coordinator?.navigateToMockCalculation()
+        coordinator?.navigateToCalculationMenu()
     }
 
     @objc func savedCalculationsTapped() {

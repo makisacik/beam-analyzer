@@ -53,7 +53,7 @@ final class AppCoordinator {
         navigationController?.pushViewController(chatVC, animated: true)
     }
     
-    func navigateToMockCalculation() {
+    func navigateToInputs() {
         let calculationVC = CalculationInputsViewController()
         calculationVC.coordinator = self
         navigationController?.pushViewController(calculationVC, animated: true)
@@ -81,4 +81,11 @@ final class AppCoordinator {
         savedCalculationsVC.coordinator = self
         navigationController?.pushViewController(savedCalculationsVC, animated: true)
     }
+    
+    func navigateToCalculationMenu() {
+        let calcMenuVC = CalculationsMenuViewController()
+        calcMenuVC.coordinator = self
+        navigationController?.pushViewController(calcMenuVC, animated: true)
+    }
+    
 }
