@@ -139,7 +139,19 @@ final class CalculationInputsViewController: UIViewController {
     }()
     
     weak var coordinator: AppCoordinator?
-    private let deflectionCalculationUseCase = DeflectionCalculationUseCase()
+    private let freeEndCalculationUseCase = FreeEndCalculationUseCase()
+    private let fixedSupportCalculationUseCase = FixedSupportCalculationUseCase()
+
+    private let calculationType: CalculationType
+    
+    init(calculationType: CalculationType) {
+        self.calculationType = calculationType
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,7 +227,14 @@ final class CalculationInputsViewController: UIViewController {
             
             let calculationInputs = CalculationInputs(lenght: lenght, width: width, height: height, pointLoad: pointLoad, youngModulus: youngModulus)
             
-            let deflectionCalculation = deflectionCalculationUseCase.calculate(inputs: calculationInputs)
+            let deflectionCalculation: DeflectionCalculation
+
+            switch calculationType {
+            case .freeEnd:
+                deflectionCalculation = freeEndCalculationUseCase.calculate(inputs: calculationInputs)
+            case .other:
+                deflectionCalculation = fixedSupportCalculationUseCase.calculate(inputs: calculationInputs)
+            }
             
             coordinator?.navigateToCalculationResult(deflectionCalculation: deflectionCalculation)
         } else {

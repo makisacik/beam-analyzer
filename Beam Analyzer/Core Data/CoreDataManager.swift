@@ -31,6 +31,14 @@ final class CoreDataManager {
         entity.pointLoad = calculation.inputs.youngModulus
         entity.youngModulus = calculation.inputs.youngModulus
         entity.result = calculation.result
+        
+        switch calculation.type {
+        case .freeEnd:
+            entity.freeEnd = true
+        case .other:
+            entity.freeEnd = false
+        }
+        
         entity.date = Date()
         saveContext()
         

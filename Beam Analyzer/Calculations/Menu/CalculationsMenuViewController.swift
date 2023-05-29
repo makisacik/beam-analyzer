@@ -13,7 +13,7 @@ final class CalculationsMenuViewController: UIViewController {
     private let cardViewFreeEndCareer: CardView = {
         let cardView = CardView()
         cardView.cornerRadius = 10
-        cardView.backgroundColor = .systemGroupedBackground
+        cardView.backgroundColor = .systemBackground
         cardView.shadowColor = .label
         return cardView
     }()
@@ -37,7 +37,7 @@ final class CalculationsMenuViewController: UIViewController {
     private let cardViewRoller: CardView = {
         let cardView = CardView()
         cardView.cornerRadius = 10
-        cardView.backgroundColor = .systemGroupedBackground
+        cardView.backgroundColor = .systemBackground
         cardView.shadowColor = .label
         return cardView
     }()
@@ -61,7 +61,7 @@ final class CalculationsMenuViewController: UIViewController {
     private let cardViewFixed: CardView = {
         let cardView = CardView()
         cardView.cornerRadius = 10
-        cardView.backgroundColor = .systemGroupedBackground
+        cardView.backgroundColor = .systemBackground
         cardView.shadowColor = .label
         return cardView
     }()
@@ -85,7 +85,7 @@ final class CalculationsMenuViewController: UIViewController {
     private let cardViewSimplyPinned: CardView = {
         let cardView = CardView()
         cardView.cornerRadius = 10
-        cardView.backgroundColor = .systemGroupedBackground
+        cardView.backgroundColor = .systemBackground
         cardView.shadowColor = .label
         return cardView
     }()
@@ -112,10 +112,11 @@ final class CalculationsMenuViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
+        addCardViewTaps()
     }
 
     private func setupViews() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGroupedBackground
         view.addSubview(cardViewFreeEndCareer)
         view.addSubview(cardViewFixed)
         view.addSubview(cardViewRoller)
@@ -163,7 +164,6 @@ final class CalculationsMenuViewController: UIViewController {
         
         imgViewFreeEndCareer.snp.makeConstraints { make in
             make.trailing.leading.top.equalToSuperview().inset(5)
-            make.width.equalTo(200)
             make.height.equalTo(70)
         }
         
@@ -174,7 +174,6 @@ final class CalculationsMenuViewController: UIViewController {
         
         imgViewFixed.snp.makeConstraints { make in
             make.trailing.leading.top.equalToSuperview().inset(5)
-            make.width.equalTo(200)
             make.height.equalTo(70)
         }
         
@@ -185,7 +184,6 @@ final class CalculationsMenuViewController: UIViewController {
         
         imgViewRoller.snp.makeConstraints { make in
             make.trailing.leading.top.equalToSuperview().inset(5)
-            make.width.equalTo(200)
             make.height.equalTo(70)
         }
         
@@ -196,7 +194,6 @@ final class CalculationsMenuViewController: UIViewController {
         
         imgViewSimplyPinned.snp.makeConstraints { make in
             make.trailing.leading.top.equalToSuperview().inset(5)
-            make.width.equalTo(200)
             make.height.equalTo(70)
         }
         
@@ -207,4 +204,24 @@ final class CalculationsMenuViewController: UIViewController {
         
     }
     
+    private func addCardViewTaps() {
+        let freeEndTap = UITapGestureRecognizer(target: self, action: #selector(freeEndCardViewTapped))
+        
+        let fixedTap = UITapGestureRecognizer(target: self, action: #selector(otherCardViewsTapped))
+        let rollerTap = UITapGestureRecognizer(target: self, action: #selector(otherCardViewsTapped))
+        let simplyPinnedTap = UITapGestureRecognizer(target: self, action: #selector(otherCardViewsTapped))
+
+        cardViewFreeEndCareer.addGestureRecognizer(freeEndTap)
+        cardViewFixed.addGestureRecognizer(fixedTap)
+        cardViewRoller.addGestureRecognizer(rollerTap)
+        cardViewSimplyPinned.addGestureRecognizer(simplyPinnedTap)
+    }
+    
+    @objc func freeEndCardViewTapped() {
+        coordinator?.navigateToInputs(calculationType: .freeEnd)
+    }
+    
+    @objc func otherCardViewsTapped() {
+        coordinator?.navigateToInputs(calculationType: .other)
+    }
 }
