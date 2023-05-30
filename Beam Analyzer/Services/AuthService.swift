@@ -60,4 +60,18 @@ final class AuthService {
             completionHandler(false)
         }
     }
+    
+    func updatePassword(currentPassword: String, password: String, completionHandler: @escaping (Error?) -> Void) {
+        let credentials = EmailAuthProvider.credential(withEmail: auth.currentUser?.email ?? "", password: currentPassword)
+        
+        auth.currentUser?.reauthenticate(with: credentials, completion: { _, error in
+            if let error {
+                completionHandler(error)
+            } else {
+                self.auth.currentUser?.updatePassword(to: password, completion: { error in
+                    completionHandler(error)
+                })
+            }
+        })
+    }
 }

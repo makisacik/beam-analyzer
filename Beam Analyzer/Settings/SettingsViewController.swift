@@ -12,12 +12,22 @@ final class SettingsViewController: UIViewController {
     
     weak var coordinator: AppCoordinator?
 
-    private lazy var signOutButton: UIButton = {
+    private lazy var buttonSignOut: UIButton = {
         let button = UIButton()
         button.setTitle("Sign out", for: .normal)
         button.setTitleColor(.label, for: .normal)
-        button.backgroundColor = .tertiaryLabel
+        button.backgroundColor = .systemGroupedBackground
         button.addTarget(self, action: #selector(didTapSignOutButton), for: .touchUpInside)
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
+    private lazy var buttonChangePassword: UIButton = {
+        let button = UIButton()
+        button.setTitle("Change Password", for: .normal)
+        button.setTitleColor(.label, for: .normal)
+        button.backgroundColor = .systemGroupedBackground
+        button.addTarget(self, action: #selector(didTapChangePassword), for: .touchUpInside)
         button.layer.cornerRadius = 10
         return button
     }()
@@ -31,14 +41,21 @@ final class SettingsViewController: UIViewController {
     private func setupViews() {
         self.title = "Settings"
         view.backgroundColor = .systemBackground
-        view.addSubview(signOutButton)
+        view.addSubview(buttonSignOut)
+        view.addSubview(buttonChangePassword)
     }
 
     private func makeConstraints() {
-        signOutButton.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalTo(100)
-            make.height.equalTo(40)
+        buttonSignOut.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
+            make.leading.trailing.equalToSuperview().inset(40)
+            make.height.equalTo(60)
+        }
+        
+        buttonChangePassword.snp.makeConstraints { make in
+            make.top.equalTo(buttonSignOut.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(40)
+            make.height.equalTo(60)
         }
     }
     
@@ -49,4 +66,9 @@ final class SettingsViewController: UIViewController {
             }
         }
     }
+    
+    @objc private func didTapChangePassword() {
+        coordinator?.navigateToChangePassword()
+    }
+
 }

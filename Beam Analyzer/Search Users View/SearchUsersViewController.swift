@@ -102,7 +102,7 @@ extension SearchUsersViewController: UISearchBarDelegate {
                     self?.hideLoadingAnimation()
                 }
                 guard let users else {
-                    self?.showError()
+                    self?.showAlert()
                     return
                 }
                 

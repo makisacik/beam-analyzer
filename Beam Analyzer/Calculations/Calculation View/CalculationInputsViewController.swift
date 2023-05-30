@@ -242,7 +242,7 @@ final class CalculationInputsViewController: UIViewController {
             
             coordinator?.navigateToCalculationResult(deflectionCalculation: deflectionCalculation)
         } else {
-            showError(title: "Warning", message: "Invalid Inputs")
+            showAlert(title: "Warning", message: "Invalid Inputs")
         }
     }
     

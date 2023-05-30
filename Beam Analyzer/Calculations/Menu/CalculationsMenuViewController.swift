@@ -116,7 +116,7 @@ final class CalculationsMenuViewController: UIViewController {
     }
 
     private func setupViews() {
-        view.backgroundColor = .systemGroupedBackground
+        view.backgroundColor = .systemBackground
         view.addSubview(cardViewFreeEndCareer)
         view.addSubview(cardViewFixed)
         view.addSubview(cardViewRoller)
