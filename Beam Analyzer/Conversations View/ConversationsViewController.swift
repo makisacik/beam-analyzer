@@ -101,7 +101,7 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
                         self?.coordinator?.navigateToChat(with: user)
                     }
                 } else {
-                    self?.showError()
+                    self?.showAlert()
                 }
                 
             }

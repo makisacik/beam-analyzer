@@ -60,4 +60,10 @@ final class AuthService {
             completionHandler(false)
         }
     }
+    
+    func updatePassword(password: String, completionHandler: @escaping (Error?) -> Void) {
+        auth.currentUser?.updatePassword(to: password, completion: { error in
+            completionHandler(error)
+        })
+    }
 }

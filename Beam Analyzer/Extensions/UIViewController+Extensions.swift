@@ -26,7 +26,7 @@ extension UIViewController {
         activateUserInterraction()
     }
     
-    func showError(title: String? = "Database Error", message: String? = "An error occurred.") {
+    func showAlert(title: String? = "Database Error", message: String? = "An error occurred.") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)

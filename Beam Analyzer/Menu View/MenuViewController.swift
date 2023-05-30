@@ -57,7 +57,7 @@ final class MenuViewController: UIViewController {
                 self.hideLoadingAnimation()
             }
             if error != nil {
-                self.showError(title: "Error", message: "User cannot be fetched")
+                self.showAlert(title: "Error", message: "User cannot be fetched")
             }
         }
     }

@@ -88,4 +88,8 @@ final class AppCoordinator {
         navigationController?.pushViewController(calcMenuVC, animated: true)
     }
     
+    func navigateToChangePassword() {
+        let changePasswordVC = ChangePasswordViewController()
+        navigationController?.pushViewController(changePasswordVC, animated: true)
+    }
 }

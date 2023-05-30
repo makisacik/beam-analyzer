@@ -60,7 +60,15 @@ final class LoginViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.autocapitalizationType = .none
         textField.returnKeyType = .default
+        let visibilityButton = UIButton(type: .custom)
+        visibilityButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        visibilityButton.setImage(UIImage(systemName: "eye.slash"), for: .selected)
+        visibilityButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        visibilityButton.addTarget(self, action: #selector(togglePasswordVisibility(_:)), for: .touchUpInside)
+        visibilityButton.tintColor = .label
 
+        textField.rightView = visibilityButton
+        textField.rightViewMode = .always
         return textField
     }()
 
@@ -220,6 +228,12 @@ final class LoginViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
     }
+    
+    @objc func togglePasswordVisibility(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry.toggle()
+        sender.isSelected = !sender.isSelected
+    }
+
 }
 
 extension LoginViewController: UITextFieldDelegate {
