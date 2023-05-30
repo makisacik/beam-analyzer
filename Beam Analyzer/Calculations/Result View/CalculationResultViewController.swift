@@ -20,8 +20,7 @@ final class CalculationResultViewController: UIViewController {
     
     private let labelCalcTitle: UILabel = {
         let label = UILabel()
-        label.text = "Maximum Deflection"
-        label.font = UIFont.getBoldAppFont(withSize: 19)
+        label.font = UIFont.getBoldAppFont(withSize: 18)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -180,6 +179,17 @@ final class CalculationResultViewController: UIViewController {
         } else {
             iconSaveCalculation.image = UIImage(systemName: "bookmark")?.withTintColor(.label, renderingMode: .alwaysOriginal)
         }
+        
+        switch deflectionCalculation.type {
+        case .freeEnd:
+            labelCalcTitle.text = "Free End Support With Point Load"
+        case .fixed:
+            labelCalcTitle.text = "Fixed Support With Point Load"
+        case .roller:
+            labelCalcTitle.text = "Roller Support With Point Load"
+        case .simply:
+            labelCalcTitle.text = "Simply (Pinned) Support With Point Load"
+        }
     }
     
     private func makeConstraints() {
@@ -202,7 +212,7 @@ final class CalculationResultViewController: UIViewController {
         resultView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(30)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(300)
+            make.height.equalTo(290)
         }
         
         cardViewShareAsPDF.snp.makeConstraints { make in

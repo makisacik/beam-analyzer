@@ -71,7 +71,19 @@ extension SavedCalculationsViewController: UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let savedCalculation = viewModel.calculations[indexPath.row]
         
-        let calculation = DeflectionCalculation(inputs: CalculationInputs(lenght: savedCalculation.lenght, width: savedCalculation.width, height: savedCalculation.height, pointLoad: savedCalculation.pointLoad, youngModulus: savedCalculation.youngModulus), result: savedCalculation.result)
+        let type: CalculationType
+        
+        if savedCalculation.type == "freeEnd" {
+            type = .freeEnd
+        } else if savedCalculation.type == "fixed" {
+            type = .fixed
+        } else if savedCalculation.type == "roller" {
+            type = .roller
+        } else {
+            type = .simply
+        }
+        
+        let calculation = DeflectionCalculation(inputs: CalculationInputs(lenght: savedCalculation.lenght, width: savedCalculation.width, height: savedCalculation.height, pointLoad: savedCalculation.pointLoad, youngModulus: savedCalculation.youngModulus), result: savedCalculation.result, type: type)
         
         coordinator?.navigateToCalculationResult(deflectionCalculation: calculation, savedCalculation: savedCalculation)
     }

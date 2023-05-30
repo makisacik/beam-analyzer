@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DeflectionCalculationUseCase {
+final class FreeEndCalculationUseCase {
     func calculate(inputs: CalculationInputs) -> DeflectionCalculation {
         let momentInertia = (inputs.width * pow(inputs.height, 3)) / 12
         
@@ -15,7 +15,7 @@ final class DeflectionCalculationUseCase {
         
         let maximumDeflectionInMeters = (inputs.pointLoad * pow(inputs.lenght, 3)) / (3 * youngModulus * momentInertia) * 1000
         
-        let deflectionCalculation = DeflectionCalculation(inputs: inputs, result: maximumDeflectionInMeters)
+        let deflectionCalculation = DeflectionCalculation(inputs: inputs, result: maximumDeflectionInMeters, type: .freeEnd)
         
         return deflectionCalculation
     }
