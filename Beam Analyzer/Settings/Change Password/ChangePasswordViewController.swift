@@ -19,6 +19,14 @@ final class ChangePasswordViewController: UIViewController {
         return cardView
     }()
 
+    lazy var labelCurrentPassword: UILabel = {
+        let label = UILabel()
+        label.text = "Current Password"
+        label.font = UIFont.getAppFont(withSize: 14)
+        label.contentMode = .left
+        return label
+    }()
+    
     lazy var labelFirstPassword: UILabel = {
         let label = UILabel()
         label.text = "New Password"
@@ -36,7 +44,7 @@ final class ChangePasswordViewController: UIViewController {
     }()
 
     lazy var stackViewPassword: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [labelFirstPassword, textFieldFirstPassword, labelSecondPassword, textFieldSecondPassword, buttonChangePassword])
+        let stackView = UIStackView(arrangedSubviews: [labelCurrentPassword, textFieldCurrentPassword, labelFirstPassword, textFieldFirstPassword, labelSecondPassword, textFieldSecondPassword, buttonChangePassword])
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.spacing = 5
@@ -44,6 +52,16 @@ final class ChangePasswordViewController: UIViewController {
         return stackView
     }()
 
+    lazy var textFieldCurrentPassword: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.textContentType = .password
+        textField.isSecureTextEntry = true
+        textField.autocapitalizationType = .none
+        textField.returnKeyType = .default
+        return textField
+    }()
+    
     lazy var textFieldFirstPassword: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
@@ -90,7 +108,7 @@ final class ChangePasswordViewController: UIViewController {
         cardViewPassword.addSubview(stackViewPassword)
 
         cardViewPassword.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(10)
             make.leading.trailing.equalToSuperview().inset(10)
         }
 
@@ -98,6 +116,10 @@ final class ChangePasswordViewController: UIViewController {
             make.leading.trailing.top.bottom.equalToSuperview().inset(10)
         }
 
+        textFieldCurrentPassword.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
+        
         textFieldFirstPassword.snp.makeConstraints { make in
             make.height.equalTo(40)
         }
@@ -110,6 +132,10 @@ final class ChangePasswordViewController: UIViewController {
             make.height.equalTo(40)
         }
 
+        labelCurrentPassword.snp.makeConstraints { make in
+            make.height.equalTo(20)
+        }
+        
         labelFirstPassword.snp.makeConstraints { make in
             make.height.equalTo(20)
         }
@@ -121,7 +147,8 @@ final class ChangePasswordViewController: UIViewController {
     }
 
     @objc func actionChangePassword() {
-        viewModel.changePassword(firstPassword: textFieldFirstPassword.text, secondPassword: textFieldSecondPassword.text) { passwordError in
+        showLoadingAnimation()
+        viewModel.changePassword(currentPassword: textFieldCurrentPassword.text, firstPassword: textFieldFirstPassword.text, secondPassword: textFieldSecondPassword.text) { passwordError in
             if let passwordError {
                 DispatchQueue.main.async {
                     self.showAlert(title: "Error", message: passwordError)
@@ -131,9 +158,14 @@ final class ChangePasswordViewController: UIViewController {
                     self.showAlert(title: "Successful", message: "Pasword Changed Successfully")
                     self.textFieldFirstPassword.text = ""
                     self.textFieldSecondPassword.text = ""
+                    self.textFieldCurrentPassword.text = ""
                 }
             }
+            DispatchQueue.main.async {
+                self.hideLoadingAnimation()
+            }
         }
+        
     }
     
 }
