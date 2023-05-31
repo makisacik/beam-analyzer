@@ -11,12 +11,12 @@ import FirebaseDatabase
 
 final class RegisterViewController: UIViewController {
 
-    private let registerTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Register"
-        label.font = UIFont.getAppFont(withSize: 26)
-        return label
-    }()
+//    private let registerTitleLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "Register"
+//        label.font = UIFont.getAppFont(withSize: 26)
+//        return label
+//    }()
 
     private let registerCardView: CardView = {
         let cardView = CardView()
@@ -154,7 +154,16 @@ final class RegisterViewController: UIViewController {
         setupViews()
         addTapOutsideKeyboard()
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     private func addTapOutsideKeyboard() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
@@ -188,8 +197,9 @@ final class RegisterViewController: UIViewController {
 
     private func setupViews() {
         view.backgroundColor = .systemBackground
-        view.addSubview(registerTitleLabel)
+//        view.addSubview(registerTitleLabel)
         view.addSubview(registerCardView)
+        title = "Register"
         registerCardView.addSubview(registerStackView)
         registerCardView.addSubview(registerButton)
         registerCardView.addSubview(warningLabel)
@@ -199,13 +209,13 @@ final class RegisterViewController: UIViewController {
     }
 
     private func makeConstraints() {
-        registerTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.centerX.equalToSuperview()
-        }
-
+//        registerTitleLabel.snp.makeConstraints { make in
+//            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+//            make.centerX.equalToSuperview()
+//        }
+//
         registerCardView.snp.makeConstraints { make in
-            make.top.equalTo(registerTitleLabel.snp.bottom).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.left.right.equalToSuperview().inset(15)
         }
 

@@ -18,11 +18,13 @@ final class RegisterViewModel {
         } else if password != passwordAgain {
             errorString = "Passwords do not match."
         } else if !isPasswordValid(password) {
-            errorString = "Password should be at least 8 characters and should contain at least one character."
+            errorString = "Password should be at least 8 characters and should contain at least one letter."
         } else if fullName.count > 32 {
             errorString = "Full name can't be more than 32 characters."
-        } else if userName.count > 32 {
-            errorString = "User name can't be more than 32 characters."
+        } else if !isValidUsername(userName) {
+            errorString = "User name should be more than 4 less than 32 and should not contain any special characters."
+        } else if !(userName == userName.lowercased()) {
+            errorString = "User name should be lowercased."
         }
         
         if let errorString {
@@ -56,4 +58,9 @@ final class RegisterViewModel {
         return passwordPredicate.evaluate(with: password)
     }
     
+    private func isValidUsername(_ username: String) -> Bool {
+        let regex = "^[A-Za-z]{4,32}$"
+        let usernamePredicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        return usernamePredicate.evaluate(with: username)
+    }
 }
