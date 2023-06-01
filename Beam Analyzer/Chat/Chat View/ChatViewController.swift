@@ -156,13 +156,17 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
     @objc func dismissButtonTapped() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func checkExistingConversation() {
+        if messageTableView.numberOfRows(inSection: 0) == 0 {
+            viewModel.createConversations()
+        }
+    }
 }
 
 extension ChatViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if messageTableView.numberOfRows(inSection: 0) == 0 {
-            viewModel.createConversations()
-        }
+        checkExistingConversation()
         viewModel.sendMessage(message: textField.text ?? "")
         textField.text = ""
         textField.resignFirstResponder()

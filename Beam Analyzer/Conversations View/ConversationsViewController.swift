@@ -92,6 +92,7 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
                         let chatVC = ChatViewController(receiverUser: user)
                         chatVC.coordinator = self?.coordinator
                         if let json = JsonUtil.convertToJsonString(object: calculation) {
+                            chatVC.checkExistingConversation()
                             chatVC.viewModel.sendMessage(message: json)
                         }
                         
