@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 extension UIViewController {
     
     func showLoadingAnimation() {
-        let activityIndicator = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: .label)
+        let activityIndicator = NVActivityIndicatorView(frame: .zero, type: .ballRotateChase, color: .label)
         view.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()

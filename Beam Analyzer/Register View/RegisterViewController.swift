@@ -11,12 +11,12 @@ import FirebaseDatabase
 
 final class RegisterViewController: UIViewController {
 
-    private let registerTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Register"
-        label.font = UIFont.getAppFont(withSize: 26)
-        return label
-    }()
+//    private let registerTitleLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "Register"
+//        label.font = UIFont.getAppFont(withSize: 26)
+//        return label
+//    }()
 
     private let registerCardView: CardView = {
         let cardView = CardView()
@@ -29,7 +29,7 @@ final class RegisterViewController: UIViewController {
     private let fullNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Full Name: "
-        label.font = UIFont.getAppFont(withSize: 17)
+        label.font = UIFont.getAppFont(withSize: 14)
         return label
     }()
     
@@ -44,7 +44,7 @@ final class RegisterViewController: UIViewController {
     private let userNameLabel: UILabel = {
         let label = UILabel()
         label.text = "User Name: "
-        label.font = UIFont.getAppFont(withSize: 17)
+        label.font = UIFont.getAppFont(withSize: 14)
         return label
     }()
     
@@ -61,7 +61,7 @@ final class RegisterViewController: UIViewController {
     private let emailLabel: UILabel = {
         let label = UILabel()
         label.text = "Email: "
-        label.font = UIFont.getAppFont(withSize: 17)
+        label.font = UIFont.getAppFont(withSize: 14)
         return label
     }()
 
@@ -80,14 +80,14 @@ final class RegisterViewController: UIViewController {
     private let passwordLabel: UILabel = {
         let label = UILabel()
         label.text = "Password: "
-        label.font = UIFont.getAppFont(withSize: 17)
+        label.font = UIFont.getAppFont(withSize: 14)
         return label
     }()
 
     private let passwordAgainLabel: UILabel = {
         let label = UILabel()
         label.text = "Password: (Again)"
-        label.font = UIFont.getAppFont(withSize: 17)
+        label.font = UIFont.getAppFont(withSize: 14)
         return label
     }()
 
@@ -99,6 +99,7 @@ final class RegisterViewController: UIViewController {
         textField.autocapitalizationType = .none
         textField.returnKeyType = .default
         textField.passwordRules = .none
+        textField.autocorrectionType = .no
         return textField
     }()
 
@@ -110,7 +111,7 @@ final class RegisterViewController: UIViewController {
         textField.autocapitalizationType = .none
         textField.returnKeyType = .default
         textField.passwordRules = .none
-
+        textField.autocorrectionType = .no
         return textField
     }()
 
@@ -154,7 +155,16 @@ final class RegisterViewController: UIViewController {
         setupViews()
         addTapOutsideKeyboard()
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     private func addTapOutsideKeyboard() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
@@ -188,8 +198,9 @@ final class RegisterViewController: UIViewController {
 
     private func setupViews() {
         view.backgroundColor = .systemBackground
-        view.addSubview(registerTitleLabel)
+//        view.addSubview(registerTitleLabel)
         view.addSubview(registerCardView)
+        title = "Register"
         registerCardView.addSubview(registerStackView)
         registerCardView.addSubview(registerButton)
         registerCardView.addSubview(warningLabel)
@@ -199,13 +210,13 @@ final class RegisterViewController: UIViewController {
     }
 
     private func makeConstraints() {
-        registerTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.centerX.equalToSuperview()
-        }
-
+//        registerTitleLabel.snp.makeConstraints { make in
+//            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+//            make.centerX.equalToSuperview()
+//        }
+//
         registerCardView.snp.makeConstraints { make in
-            make.top.equalTo(registerTitleLabel.snp.bottom).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.left.right.equalToSuperview().inset(15)
         }
 
@@ -220,7 +231,7 @@ final class RegisterViewController: UIViewController {
         }
 
         registerButton.snp.makeConstraints { make in
-            make.top.equalTo(warningLabel.snp.bottom).offset(10)
+            make.top.equalTo(warningLabel.snp.bottom).offset(5)
             make.bottom.equalToSuperview().inset(15)
             make.left.right.equalToSuperview().inset(5)
             make.height.equalTo(35)
