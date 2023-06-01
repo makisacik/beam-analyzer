@@ -91,7 +91,6 @@ final class ConversationsViewController: UIViewController, UITableViewDelegate {
                     if let calculation = self?.deflectionCalculation {
                         let chatVC = ChatViewController(receiverUser: user)
                         chatVC.coordinator = self?.coordinator
-                        
                         if let json = JsonUtil.convertToJsonString(object: calculation) {
                             chatVC.viewModel.sendMessage(message: json)
                         }

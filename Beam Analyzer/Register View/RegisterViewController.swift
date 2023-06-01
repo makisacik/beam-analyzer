@@ -29,7 +29,7 @@ final class RegisterViewController: UIViewController {
     private let fullNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Full Name: "
-        label.font = UIFont.getAppFont(withSize: 17)
+        label.font = UIFont.getAppFont(withSize: 14)
         return label
     }()
     
@@ -44,7 +44,7 @@ final class RegisterViewController: UIViewController {
     private let userNameLabel: UILabel = {
         let label = UILabel()
         label.text = "User Name: "
-        label.font = UIFont.getAppFont(withSize: 17)
+        label.font = UIFont.getAppFont(withSize: 14)
         return label
     }()
     
@@ -61,7 +61,7 @@ final class RegisterViewController: UIViewController {
     private let emailLabel: UILabel = {
         let label = UILabel()
         label.text = "Email: "
-        label.font = UIFont.getAppFont(withSize: 17)
+        label.font = UIFont.getAppFont(withSize: 14)
         return label
     }()
 
@@ -80,14 +80,14 @@ final class RegisterViewController: UIViewController {
     private let passwordLabel: UILabel = {
         let label = UILabel()
         label.text = "Password: "
-        label.font = UIFont.getAppFont(withSize: 17)
+        label.font = UIFont.getAppFont(withSize: 14)
         return label
     }()
 
     private let passwordAgainLabel: UILabel = {
         let label = UILabel()
         label.text = "Password: (Again)"
-        label.font = UIFont.getAppFont(withSize: 17)
+        label.font = UIFont.getAppFont(withSize: 14)
         return label
     }()
 
@@ -99,6 +99,7 @@ final class RegisterViewController: UIViewController {
         textField.autocapitalizationType = .none
         textField.returnKeyType = .default
         textField.passwordRules = .none
+        textField.autocorrectionType = .no
         return textField
     }()
 
@@ -110,7 +111,7 @@ final class RegisterViewController: UIViewController {
         textField.autocapitalizationType = .none
         textField.returnKeyType = .default
         textField.passwordRules = .none
-
+        textField.autocorrectionType = .no
         return textField
     }()
 
@@ -230,7 +231,7 @@ final class RegisterViewController: UIViewController {
         }
 
         registerButton.snp.makeConstraints { make in
-            make.top.equalTo(warningLabel.snp.bottom).offset(10)
+            make.top.equalTo(warningLabel.snp.bottom).offset(5)
             make.bottom.equalToSuperview().inset(15)
             make.left.right.equalToSuperview().inset(5)
             make.height.equalTo(35)

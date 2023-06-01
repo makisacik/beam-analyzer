@@ -49,7 +49,7 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
         navigationController?.navigationBar.backgroundColor = .systemBackground
         setupViews()
         makeConstraints()
-        
+        self.isModalInPresentation = true
         if navigationController == nil {
             addNavBarWithDismiss()
         }
