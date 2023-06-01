@@ -21,7 +21,7 @@ final class ConversationsViewModel {
         MessageService.shared.fetchConversations(userName: currentUser.userName) { result in
             switch result {
             case .success(let usernames):
-                self.userNames.onNext(usernames)
+                self.userNames.onNext(usernames.reversed())
             case .failure:
                 break
             }
