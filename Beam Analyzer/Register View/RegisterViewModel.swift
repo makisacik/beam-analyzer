@@ -59,8 +59,10 @@ final class RegisterViewModel {
     }
     
     private func isValidUsername(_ username: String) -> Bool {
-        let regex = "^[A-Za-z]{4,32}$"
-        let usernamePredicate = NSPredicate(format: "SELF MATCHES %@", regex)
-        return usernamePredicate.evaluate(with: username)
+        let alphanumericRegex = "^[a-zA-Z0-9]+$"
+        let regex = try? NSRegularExpression(pattern: alphanumericRegex, options: [])
+        let range = NSRange(location: 0, length: username.utf16.count)
+        let matches = regex?.numberOfMatches(in: username, options: [], range: range)
+        return matches == 1
     }
 }
