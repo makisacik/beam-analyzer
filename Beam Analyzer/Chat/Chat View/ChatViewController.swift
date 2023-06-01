@@ -77,10 +77,19 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
             make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-        messageTableView.snp.makeConstraints { make in
-            make.bottom.equalTo(messageTextField.snp.top)
-            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
+        if navigationController == nil {
+            messageTableView.snp.makeConstraints { make in
+                make.bottom.equalTo(messageTextField.snp.top)
+                make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+                make.top.equalTo(view.safeAreaLayoutGuide).offset(44)
+            }
+        } else {
+            messageTableView.snp.makeConstraints { make in
+                make.bottom.equalTo(messageTextField.snp.top)
+                make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
+            }
         }
+
     }
     
     private func bindTableView() {
@@ -151,12 +160,12 @@ final class ChatViewController: UIViewController, UITableViewDelegate {
 
 extension ChatViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        viewModel.sendMessage(message: textField.text ?? "")
-        textField.text = ""
-        textField.resignFirstResponder()
         if messageTableView.numberOfRows(inSection: 0) == 0 {
             viewModel.createConversations()
         }
+        viewModel.sendMessage(message: textField.text ?? "")
+        textField.text = ""
+        textField.resignFirstResponder()
         return true
     }
 }
