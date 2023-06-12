@@ -16,6 +16,8 @@ final class ChangePasswordViewModel {
                 completionHandler("Passwords does not match")
             } else if firstPassword.count < 6 {
                 completionHandler("Password lenght should be at least 6 characters.")
+            } else if currentPassword == firstPassword {
+                completionHandler("Current password and new passwords cannot be same.")
             } else {
                 AuthService.shared.updatePassword(currentPassword: currentPassword, password: firstPassword) { error in
                     if error != nil {

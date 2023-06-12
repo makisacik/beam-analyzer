@@ -143,7 +143,7 @@ extension SearchUsersViewController: UITableViewDataSource, UITableViewDelegate 
                 self.present(chatVC, animated: true)
             } else {
                 let chatVC = ChatViewController(receiverUser: receiverUser)
-                navigationController?.pushViewController(chatVC, animated: true)
+                present(chatVC, animated: true)
             }
         }
     }

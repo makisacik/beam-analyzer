@@ -18,6 +18,7 @@ final class ChatViewModel {
         self.receiverUser = receiverUser
         currentUser = UserManager.shared.currentUser
         loadMessages()
+        print("current user:", currentUser.userName)
     }
     
     func sendMessage(message: String) {

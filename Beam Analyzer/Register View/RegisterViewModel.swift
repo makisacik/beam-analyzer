@@ -18,7 +18,7 @@ final class RegisterViewModel {
         } else if password != passwordAgain {
             errorString = "Passwords do not match."
         } else if !isPasswordValid(password) {
-            errorString = "Password should be at least 8 characters and should contain at least one letter."
+            errorString = "Password should be at least 8 characters and should contain at least one letter and number."
         } else if fullName.count > 32 {
             errorString = "Full name can't be more than 32 characters."
         } else if !isValidUsername(userName) {
@@ -52,7 +52,7 @@ final class RegisterViewModel {
     }
     
     private func isPasswordValid(_ password: String) -> Bool {
-        let passwordRegex = "^(?=.*[A-Za-z])[A-Za-z\\d@$!%*?&]{8,}$"
+        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
         
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)

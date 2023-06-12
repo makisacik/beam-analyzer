@@ -130,7 +130,7 @@ final class LoginViewController: UIViewController {
         addRegisterLabelTapGesture()
         #if DEBUG
         emailTextField.text = "test@test.com"
-        passwordTextField.text = "TestTest"
+        passwordTextField.text = "1234test"
         #endif
     }
     
@@ -181,7 +181,7 @@ final class LoginViewController: UIViewController {
         view.addSubview(loginTitleLabel)
         view.addSubview(loginCardView)
         view.addSubview(registerLabel)
-        view.addSubview(withoutSignInLabel)
+        // view.addSubview(withoutSignInLabel)
         loginCardView.addSubview(loginStackView)
         loginCardView.addSubview(loginButton)
         loginCardView.addSubview(warningLabel)
@@ -223,10 +223,10 @@ final class LoginViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
 
-        withoutSignInLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(50)
-            make.centerX.equalToSuperview()
-        }
+//        withoutSignInLabel.snp.makeConstraints { make in
+//            make.bottom.equalToSuperview().inset(50)
+//            make.centerX.equalToSuperview()
+//        }
     }
     
     @objc func togglePasswordVisibility(_ sender: UIButton) {
