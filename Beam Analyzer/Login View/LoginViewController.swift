@@ -110,16 +110,6 @@ final class LoginViewController: UIViewController {
         return label
     }()
 
-    private let withoutSignInLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Continue without signing in"
-        label.font = UIFont.getAppFont(withSize: 14)
-        label.textColor = .tintColor
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.delegate = self
@@ -129,8 +119,8 @@ final class LoginViewController: UIViewController {
         addTapOutsideKeyboard()
         addRegisterLabelTapGesture()
         #if DEBUG
-        emailTextField.text = "test@test.com"
-        passwordTextField.text = "TestTest"
+        emailTextField.text = "test6@test.com"
+        passwordTextField.text = "1234test"
         #endif
     }
     
@@ -181,7 +171,6 @@ final class LoginViewController: UIViewController {
         view.addSubview(loginTitleLabel)
         view.addSubview(loginCardView)
         view.addSubview(registerLabel)
-        view.addSubview(withoutSignInLabel)
         loginCardView.addSubview(loginStackView)
         loginCardView.addSubview(loginButton)
         loginCardView.addSubview(warningLabel)
@@ -223,10 +212,6 @@ final class LoginViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
 
-        withoutSignInLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(50)
-            make.centerX.equalToSuperview()
-        }
     }
     
     @objc func togglePasswordVisibility(_ sender: UIButton) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3228F5B02A5DD06E005FEE18 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3228F5AF2A5DD06E005FEE18 /* GoogleService-Info.plist */; };
 		863CFEAC299A29A100EBEE7C /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863CFEAB299A29A000EBEE7C /* UIFont+Extensions.swift */; };
 		863CFEAF299A2E3200EBEE7C /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863CFEAE299A2E3200EBEE7C /* UILabel+Extensions.swift */; };
 		863CFEB1299A2E4400EBEE7C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863CFEB0299A2E4400EBEE7C /* UIViewController+Extensions.swift */; };
@@ -55,7 +56,6 @@
 		CBD0E15B29BF9377004599ED /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15A29BF9377004599ED /* DatabaseService.swift */; };
 		CBD0E15D29BFC750004599ED /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0E15C29BFC750004599ED /* UIStackView+Extensions.swift */; };
 		CBE367922A2152E300B74CE0 /* JsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE367912A2152E300B74CE0 /* JsonUtil.swift */; };
-		CBE7591729E35F9F00AFB56A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBE7591629E35F9F00AFB56A /* GoogleService-Info.plist */; };
 		CBE7591A29E3602200AFB56A /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7591929E3602200AFB56A /* ChatViewModel.swift */; };
 		CBE7591C29E3603C00AFB56A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7591B29E3603C00AFB56A /* ChatTableViewCell.swift */; };
 		CBE7591F29E3606300AFB56A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE7591E29E3606300AFB56A /* Message.swift */; };
@@ -74,6 +74,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3228F5AF2A5DD06E005FEE18 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		863CFEAB299A29A000EBEE7C /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		863CFEAE299A2E3200EBEE7C /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		863CFEB0299A2E4400EBEE7C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		CBD0E15A29BF9377004599ED /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		CBD0E15C29BFC750004599ED /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		CBE367912A2152E300B74CE0 /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
-		CBE7591629E35F9F00AFB56A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Dosyalarım/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBE7591929E3602200AFB56A /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		CBE7591B29E3603C00AFB56A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		CBE7591E29E3606300AFB56A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -299,7 +299,7 @@
 		86FAA3372991A3FE00A11C74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CBE7591629E35F9F00AFB56A /* GoogleService-Info.plist */,
+				3228F5AF2A5DD06E005FEE18 /* GoogleService-Info.plist */,
 				86F35A34298F037F00BDB116 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -558,7 +558,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86F35A30298F037F00BDB116 /* Assets.xcassets in Resources */,
-				CBE7591729E35F9F00AFB56A /* GoogleService-Info.plist in Resources */,
+				3228F5B02A5DD06E005FEE18 /* GoogleService-Info.plist in Resources */,
 				865782EA298FEBF600380928 /* SplashScreenViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

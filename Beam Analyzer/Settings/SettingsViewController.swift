@@ -46,14 +46,14 @@ final class SettingsViewController: UIViewController {
     }
 
     private func makeConstraints() {
-        buttonSignOut.snp.makeConstraints { make in
+        buttonChangePassword.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
             make.leading.trailing.equalToSuperview().inset(40)
             make.height.equalTo(60)
         }
         
-        buttonChangePassword.snp.makeConstraints { make in
-            make.top.equalTo(buttonSignOut.snp.bottom).offset(20)
+        buttonSignOut.snp.makeConstraints { make in
+            make.top.equalTo(buttonChangePassword.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(40)
             make.height.equalTo(60)
         }
@@ -63,6 +63,10 @@ final class SettingsViewController: UIViewController {
         AuthService.shared.signOutUser { [weak self] isSuccessful in
             if isSuccessful {
                 self?.coordinator?.navigateToLogin()
+                UserManager.shared.currentUser = nil
+                if let currentUser = AuthService.shared.auth.currentUser {
+                    print("Current user sign out")
+                }
             }
         }
     }

@@ -14,10 +14,12 @@ final class SplashScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if AuthService.shared.isUserSignedIn() {
-            coordinator?.navigateToMenu()
-        } else {
-            self.coordinator?.navigateToLogin()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            if AuthService.shared.isUserSignedIn() {
+                self.coordinator?.navigateToMenu()
+            } else {
+                self.coordinator?.navigateToLogin()
+            }
         }
     }
 
